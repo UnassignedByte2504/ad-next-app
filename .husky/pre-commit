@@ -1,0 +1,15 @@
+# =============================================================================
+
+# 🔧 Husky Pre-commit Hooks Configuration
+
+# =============================================================================
+
+# Install: cd client && bun add -D husky lint-staged && bunx husky init
+
+# This file is sourced by .husky/pre-commit
+
+# =============================================================================
+
+# Run lint-staged for incremental linting
+
+bunx lint-staged
