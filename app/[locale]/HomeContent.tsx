@@ -44,7 +44,7 @@ export function HomeContent() {
     },
   ];
 
-  // Category items
+  // #region Category items
   const categories: CategoryItem[] = [
     { key: "invitations", label: t("categories.items.invitations") },
     { key: "digitalArt", label: t("categories.items.digitalArt") },
@@ -55,7 +55,7 @@ export function HomeContent() {
     { key: "branding", label: t("categories.items.branding") },
     { key: "cards", label: t("categories.items.cards") },
   ];
-
+  // #endregion
   return (
     <Box
       sx={{
