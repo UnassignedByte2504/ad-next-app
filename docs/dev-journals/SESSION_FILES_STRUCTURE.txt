@@ -1,0 +1,200 @@
+BEMYRE v2 Client - Session Management Implementation
+=====================================================
+
+FILES CREATED (9 files):
+========================
+
+lib/hooks/
+├── useSessionManager.ts          (350 lines) - Core session management hook
+│   ├── SESSION_WARNING_TIME      (25 minutes)
+│   ├── SESSION_TIMEOUT           (30 minutes)
+│   ├── REFRESH_INTERVAL          (10 minutes)
+│   ├── useSessionManager()       Hook
+│   └── Activity tracking + Timer management
+└── index.ts                      (11 lines)  - Export file
+
+components/organisms/SessionWarningModal/
+├── SessionWarningModal.tsx       (150 lines) - Warning modal component
+│   ├── Countdown timer (MM:SS)
+│   ├── "Continuar sesión" button
+│   ├── "Cerrar sesión" button
+│   └── Spanish UI with MUI Dialog
+└── index.ts                      (5 lines)   - Export file
+
+providers/
+├── SessionProvider.tsx           (80 lines)  - Session provider wrapper
+│   ├── Wraps useSessionManager
+│   ├── Renders SessionWarningModal
+│   └── Only active when authenticated
+└── index.ts                      (5 lines)   - Export file
+
+docs/
+├── SESSION_MANAGEMENT.md         (400+ lines) - Comprehensive documentation
+├── INTEGRATION_EXAMPLE.md        (100+ lines) - Quick integration guide
+└── SESSION_IMPLEMENTATION_SUMMARY.md (300+ lines) - This summary
+
+Root:
+└── SESSION_FILES_STRUCTURE.txt   - This file (visual structure)
+
+
+FILES MODIFIED (2 files):
+=========================
+
+lib/
+└── index.ts                      - Added export for hooks
+
+components/organisms/
+└── index.ts                      - Added export for SessionWarningModal
+
+
+INTEGRATION REQUIRED (1 file):
+==============================
+
+app/
+└── providers.tsx                 - Wrap children with <SessionProvider>
+
+
+ARCHITECTURE:
+=============
+
+┌─────────────────────────────────────────────────────────────┐
+│  app/providers.tsx                                          │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │  <SessionProvider>                                     │ │
+│  │  ┌──────────────────────────────────────────────────┐ │ │
+│  │  │  useSessionManager()                             │ │ │
+│  │  │  ┌────────────────────────────────────────────┐ │ │ │
+│  │  │  │  Activity Tracking                         │ │ │ │
+│  │  │  │  - mousedown, mousemove, keypress, etc.    │ │ │ │
+│  │  │  └────────────────────────────────────────────┘ │ │ │
+│  │  │  ┌────────────────────────────────────────────┐ │ │ │
+│  │  │  │  Timer Management                          │ │ │ │
+│  │  │  │  - Warning timer (25 min)                  │ │ │ │
+│  │  │  │  - Timeout timer (30 min)                  │ │ │ │
+│  │  │  │  - Refresh timer (10 min)                  │ │ │ │
+│  │  │  └────────────────────────────────────────────┘ │ │ │
+│  │  │  ┌────────────────────────────────────────────┐ │ │ │
+│  │  │  │  Zustand Store Integration                 │ │ │ │
+│  │  │  │  - isAuthenticated                         │ │ │ │
+│  │  │  │  - logout()                                │ │ │ │
+│  │  │  │  - refreshSession()                        │ │ │ │
+│  │  │  └────────────────────────────────────────────┘ │ │ │
+│  │  └──────────────────────────────────────────────────┘ │ │
+│  │  ┌──────────────────────────────────────────────────┐ │ │
+│  │  │  <SessionWarningModal>                           │ │ │
+│  │  │  ┌────────────────────────────────────────────┐ │ │ │
+│  │  │  │  Dialog (MUI)                              │ │ │ │
+│  │  │  │  ├── Warning Icon                          │ │ │ │
+│  │  │  │  ├── Countdown Timer (MM:SS)               │ │ │ │
+│  │  │  │  ├── [Cerrar sesión]  [Continuar sesión]  │ │ │ │
+│  │  │  │  └── Spanish UI                            │ │ │ │
+│  │  │  └────────────────────────────────────────────┘ │ │ │
+│  │  └──────────────────────────────────────────────────┘ │ │
+│  └────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+
+
+FLOW DIAGRAM:
+=============
+
+Login
+  ↓
+Session Manager Activated
+  ↓
+Activity Detected ──→ Reset Timers
+  ↓                       ↑
+  ↓                       │
+  ↓                       │
+25 min Inactive           │
+  ↓                       │
+Show Warning Modal        │
+  ↓                       │
+  ├─→ Click "Continuar" ──┘
+  │   (Refresh Session)
+  │
+  └─→ 5 min Pass (30 total)
+        ↓
+      Auto Logout
+
+
+SECURITY FEATURES:
+==================
+
+✅ httpOnly Cookies         - Tokens not accessible from JS
+✅ No Client Storage        - No localStorage/sessionStorage
+✅ Activity Detection       - Mouse, keyboard, touch events
+✅ Warning Before Logout    - 25 min warning, 30 min logout
+✅ Background Refresh       - Every 10 min if active
+✅ Proper Cleanup          - Timers and listeners cleaned up
+✅ No Modal Bypass         - Cannot close without action
+✅ Throttled Activity      - Max 1 registration per second
+
+
+CONFIGURATION:
+==============
+
+Timeout Values (editable in useSessionManager.ts):
+  SESSION_WARNING_TIME = 25 minutes (1,500,000 ms)
+  SESSION_TIMEOUT      = 30 minutes (1,800,000 ms)
+  REFRESH_INTERVAL     = 10 minutes (  600,000 ms)
+
+Activity Events:
+  - mousedown
+  - mousemove
+  - keypress
+  - scroll
+  - touchstart
+  - click
+
+
+TESTING:
+========
+
+Manual Test:
+  1. Login to app
+  2. Wait 25 minutes (or temporarily reduce timeout for testing)
+  3. Warning modal should appear
+  4. Click "Continuar sesión"
+  5. Modal closes, timers reset
+  6. Check DevTools Network for /api/v1/auth/refresh calls every 10 min
+
+Logs to Check (Browser Console):
+  ✅ "Session manager initialized"
+  ✅ "Session timers reset"
+  ✅ "Refreshing session in background"
+  ⚠️ "Session warning - user inactive"
+  ❌ "Session expired - logging out user"
+
+
+AUDIT COMPLIANCE:
+=================
+
+CVSS 5.8 - Session Timeout ✅
+
+Requirements Met:
+  ✅ Inactivity detection
+  ✅ Warning before timeout (25 min)
+  ✅ Auto-logout on timeout (30 min)
+  ✅ Session refresh (10 min intervals)
+  ✅ Secure token storage (httpOnly cookies)
+  ✅ Clean lifecycle management
+
+
+NEXT STEPS:
+===========
+
+Required:
+  1. Add <SessionProvider> to app/providers.tsx
+  2. Test manually with login
+  3. Verify backend /api/v1/auth/refresh endpoint
+
+Recommended:
+  4. Write unit tests
+  5. Write integration tests
+  6. Write E2E tests
+  7. Add Sentry monitoring
+
+Optional:
+  8. Add configuration UI
+  9. Add "Remember me" option
+  10. Add session activity logs

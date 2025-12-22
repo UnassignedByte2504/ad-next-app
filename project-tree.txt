@@ -1,0 +1,694 @@
+.
+├── AGENTS.md
+├── app
+│   ├── api
+│   │   ├── health
+│   │   │   └── route.ts
+│   │   ├── logs
+│   │   │   └── route.ts
+│   │   ├── [...path]
+│   │   └── sentry-example-api
+│   │       └── route.ts
+│   ├── favicon.ico
+│   ├── global-error.tsx
+│   ├── globals.css
+│   ├── [locale]
+│   │   ├── auth
+│   │   │   └── google
+│   │   │       └── callback
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── sentry-example-page
+│   │       └── page.tsx
+│   ├── providers.tsx
+│   ├── theme.ts
+│   └── ui
+│       └── theme
+│           ├── components
+│           │   └── index.ts
+│           ├── dark
+│           │   └── index.ts
+│           ├── index.ts
+│           ├── light
+│           │   └── index.ts
+│           └── tokens
+│               ├── colors.ts
+│               ├── index.ts
+│               ├── motion.ts
+│               └── typography.ts
+├── assets
+├── bun.lock
+├── CLAUDE.md
+├── components
+│   ├── atoms
+│   │   ├── Avatar
+│   │   │   ├── Avatar.stories.tsx
+│   │   │   ├── Avatar.tsx
+│   │   │   └── index.ts
+│   │   ├── Button
+│   │   │   ├── Button.stories.tsx
+│   │   │   ├── Button.tsx
+│   │   │   └── index.ts
+│   │   ├── Card
+│   │   │   ├── CardMedia.tsx
+│   │   │   ├── Card.stories.tsx
+│   │   │   ├── Card.tsx
+│   │   │   └── index.ts
+│   │   ├── ChatDateDivider
+│   │   │   ├── ChatDateDivider.stories.tsx
+│   │   │   ├── ChatDateDivider.tsx
+│   │   │   └── index.ts
+│   │   ├── Chip
+│   │   │   ├── Chip.stories.tsx
+│   │   │   ├── Chip.tsx
+│   │   │   └── index.ts
+│   │   ├── index.ts
+│   │   ├── Input
+│   │   │   ├── index.ts
+│   │   │   ├── Input.stories.tsx
+│   │   │   └── Input.tsx
+│   │   ├── Logo
+│   │   │   ├── index.ts
+│   │   │   ├── Logo.stories.tsx
+│   │   │   └── Logo.tsx
+│   │   ├── MediaTrackCard
+│   │   │   ├── index.ts
+│   │   │   ├── MediaTrackCard.stories.tsx
+│   │   │   ├── MediaTrackCard.tsx
+│   │   │   └── PlatformBadge.tsx
+│   │   ├── MessageBubble
+│   │   │   ├── index.ts
+│   │   │   ├── MessageBubble.stories.tsx
+│   │   │   └── MessageBubble.tsx
+│   │   ├── NavLink
+│   │   │   ├── index.ts
+│   │   │   ├── NavLink.stories.tsx
+│   │   │   └── NavLink.tsx
+│   │   ├── SearchInput
+│   │   │   ├── index.ts
+│   │   │   ├── SearchInput.stories.tsx
+│   │   │   └── SearchInput.tsx
+│   │   └── ThemeToggle
+│   │       ├── index.ts
+│   │       ├── ThemeToggle.stories.tsx
+│   │       └── ThemeToggle.tsx
+│   ├── docs
+│   │   ├── BrandOverview.stories.tsx
+│   │   ├── ColorPalette.stories.tsx
+│   │   ├── GenreChips.stories.tsx
+│   │   ├── index.ts
+│   │   └── Typography.stories.tsx
+│   ├── index.ts
+│   ├── molecules
+│   │   ├── AlertDialog
+│   │   │   ├── AlertDialog.stories.tsx
+│   │   │   ├── AlertDialog.tsx
+│   │   │   └── index.ts
+│   │   ├── BandRecruitmentCard
+│   │   │   ├── BandRecruitmentCard.stories.tsx
+│   │   │   ├── BandRecruitmentCard.tsx
+│   │   │   └── index.ts
+│   │   ├── CallToAction
+│   │   │   ├── CallToAction.stories.tsx
+│   │   │   ├── CallToAction.tsx
+│   │   │   └── index.ts
+│   │   ├── CardActions
+│   │   │   ├── CardActions.tsx
+│   │   │   └── index.ts
+│   │   ├── CardChipGroup
+│   │   │   ├── CardChipGroup.tsx
+│   │   │   └── index.ts
+│   │   ├── CardContent
+│   │   │   ├── CardContent.tsx
+│   │   │   └── index.ts
+│   │   ├── CardHeader
+│   │   │   ├── CardHeader.tsx
+│   │   │   └── index.ts
+│   │   ├── EditableField
+│   │   │   ├── EditableField.stories.tsx
+│   │   │   ├── EditableField.tsx
+│   │   │   └── index.ts
+│   │   ├── FilterBar
+│   │   │   ├── FilterBar.stories.tsx
+│   │   │   ├── FilterBar.tsx
+│   │   │   └── index.ts
+│   │   ├── FollowStats
+│   │   │   ├── FollowStats.stories.tsx
+│   │   │   ├── FollowStats.tsx
+│   │   │   └── index.ts
+│   │   ├── FormSection
+│   │   │   ├── FormSection.stories.tsx
+│   │   │   ├── FormSection.tsx
+│   │   │   └── index.ts
+│   │   ├── GoogleOAuthButton
+│   │   │   ├── GoogleOAuthButton.stories.tsx
+│   │   │   ├── GoogleOAuthButton.tsx
+│   │   │   └── index.ts
+│   │   ├── index.ts
+│   │   ├── InstrumentShowcase
+│   │   │   ├── index.ts
+│   │   │   ├── InstrumentShowcase.stories.tsx
+│   │   │   └── InstrumentShowcase.tsx
+│   │   ├── MediaEmbed
+│   │   │   ├── index.ts
+│   │   │   ├── MediaEmbed.stories.tsx
+│   │   │   └── MediaEmbed.tsx
+│   │   ├── MessageQuote
+│   │   │   ├── index.ts
+│   │   │   ├── MessageQuote.stories.tsx
+│   │   │   └── MessageQuote.tsx
+│   │   ├── MusicStyleSection
+│   │   │   ├── index.ts
+│   │   │   ├── MusicStyleSection.stories.tsx
+│   │   │   └── MusicStyleSection.tsx
+│   │   ├── NavbarActions
+│   │   │   ├── index.ts
+│   │   │   ├── NavbarActions.stories.tsx
+│   │   │   └── NavbarActions.tsx
+│   │   ├── NavbarBrand
+│   │   │   ├── index.ts
+│   │   │   ├── NavbarBrand.stories.tsx
+│   │   │   └── NavbarBrand.tsx
+│   │   ├── NavbarLinks
+│   │   │   ├── index.ts
+│   │   │   ├── NavbarLinks.stories.tsx
+│   │   │   └── NavbarLinks.tsx
+│   │   ├── SearchResultsHeader
+│   │   │   ├── index.ts
+│   │   │   ├── SearchResultsHeader.stories.tsx
+│   │   │   └── SearchResultsHeader.tsx
+│   │   ├── SectionHeader
+│   │   │   ├── index.ts
+│   │   │   ├── SectionHeader.stories.tsx
+│   │   │   └── SectionHeader.tsx
+│   │   ├── SettingsNav
+│   │   │   ├── index.ts
+│   │   │   ├── SettingsNav.stories.tsx
+│   │   │   └── SettingsNav.tsx
+│   │   └── SpainMap
+│   │       ├── index.ts
+│   │       ├── provinces.ts
+│   │       ├── ProvinceTooltip.tsx
+│   │       ├── RegionBox.tsx
+│   │       ├── regions.ts
+│   │       ├── SpainMapBento.stories.tsx
+│   │       ├── SpainMapBento.tsx
+│   │       ├── SpainMap.stories.tsx
+│   │       └── SpainMap.tsx
+│   ├── organisms
+│   │   ├── BandCard
+│   │   │   ├── BandCard.stories.tsx
+│   │   │   ├── BandCard.tsx
+│   │   │   └── index.ts
+│   │   ├── Carousel
+│   │   │   ├── Carousel.stories.tsx
+│   │   │   ├── Carousel.tsx
+│   │   │   └── index.ts
+│   │   ├── ChatThread
+│   │   │   ├── ChatThread.stories.tsx
+│   │   │   ├── ChatThread.tsx
+│   │   │   └── index.ts
+│   │   ├── ConcertCard
+│   │   │   ├── ConcertCard.stories.tsx
+│   │   │   ├── ConcertCard.tsx
+│   │   │   └── index.ts
+│   │   ├── ConsentBanner
+│   │   │   ├── ConsentBanner.stories.tsx
+│   │   │   ├── ConsentBanner.tsx
+│   │   │   ├── ConsentModal.tsx
+│   │   │   └── index.ts
+│   │   ├── ConversationList
+│   │   │   ├── ConversationList.stories.tsx
+│   │   │   ├── ConversationList.tsx
+│   │   │   └── index.ts
+│   │   ├── EntityGrid
+│   │   │   ├── EntityGrid.stories.tsx
+│   │   │   ├── EntityGrid.tsx
+│   │   │   └── index.ts
+│   │   ├── ErrorBoundary
+│   │   │   ├── ErrorBoundary.stories.tsx
+│   │   │   ├── ErrorBoundary.tsx
+│   │   │   └── index.ts
+│   │   ├── ExploreHero
+│   │   │   ├── ExploreHero.stories.tsx
+│   │   │   ├── ExploreHero.tsx
+│   │   │   └── index.ts
+│   │   ├── FAQAccordion
+│   │   │   ├── FAQAccordion.stories.tsx
+│   │   │   ├── FAQAccordion.tsx
+│   │   │   └── index.ts
+│   │   ├── Footer
+│   │   │   ├── Footer.stories.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   └── index.ts
+│   │   ├── Hero
+│   │   │   ├── Hero.stories.tsx
+│   │   │   ├── Hero.tsx
+│   │   │   └── index.ts
+│   │   ├── index.ts
+│   │   ├── MusicianCard
+│   │   │   ├── index.ts
+│   │   │   ├── MusicianCard.stories.tsx
+│   │   │   └── MusicianCard.tsx
+│   │   ├── Navbar
+│   │   │   ├── index.ts
+│   │   │   ├── Navbar.stories.tsx
+│   │   │   └── Navbar.tsx
+│   │   ├── ProfileCard
+│   │   │   ├── index.ts
+│   │   │   ├── ProfileCard.stories.tsx
+│   │   │   └── ProfileCard.tsx
+│   │   ├── ProfileHeader
+│   │   │   ├── index.ts
+│   │   │   ├── ProfileHeader.stories.tsx
+│   │   │   └── ProfileHeader.tsx
+│   │   ├── SessionWarningModal
+│   │   │   ├── index.ts
+│   │   │   ├── SessionWarningModal.stories.tsx
+│   │   │   └── SessionWarningModal.tsx
+│   │   └── VenueCard
+│   │       ├── index.ts
+│   │       ├── VenueCard.stories.tsx
+│   │       └── VenueCard.tsx
+│   ├── README.md
+│   └── templates
+│       ├── index.ts
+│       └── SettingsLayout
+│           ├── index.ts
+│           ├── SettingsLayout.stories.tsx
+│           └── SettingsLayout.tsx
+├── contexts
+├── CONTRIBUTING.md
+├── core
+│   ├── domain
+│   ├── ports
+│   │   ├── driven
+│   │   └── driving
+│   └── services
+├── dev
+├── Dockerfile
+├── docs
+│   ├── architecture
+│   │   ├── api
+│   │   │   ├── client.md
+│   │   │   └── services.md
+│   │   ├── components
+│   │   │   ├── atomic-design.md
+│   │   │   └── patterns.md
+│   │   ├── gpdr
+│   │   │   └── GDPR_CONSENT_INTEGRATION.md
+│   │   ├── implementation
+│   │   │   ├── checklists.md
+│   │   │   └── user-stories.md
+│   │   ├── index.md
+│   │   ├── layers
+│   │   │   ├── infrastructure.md
+│   │   │   ├── overview.md
+│   │   │   ├── service.md
+│   │   │   ├── state.md
+│   │   │   └── ui.md
+│   │   ├── principles.md
+│   │   ├── quick-reference.md
+│   │   ├── reactive
+│   │   │   ├── data-flow.md
+│   │   │   └── state-types.md
+│   │   ├── session
+│   │   │   └── SESSION_MANAGEMENT.md
+│   │   ├── state
+│   │   │   ├── hooks.md
+│   │   │   ├── selectors.md
+│   │   │   └── zustand.md
+│   │   └── theme
+│   │       └── THEME_ARCHITECTURE.md
+│   ├── audits
+│   │   ├── 01-2026
+│   │   └── 12-2025
+│   │       └── AUDIT_REPORT.md
+│   ├── branding
+│   │   └── CORPORATE_IDENTITY.mdx
+│   ├── CVSS
+│   ├── dev-journals
+│   │   ├── GDPR_IMPLEMENTATION_SUMMARY.md
+│   │   ├── QUICK_REFERENCE.md
+│   │   ├── SESSION_FILES_STRUCTURE.txt
+│   │   └── SESSION_IMPLEMENTATION_SUMMARY.md
+│   ├── DOCUMENTING_GUIDELINES.md
+│   ├── examples
+│   │   ├── CONSENT_EXAMPLE_INTEGRATION.tsx
+│   │   └── INTEGRATION_EXAMPLE.md
+│   ├── i18n
+│   │   ├── adding-translations.md
+│   │   ├── index.md
+│   │   └── quick-reference.md
+│   ├── index.md
+│   ├── middleware
+│   │   ├── index.md
+│   │   └── quick-reference.md
+│   ├── migration
+│   │   └── LEGACY_MIGRATION_PLAN.md
+│   ├── plans
+│   │   └── 2025-12-08-spainmap-bento-flashlight-design.md
+│   ├── server-components
+│   │   ├── architecture
+│   │   │   ├── diagrams.md
+│   │   │   └── overview.md
+│   │   ├── best-practices
+│   │   │   ├── common-mistakes.md
+│   │   │   ├── decision-guide.md
+│   │   │   └── performance.md
+│   │   ├── implementation
+│   │   │   ├── migration-guide.md
+│   │   │   └── summary.md
+│   │   ├── index.md
+│   │   ├── patterns
+│   │   │   ├── common-patterns.md
+│   │   │   ├── composition.md
+│   │   │   └── data-fetching.md
+│   │   └── quick-reference.md
+│   ├── storybook
+│   │   ├── index.md
+│   │   └── quick-reference.md
+│   └── theming
+│       ├── DESIGN_SYSTEM_PRINCIPLES.md
+│       └── index.md
+├── errors
+│   ├── api.ts
+│   ├── base.ts
+│   ├── codes.ts
+│   └── index.ts
+├── eslint.config.mjs
+├── examples
+│   ├── page-implementation
+│   │   ├── actions.ts
+│   │   ├── components
+│   │   │   ├── FeatureCard.tsx
+│   │   │   ├── FeatureFiltersSkeleton.tsx
+│   │   │   ├── FeatureFilters.tsx
+│   │   │   ├── FeatureList.tsx
+│   │   │   └── index.ts
+│   │   ├── error.tsx
+│   │   ├── hooks
+│   │   │   ├── index.ts
+│   │   │   ├── useDebounce.ts
+│   │   │   ├── useFeatureData.ts
+│   │   │   └── useMyNewHook.ts
+│   │   ├── layout.tsx
+│   │   ├── loading.tsx
+│   │   ├── not-found.tsx
+│   │   ├── page.tsx
+│   │   ├── README.md
+│   │   ├── types.ts
+│   │   └── ui
+│   │       └── styles.module.css
+│   └── README.md
+├── hooks
+│   ├── index.ts
+│   ├── useApiError.ts
+│   ├── useFormValidation.ts
+│   ├── useLogger.ts
+│   └── useThemeSync.ts
+├── html
+│   ├── assets
+│   │   ├── index-Cb3HQb77.css
+│   │   └── index-DnyN8l5D.js
+│   ├── bg.png
+│   ├── data
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   ├── html.meta.json.gz
+│   └── index.html
+├── i18n
+│   ├── index.ts
+│   ├── messages.ts
+│   ├── navigation.ts
+│   ├── request.ts
+│   └── routing.ts
+├── infrastructure
+│   └── adapters
+├── instrumentation-client.ts
+├── instrumentation.ts
+├── lib
+│   ├── api
+│   │   ├── client.ts
+│   │   └── index.ts
+│   ├── date
+│   │   ├── format.ts
+│   │   ├── helpers.ts
+│   │   ├── index.ts
+│   │   ├── relative.ts
+│   │   └── types.ts
+│   ├── hooks
+│   │   ├── index.ts
+│   │   └── useSessionManager.ts
+│   ├── index.ts
+│   ├── logger
+│   │   ├── index.ts
+│   │   ├── init.ts
+│   │   ├── remote-logger.ts
+│   │   ├── sentry.ts
+│   │   ├── server
+│   │   │   └── file-logger.ts
+│   │   ├── simple.ts
+│   │   └── types.ts
+│   ├── services
+│   │   ├── auth.ts
+│   │   └── index.ts
+│   └── validation
+│       ├── auth.ts
+│       └── index.ts
+├── logs
+│   ├── app.log
+│   └── error.log
+├── messages
+│   ├── en
+│   │   ├── auth.json
+│   │   ├── common.json
+│   │   ├── components.json
+│   │   ├── home.json
+│   │   ├── metadata.json
+│   │   ├── navigation.json
+│   │   └── storybook.json
+│   └── es
+│       ├── auth.json
+│       ├── common.json
+│       ├── components.json
+│       ├── home.json
+│       ├── metadata.json
+│       ├── navigation.json
+│       └── storybook.json
+├── middleware
+│   ├── auth.ts
+│   ├── config.ts
+│   ├── correlation.ts
+│   ├── index.ts
+│   ├── security.ts
+│   └── types.ts
+├── next.config.ts
+├── next-env.d.ts
+├── package.json
+├── playwright.config.ts
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── postcss.config.mjs
+├── project-tree.txt
+├── providers
+│   ├── index.ts
+│   └── SessionProvider.tsx
+├── proxy.ts
+├── README.md
+├── SECURITY.md
+├── sentry.edge.config.ts
+├── sentry.server.config.ts
+├── store
+│   ├── hooks.ts
+│   ├── index.ts
+│   ├── slices
+│   │   ├── authSlice.ts
+│   │   ├── consentSlice.ts
+│   │   ├── index.ts
+│   │   ├── searchSlice.ts
+│   │   └── uiSlice.ts
+│   └── types.ts
+├── storybook-static copy
+│   ├── assets
+│   │   ├── Avatar-o7n_krBB.js
+│   │   ├── Avatar.stories-BbMBh4O3.js
+│   │   ├── BandCard.stories-CkHrxx19.js
+│   │   ├── Box-CIcgOKRH.js
+│   │   ├── BrandOverview.stories-mOoQEHqK.js
+│   │   ├── Button-BaIM5fvd.js
+│   │   ├── ButtonBase-LY15T0Nx.js
+│   │   ├── Button-ByWIw7Wu.js
+│   │   ├── Button.stories-vbJFJCRF.js
+│   │   ├── CardChipGroup-8NE3m8CC.js
+│   │   ├── CardMedia-U-gehdk-.js
+│   │   ├── Card.stories-Djdk-LpA.js
+│   │   ├── Chip-BsZEBiBQ.js
+│   │   ├── Chip-D1SZ6VRD.js
+│   │   ├── Chip.stories-Gog56z7o.js
+│   │   ├── CircularProgress-6pmnvr9I.js
+│   │   ├── client-Cj2NTUrz.js
+│   │   ├── Close-tjWGmC6o.js
+│   │   ├── Color-ASIRERSW-DXs-v7qI.js
+│   │   ├── ColorPalette.stories-CdjUYzly.js
+│   │   ├── ConcertCard.stories-CPLgphlv.js
+│   │   ├── ConsentBanner.stories-DMLVxWNn.js
+│   │   ├── Container-BSv12Nuv.js
+│   │   ├── core-CIlDEAWO.js
+│   │   ├── createSimplePaletteValueFilter-Be5F20--.js
+│   │   ├── createSvgIcon-C2ZuCSmB.js
+│   │   ├── DialogTitle-DR6GocoU.js
+│   │   ├── Divider-Bdh00sFZ.js
+│   │   ├── DocsRenderer-GHJI37HO-BDWVBmjn.js
+│   │   ├── ErrorBoundary.stories-CQDOsfNI.js
+│   │   ├── Event-L5CwcWy8.js
+│   │   ├── formatter-QJ4M4OGQ-Pltlpyjq.js
+│   │   ├── GenreChips.stories-CJnKBArT.js
+│   │   ├── GoogleOAuthButton-DwFqPcqX.js
+│   │   ├── GoogleOAuthButton.stories-DSUdTWlM.js
+│   │   ├── helpers-vG7e9EmU.js
+│   │   ├── Home-emjQ3bbx.js
+│   │   ├── IconButton-BbrvLzsj.js
+│   │   ├── iframe-DGctdkMx.css
+│   │   ├── iframe-OZj8h8BT.js
+│   │   ├── index-BNkgkWNV.js
+│   │   ├── index-Bp2ATfeO.js
+│   │   ├── index-CyaMd9re.js
+│   │   ├── index-D8zWTDha.js
+│   │   ├── index-DqefljyP.js
+│   │   ├── index-DWXn70E1.js
+│   │   ├── isHostComponent-DVu5iVWx.js
+│   │   ├── link-CKY-6jSc.js
+│   │   ├── Logo-BvByIo-P.js
+│   │   ├── Logo.stories-D__a3Z0r.js
+│   │   ├── Message-DluKS7d8.js
+│   │   ├── Modal-BhUzyC79.js
+│   │   ├── MusicianCard.stories-BYVTDzF7.js
+│   │   ├── MusicNote-DONCv0eF.js
+│   │   ├── NavbarActions-hlkeR1br.js
+│   │   ├── NavbarActions.stories-DXIN5PFP.js
+│   │   ├── NavbarBrand-BFHCuwvQ.js
+│   │   ├── NavbarBrand.stories-CzE7eHc0.js
+│   │   ├── NavbarLinks-CJNq7wT_.js
+│   │   ├── NavbarLinks.stories-CoWEhbsQ.js
+│   │   ├── Navbar.stories-CmBk3LVz.js
+│   │   ├── NavLink.stories-tYVr0Iaq.js
+│   │   ├── ownerDocument-DW-IO8s5.js
+│   │   ├── ownerWindow-HkKU3E4x.js
+│   │   ├── Paper-DwkEdaKj.js
+│   │   ├── Place-DcuYOcEG.js
+│   │   ├── Portal-Dhalg_zX.js
+│   │   ├── preload-helper-Dp1pzeXC.js
+│   │   ├── proxy-CYfcvcXf.js
+│   │   ├── react-18-DnpbtGk2.js
+│   │   ├── Search-BOZ6EH-Q.js
+│   │   ├── SearchInput-BVN6U2wf.js
+│   │   ├── SearchInput.stories-CkXP12Rx.js
+│   │   ├── SessionWarningModal.stories-kP5EOWdF.js
+│   │   ├── Stack-DYwFL0Lg.js
+│   │   ├── styled-DZR1XwuQ.js
+│   │   ├── syntaxhighlighter-IQDEPFLK-Bj7lY35g.js
+│   │   ├── ThemeToggle-C-Ru9Kkx.js
+│   │   ├── ThemeToggle.stories-BX6cIpYF.js
+│   │   ├── Tooltip-DzqIdhLf.js
+│   │   ├── Typography-BDIweDQ5.js
+│   │   ├── Typography.stories-DBFZMCtS.js
+│   │   ├── useControlled-DtSdECpd.js
+│   │   ├── useForkRef-DgebAj9F.js
+│   │   ├── useFormControl-DBUP-o0f.js
+│   │   ├── useSlot-evtwKLRx.js
+│   │   ├── useTheme-H18T-NFc.js
+│   │   ├── useThemeProps-BoNII7gS.js
+│   │   ├── useTimeout-CQNRwtaP.js
+│   │   ├── utils-1ODpTB7R.js
+│   │   ├── VenueCard.stories-Da2nEDUF.js
+│   │   └── WithTooltip-IO6J4KBT-BzN9O5YH.js
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   ├── favicon-wrapper.svg
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── iframe.html
+│   ├── index.html
+│   ├── index.json
+│   ├── next.svg
+│   ├── nunito-sans-bold-italic.woff2
+│   ├── nunito-sans-bold.woff2
+│   ├── nunito-sans-italic.woff2
+│   ├── nunito-sans-regular.woff2
+│   ├── project.json
+│   ├── sb-addons
+│   │   ├── docs-2
+│   │   │   └── manager-bundle.js
+│   │   ├── links-1
+│   │   │   └── manager-bundle.js
+│   │   └── storybook-core-server-presets-0
+│   │       └── common-manager-bundle.js
+│   ├── sb-common-assets
+│   │   ├── favicon.svg
+│   │   ├── favicon-wrapper.svg
+│   │   ├── nunito-sans-bold-italic.woff2
+│   │   ├── nunito-sans-bold.woff2
+│   │   ├── nunito-sans-italic.woff2
+│   │   └── nunito-sans-regular.woff2
+│   ├── sb-manager
+│   │   ├── globals.js
+│   │   ├── globals-runtime.js
+│   │   ├── manager-stores.js
+│   │   └── runtime.js
+│   ├── vercel.svg
+│   ├── vite-inject-mocker-entry.js
+│   └── window.svg
+├── styles
+│   └── colors.global.scss
+├── tests
+│   ├── e2e
+│   │   ├── auth.setup.ts
+│   │   └── homepage.spec.ts
+│   ├── integration
+│   │   └── api.test.ts
+│   ├── mocks
+│   │   ├── framer-motion.tsx
+│   │   ├── handlers.ts
+│   │   ├── index.ts
+│   │   └── server.ts
+│   ├── setup.tsx
+│   ├── unit
+│   │   ├── components
+│   │   │   ├── Avatar.test.tsx
+│   │   │   ├── Button.test.tsx
+│   │   │   ├── Chip.test.tsx
+│   │   │   ├── Logo.test.tsx
+│   │   │   ├── Navbar.test.tsx
+│   │   │   ├── NavLink.test.tsx
+│   │   │   ├── SearchInput.test.tsx
+│   │   │   └── ThemeToggle.test.tsx
+│   │   ├── hooks
+│   │   │   ├── useApiError.test.ts
+│   │   │   └── useLogger.test.ts
+│   │   ├── lib
+│   │   │   ├── logger
+│   │   │   │   ├── index.test.ts
+│   │   │   │   ├── init.test.ts
+│   │   │   │   ├── remote-logger.test.ts
+│   │   │   │   └── sentry.test.ts
+│   │   │   └── theme.test.ts
+│   │   ├── services
+│   │   │   └── auth.test.ts
+│   │   ├── store
+│   │   │   └── authSlice.test.ts
+│   │   └── utils
+│   │       └── helpers.test.ts
+│   ├── utils.tsx
+│   └── vitest.d.ts
+├── tsconfig.json
+├── tsconfig.tsbuildinfo
+├── types
+│   └── index.ts
+├── ui
+├── utils
+│   ├── helpers.ts
+│   └── index.ts
+└── vitest.config.ts
+
+169 directories, 523 files

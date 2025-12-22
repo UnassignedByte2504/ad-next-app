@@ -1,0 +1,96 @@
+/**
+ * CSS Modules para estilos específicos de la feature
+ *
+ * Usa CSS Modules cuando necesites:
+ * - Animaciones complejas
+ * - Pseudo-elementos (::before, ::after)
+ * - Media queries específicas
+ * - Estilos que no se pueden expresar con Tailwind
+ *
+ * Para la mayoría de casos, prefiere Tailwind + MUI.
+ */
+
+/* Animación de entrada para cards */
+.cardEnter {
+  animation: cardEnter 0.3s ease-out;
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gradiente de fondo para header */
+.headerGradient {
+  background: linear-gradient(
+    135deg,
+    var(--mui-palette-primary-main) 0%,
+    var(--mui-palette-secondary-main) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Efecto de hover para cards */
+.cardHover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardHover:hover {
+  transform: translateY(-4px);
+}
+
+/* Skeleton shimmer personalizado */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--mui-palette-grey-200) 0%,
+    var(--mui-palette-grey-100) 50%,
+    var(--mui-palette-grey-200) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Dark mode variants */
+@media (prefers-color-scheme: dark) {
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--mui-palette-grey-800) 0%,
+      var(--mui-palette-grey-700) 50%,
+      var(--mui-palette-grey-800) 100%
+    );
+    background-size: 200% 100%;
+  }
+}
+
+/**
+ * USO:
+ *
+ * import styles from "../ui/styles.module.css";
+ *
+ * <Card className={styles.cardHover}>
+ *   ...
+ * </Card>
+ *
+ * <Typography className={styles.headerGradient}>
+ *   Título con gradiente
+ * </Typography>
+ */

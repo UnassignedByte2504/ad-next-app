@@ -1,0 +1,11 @@
+# Style and Conventions
+- TypeScript strict: no `any`, no `@ts-ignore`; explicit prop/return types; prefer path aliases over relative traversals.
+- Atomic Design: atoms require stories; molecules/organisms/templates require stories + tests (coverage targets: molecules 70%, organisms 80%, templates 70%). Hooks/utils need tests (90% coverage).
+- Server Components default: only add "use client" when needed (state, events, browser APIs, Zustand). Keep client components minimal; pages stay server-only; data fetching on server.
+- Theming: use centralized tokens from `@/app/ui/theme` (primary/secondary/accent/neutral/semantic, categoryColors, fontFamilies, shadows, springs); never hardcode colors/typography/spacing. Light mode first; buttons pill radius, cards ~16px, amber-tinted shadows. Fonts: Cormorant Garamond for headings, Nunito Sans for body.
+- Logging/Error handling: use `logger` from `@lib` (no console.log); API errors via `useApiError` + `ApiError` pattern; wrap components with `ErrorBoundary` as needed.
+- State: Zustand with granular selectors; actions via `use*Actions`; avoid selecting whole slices to prevent rerenders.
+- i18n: next-intl namespaces per locale in `messages/{locale}`; add namespaces in `i18n/messages.ts`; no hardcoded user-facing strings.
+- Naming: components PascalCase; hooks camelCase with `use`; utils camelCase; constants UPPER_SNAKE; files kebab/Pascal per guidelines.
+- Accessibility: add ARIA labels/keyboard support; responsive layouts.
+- Imports: respect layer boundaries; avoid relative paths across domains; prefer barrel exports when provided.

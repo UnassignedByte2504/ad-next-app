@@ -1,0 +1,38 @@
+{
+  "title": "Ayla Designs",
+  "subtitle": "Diseños digitales bohemios creados con alma. Invitaciones, arte y plantillas creativas para los momentos significativos de la vida.",
+  "cta": {
+    "start": "Comprar Ahora",
+    "explore": "Ver Colecciones"
+  },
+  "features": {
+    "personalized": {
+      "title": "Diseños Personalizados",
+      "description": "Cada diseño puede personalizarse para reflejar tu visión y estilo único."
+    },
+    "instant": {
+      "title": "Descarga Instantánea",
+      "description": "Recibe tus archivos digitales inmediatamente después de la compra. Imprime cuando quieras."
+    },
+    "handcrafted": {
+      "title": "Calidad Artesanal",
+      "description": "Cada pieza está cuidadosamente diseñada con elegancia bohemia y atención al detalle."
+    }
+  },
+  "categories": {
+    "title": "Explora Nuestras Colecciones",
+    "items": {
+      "invitations": "Invitaciones",
+      "digitalArt": "Arte Digital",
+      "socialMedia": "Plantillas para Redes",
+      "planners": "Planificadores y Diarios",
+      "stickers": "Stickers Digitales",
+      "wallArt": "Arte para Paredes",
+      "branding": "Kits de Marca",
+      "cards": "Tarjetas de Felicitación"
+    }
+  },
+  "footer": {
+    "tech": "Creado con amor en Ayla Designs"
+  }
+}

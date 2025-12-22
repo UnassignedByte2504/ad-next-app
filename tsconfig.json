@@ -1,0 +1,71 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"],
+      "@i18n": ["./i18n"],
+      "@i18n/*": ["./i18n/*"],
+      "@middleware": ["./middleware"],
+      "@middleware/*": ["./middleware/*"],
+      "@components": ["./components"],
+      "@components/*": ["./components/*"],
+      "@atoms": ["./components/atoms"],
+      "@atoms/*": ["./components/atoms/*"],
+      "@molecules": ["./components/molecules"],
+      "@molecules/*": ["./components/molecules/*"],
+      "@organisms": ["./components/organisms"],
+      "@organisms/*": ["./components/organisms/*"],
+      "@templates": ["./components/templates"],
+      "@templates/*": ["./components/templates/*"],
+      "@hooks": ["./hooks"],
+      "@hooks/*": ["./hooks/*"],
+      "@lib": ["./lib"],
+      "@lib/*": ["./lib/*"],
+      "@date": ["./lib/date"],
+      "@date/*": ["./lib/date/*"],
+      "@utils": ["./utils"],
+      "@utils/*": ["./utils/*"],
+      "@styles": ["./styles"],
+      "@styles/*": ["./styles/*"],
+      "@types": ["./types"],
+      "@types/*": ["./types/*"],
+      "@tests": ["./tests"],
+      "@tests/*": ["./tests/*"],
+      "@errors": ["./errors"],
+      "@errors/*": ["./errors/*"],
+      "@store": ["./store"],
+      "@store/*": ["./store/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "**/*.mts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next/dev/types/**/*.ts", // Exclude dev types that have issues with i18n dynamic segments
+    "examples/**", // Templates, not real code - intentionally has unresolved imports
+    "docs/**/*.tsx" // Documentation examples with multiple exports
+  ]
+}

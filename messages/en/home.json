@@ -1,0 +1,38 @@
+{
+  "title": "Ayla Designs",
+  "subtitle": "Bohemian digital designs crafted with soul. Invitations, art prints, and creative templates for life's meaningful moments.",
+  "cta": {
+    "start": "Shop Now",
+    "explore": "Browse Collections"
+  },
+  "features": {
+    "personalized": {
+      "title": "Personalized Designs",
+      "description": "Each design can be customized to match your unique vision and style."
+    },
+    "instant": {
+      "title": "Instant Download",
+      "description": "Get your digital files immediately after purchase. Print when you're ready."
+    },
+    "handcrafted": {
+      "title": "Handcrafted Quality",
+      "description": "Every piece is thoughtfully designed with bohemian elegance and attention to detail."
+    }
+  },
+  "categories": {
+    "title": "Explore Our Collections",
+    "items": {
+      "invitations": "Invitation Suites",
+      "digitalArt": "Digital Art",
+      "socialMedia": "Social Media Templates",
+      "planners": "Planners & Journals",
+      "stickers": "Digital Stickers",
+      "wallArt": "Wall Art Prints",
+      "branding": "Branding Kits",
+      "cards": "Greeting Cards"
+    }
+  },
+  "footer": {
+    "tech": "Handcrafted with love in Ayla Designs"
+  }
+}

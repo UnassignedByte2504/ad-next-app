@@ -1,0 +1,260 @@
+{
+  "searchInput": {
+    "placeholder": "Search...",
+    "ariaLabel": "Search",
+    "searchButton": "Run search"
+  },
+  "footer": {
+    "navigation": {
+      "title": "Navigation",
+      "home": "Home",
+      "profile": "Profile",
+      "register": "Register",
+      "login": "Sign in"
+    },
+    "about": {
+      "title": "About",
+      "faq": "FAQ",
+      "whatIsBemyre": "What is Bemyre?",
+      "createBand": "How do I create a band?",
+      "joinBand": "Can I join a band?",
+      "values": "Values & Mission"
+    },
+    "discover": {
+      "title": "Discover",
+      "popularBands": "Popular Bands",
+      "popularMusicians": "Popular Musicians",
+      "popularVenues": "Popular Venues"
+    },
+    "social": {
+      "instagram": "Follow us on Instagram",
+      "facebook": "Follow us on Facebook",
+      "twitter": "Follow us on X",
+      "x": "Follow us on X"
+    },
+    "legal": {
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "cookies": "Cookies"
+    },
+    "copyright": "© {year} Bemyre. All rights reserved."
+  },
+  "navbarBrand": {
+    "tagline": "The dawn of music"
+  },
+  "navbarActions": {
+    "notifications": "Notifications",
+    "notificationsAria": "Notifications{count, plural, =0 {} other { ({count} unread)}}",
+    "profileFallback": "Profile",
+    "profileAria": "Open profile menu",
+    "login": "Sign in"
+  },
+  "navbar": {
+    "search": {
+      "desktopPlaceholder": "Search musicians, bands...",
+      "mobilePlaceholder": "Search..."
+    },
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close menu"
+  },
+  "consentBanner": {
+    "title": "Cookie Consent",
+    "close": "Close banner",
+    "description": "We use cookies to improve your experience, analyze traffic, and personalize content. Some cookies are required for the site to work, while others help us improve our services.",
+    "accept": "Accept all",
+    "reject": "Reject all",
+    "customize": "Customize",
+    "policy": "By clicking \"Accept all\" you agree to storing cookies on your device.",
+    "moreInfo": "Learn more"
+  },
+  "consentModal": {
+    "title": "Cookie Settings",
+    "close": "Close",
+    "info": "You can customize which cookie types you want to allow. Functional cookies are required for the site to work and cannot be disabled.",
+    "functional": {
+      "title": "Functional Cookies",
+      "status": "Always on",
+      "description": "These cookies are required for the site to work properly. They enable basic functions like page navigation and access to secure areas. The site cannot function correctly without them."
+    },
+    "analytics": {
+      "title": "Analytics Cookies",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "description": "These cookies help us understand how you interact with our site by collecting information anonymously. This lets us improve the experience and detect errors. We use Sentry for error monitoring."
+    },
+    "marketing": {
+      "title": "Marketing Cookies",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "description": "These cookies are used to show you ads relevant to you and your interests. They also limit how often you see an ad and help measure campaign effectiveness."
+    },
+    "privacy": {
+      "note": "We will never share your personal information with third parties without your explicit consent. Read our <link>Privacy Policy</link> for more details.",
+      "linkText": "Privacy Policy"
+    },
+    "cancel": "Cancel",
+    "save": "Save preferences"
+  },
+  "errorBoundary": {
+    "title": "Oops! Something went wrong",
+    "message": "An unexpected error occurred. You can try reloading the page or go back home.",
+    "retry": "Retry",
+    "home": "Go home",
+    "showDetails": "Show technical details",
+    "hideDetails": "Hide technical details",
+    "componentStack": "Component stack:"
+  },
+  "sessionWarningModal": {
+    "title": "Your session is about to expire",
+    "alert": "You have been inactive for {minutes} minutes. For security, your session will expire soon.",
+    "remaining": "Time remaining:",
+    "question": "Do you want to keep your session active?",
+    "logout": "Log out",
+    "continue": "Continue session"
+  },
+  "followStats": {
+    "followers": "followers",
+    "following": "following",
+    "posts": "posts",
+    "bands": "bands"
+  },
+  "instrumentShowcase": {
+    "title": "Instruments",
+    "level": "Level",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "expert": "Expert",
+    "yearsPlaying": "{count, plural, =1 {year} other {years}}",
+    "viewAll": "View all"
+  },
+  "musicStyleSection": {
+    "edit": "Edit",
+    "yearsExperience": "{count, plural, =1 {year of experience} other {years of experience}}",
+    "highlights": "Career highlights"
+  },
+  "spotifyEmbed": {
+    "loadingTrack": "Loading track...",
+    "errorLoading": "Error loading track",
+    "listenOnSpotify": "Listen on Spotify",
+    "noTracks": "No tracks added",
+    "addTracks": "Add tracks",
+    "edit": "Edit"
+  },
+  "mediaTrackCard": {
+    "openOn": "Open {track} on {platform}",
+    "noArtwork": "No artwork",
+    "platforms": {
+      "spotify": "Spotify",
+      "youtube-music": "YouTube Music",
+      "apple-music": "Apple Music",
+      "tidal": "Tidal",
+      "soundcloud": "SoundCloud"
+    }
+  },
+  "mediaEmbed": {
+    "title": "My tracks",
+    "noTracks": "No tracks added",
+    "addTracks": "Add tracks",
+    "edit": "Edit",
+    "viewAll": "View all"
+  },
+  "bandRecruitmentCard": {
+    "bandsLookingFor": "{count, plural, =1 {There is {count} band looking for} other {There are {count} bands looking for}}",
+    "inLocation": "in {location}",
+    "explore": "Explore"
+  },
+  "profileCard": {
+    "follow": "Follow",
+    "following": "Following",
+    "unfollow": "Unfollow",
+    "message": "Message",
+    "editProfile": "Edit profile",
+    "moreOptions": "More options"
+  },
+  "profileHeader": {
+    "follow": "Follow",
+    "following": "Following",
+    "unfollow": "Unfollow",
+    "message": "Message",
+    "editProfile": "Edit profile",
+    "share": "Share",
+    "moreOptions": "More options",
+    "verified": "Verified account",
+    "memberSince": "Member since {date}"
+  },
+  "exploreHero": {
+    "headline": "Where are we rocking tonight?",
+    "subheadline": "Select your province to find musicians near you",
+    "selectedProvince": "Searching in {province}",
+    "searchButton": "Search musicians"
+  },
+  "searchResultsHeader": {
+    "entities": {
+      "musicians": "Musicians",
+      "bands": "Bands",
+      "venues": "Venues",
+      "concerts": "Concerts"
+    },
+    "resultsFor": "Results for",
+    "in": "in",
+    "resultCount": "{count, plural, =0 {No results} =1 {1 result} other {{count} results}}",
+    "clearFilters": "Clear filters"
+  },
+  "filterBar": {
+    "filters": "Filters",
+    "clearAll": "Clear all"
+  },
+  "entityGrid": {
+    "noResults": "No results found",
+    "loadMore": "Load more",
+    "loading": "Loading..."
+  },
+  "chatDateDivider": {
+    "today": "Today",
+    "yesterday": "Yesterday"
+  },
+  "messageQuote": {
+    "you": "You",
+    "closeQuote": "Close quote"
+  },
+  "chatThread": {
+    "online": "Online",
+    "offline": "Offline",
+    "typing": "{name} is typing...",
+    "placeholder": "Type a message..."
+  },
+  "conversationList": {
+    "noConversations": "No conversations",
+    "startConversation": "Start a conversation with someone",
+    "you": "You"
+  },
+  "settingsLayout": {
+    "toggleSidebar": "Toggle sidebar",
+    "navigation": "Navigation"
+  },
+  "editableField": {
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "required": "This field is required",
+    "saveError": "Failed to save. Please try again.",
+    "noValue": "No value"
+  },
+  "faqAccordion": {
+    "searchPlaceholder": "Search FAQ...",
+    "searchResults": "{count, plural, =0 {No results found} =1 {1 result found} other {{count} results found}}",
+    "noResults": "No questions match your search"
+  },
+  "carousel": {
+    "previous": "Previous",
+    "next": "Next",
+    "goToSlide": "Go to slide {number}"
+  },
+  "alertDialog": {
+    "close": "Close",
+    "ok": "OK",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  }
+}

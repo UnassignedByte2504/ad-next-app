@@ -1,0 +1,53 @@
+{
+  "ErrorBoundary": {
+    "description": {
+      "component": "React 19 Error Boundary that captures errors in the component tree and shows a friendly UI instead of crashing the app.\n\n## Features\n- Polished, friendly error UI\n- Retry button\n- Technical details (dev only)\n- Automatic error logging\n- Support for custom fallbacks",
+      "interactive": "Interactive demo. Click 'Trigger Error' to see the ErrorBoundary in action.",
+      "production": "Production view without technical details. Only shows the friendly message.",
+      "fallbackFunction": "Fallback as a function that receives the error and reset callback to fully customize the UI."
+    },
+    "buggy": {
+      "errorMessage": "This is a test error to demonstrate the ErrorBoundary!",
+      "okTitle": "✅ Everything running correctly",
+      "okDescription": "The component rendered without errors",
+      "panelTitle": "Control Panel (outside the ErrorBoundary)",
+      "trigger": "🔥 Trigger Error",
+      "reset": "🔄 Reset Demo"
+    },
+    "default": {
+      "title": "✅ Normal Content",
+      "description": "This content is shown when there are no errors"
+    },
+    "fallback": {
+      "title": "Custom Fallback",
+      "description": "This is a custom fallback component",
+      "functionTitle": "Custom Error",
+      "messageLabel": "Message:",
+      "retry": "Try again"
+    }
+  },
+  "SearchInput": {
+    "placeholders": {
+      "loading": "Searching...",
+      "sizes": {
+        "sm": "Small size",
+        "md": "Medium size",
+        "lg": "Large size"
+      },
+      "outlined": "Outlined (default)",
+      "filled": "Filled",
+      "extended": "Search musicians, bands, venues..."
+    },
+    "values": {
+      "withValue": "Guitarist in Madrid",
+      "loading": "Drummer",
+      "buttonLoading": "Jazz"
+    }
+  },
+  "Navbar": {
+    "pageContent": "Page content below the navbar...",
+    "heroTitle": "Hero Section",
+    "heroDescription": "The transparent navbar is used over hero images or gradients",
+    "fixedTitle": "Scroll to see the fixed navbar"
+  }
+}

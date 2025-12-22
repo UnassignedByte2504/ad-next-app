@@ -1,0 +1,12 @@
+{
+  "loading": "Cargando...",
+  "error": "Ha ocurrido un error",
+  "retry": "Reintentar",
+  "cancel": "Cancelar",
+  "save": "Guardar",
+  "delete": "Eliminar",
+  "edit": "Editar",
+  "close": "Cerrar",
+  "search": "Buscar",
+  "noResults": "Sin resultados"
+}

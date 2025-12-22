@@ -1,0 +1,6 @@
+# Ayla Designs Client – Project Overview
+- Purpose: E-commerce platform for boho-inspired digital design products (storefront + admin), with carts/checkout (Stripe/PayPal), signed download links, automation/segmentation.
+- Stack: Bun 1.3.x, Next.js 16 (App Router, RSC-first), React 19, TypeScript 5, Material UI 7 + Tailwind CSS 4, Zustand 5, next-intl 4 (es/en), Storybook 10, Vitest 4 (+ happy-dom/jsdom), Playwright 1.57 e2e, Sentry, Zod, MSW.
+- Structure highlights: app/ (routes, providers, theme, globals), components/ (Atomic Design atoms→templates), hooks/, lib/ (api, logger), store/ (zustand slices), utils/, types/, messages/ (i18n), middleware/ (auth, correlation, security), tests/ (unit/integration/e2e), docs/ (architecture, server-components, theming, branding, storybook, contributing).
+- Path aliases (tsconfig): @/, @components, @atoms, @molecules, @organisms, @templates, @hooks, @lib, @date, @utils, @types, @store, @errors, @i18n, @middleware, @tests, @styles.
+- Domains: ayladesigns.me (storefront), admin.ayladesigns.me (admin).

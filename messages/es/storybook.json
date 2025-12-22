@@ -1,0 +1,53 @@
+{
+  "ErrorBoundary": {
+    "description": {
+      "component": "Error Boundary para React 19 que captura errores en el árbol de componentes y muestra una UI amigable en lugar de crashear la aplicación.\n\n## Características\n- UI de error elegante y amigable\n- Botón de reintentar\n- Detalles técnicos (solo en desarrollo)\n- Logging automático de errores\n- Soporte para fallback personalizado",
+      "interactive": "Demo interactiva. Haz clic en 'Provocar Error' para ver el ErrorBoundary en acción.",
+      "production": "Vista de producción sin detalles técnicos. Solo muestra el mensaje amigable.",
+      "fallbackFunction": "Fallback como función que recibe el error y una función reset para personalizar completamente la UI."
+    },
+    "buggy": {
+      "errorMessage": "¡Este es un error de prueba para demostrar el ErrorBoundary!",
+      "okTitle": "✅ Todo funcionando correctamente",
+      "okDescription": "El componente se renderizó sin errores",
+      "panelTitle": "Panel de Control (fuera del ErrorBoundary)",
+      "trigger": "🔥 Provocar Error",
+      "reset": "🔄 Resetear Demo"
+    },
+    "default": {
+      "title": "✅ Contenido Normal",
+      "description": "Este contenido se muestra cuando no hay errores"
+    },
+    "fallback": {
+      "title": "Fallback Personalizado",
+      "description": "Este es un componente de fallback custom",
+      "functionTitle": "Error Personalizado",
+      "messageLabel": "Mensaje:",
+      "retry": "Intentar de nuevo"
+    }
+  },
+  "SearchInput": {
+    "placeholders": {
+      "loading": "Buscando...",
+      "sizes": {
+        "sm": "Tamaño pequeño",
+        "md": "Tamaño mediano",
+        "lg": "Tamaño grande"
+      },
+      "outlined": "Outlined (default)",
+      "filled": "Filled",
+      "extended": "Buscar músicos, bandas, locales..."
+    },
+    "values": {
+      "withValue": "Guitarrista en Madrid",
+      "loading": "Baterista",
+      "buttonLoading": "Jazz"
+    }
+  },
+  "Navbar": {
+    "pageContent": "Contenido de la página debajo del navbar...",
+    "heroTitle": "Hero Section",
+    "heroDescription": "El navbar transparente se usa sobre hero images o gradientes",
+    "fixedTitle": "Scroll para ver el navbar fixed"
+  }
+}

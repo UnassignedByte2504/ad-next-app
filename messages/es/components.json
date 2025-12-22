@@ -1,0 +1,260 @@
+{
+  "searchInput": {
+    "placeholder": "Buscar...",
+    "ariaLabel": "Buscar",
+    "searchButton": "Ejecutar búsqueda"
+  },
+  "footer": {
+    "navigation": {
+      "title": "Navegación",
+      "home": "Home",
+      "profile": "Perfil",
+      "register": "Registro",
+      "login": "Inicio sesión"
+    },
+    "about": {
+      "title": "Acerca de",
+      "faq": "Preguntas Frecuentes",
+      "whatIsBemyre": "¿Qué es Bemyre?",
+      "createBand": "¿Cómo creo una banda?",
+      "joinBand": "¿Puedo unirme a banda?",
+      "values": "Valores y objetivos"
+    },
+    "discover": {
+      "title": "Descubre",
+      "popularBands": "Bandas Populares",
+      "popularMusicians": "Músicos populares",
+      "popularVenues": "Locales populares"
+    },
+    "social": {
+      "instagram": "Síguenos en Instagram",
+      "facebook": "Síguenos en Facebook",
+      "twitter": "Síguenos en X",
+      "x": "Síguenos en X"
+    },
+    "legal": {
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "cookies": "Cookies"
+    },
+    "copyright": "© {year} Bemyre. Todos los derechos reservados."
+  },
+  "navbarBrand": {
+    "tagline": "El amanecer de la música"
+  },
+  "navbarActions": {
+    "notifications": "Notificaciones",
+    "notificationsAria": "Notificaciones{count, plural, =0 {} other { ({count} sin leer)}}",
+    "profileFallback": "Perfil",
+    "profileAria": "Abrir menú de perfil",
+    "login": "Entrar"
+  },
+  "navbar": {
+    "search": {
+      "desktopPlaceholder": "Buscar músicos, bandas...",
+      "mobilePlaceholder": "Buscar..."
+    },
+    "openMenu": "Abrir menú de navegación",
+    "closeMenu": "Cerrar menú"
+  },
+  "consentBanner": {
+    "title": "Consentimiento de Cookies",
+    "close": "Cerrar banner",
+    "description": "Utilizamos cookies para mejorar tu experiencia, analizar el tráfico del sitio y personalizar el contenido. Algunas cookies son necesarias para el funcionamiento del sitio, mientras que otras nos ayudan a mejorar nuestros servicios.",
+    "accept": "Aceptar todo",
+    "reject": "Rechazar todo",
+    "customize": "Personalizar",
+    "policy": "Al hacer clic en \"Aceptar todo\", aceptas el almacenamiento de cookies en tu dispositivo.",
+    "moreInfo": "Más información"
+  },
+  "consentModal": {
+    "title": "Configuración de Cookies",
+    "close": "Cerrar",
+    "info": "Puedes personalizar qué tipos de cookies deseas permitir. Las cookies funcionales son necesarias para el correcto funcionamiento del sitio y no se pueden desactivar.",
+    "functional": {
+      "title": "Cookies Funcionales",
+      "status": "Siempre activas",
+      "description": "Estas cookies son necesarias para que el sitio funcione correctamente. Permiten funciones básicas como la navegación de páginas y el acceso a áreas seguras. El sitio no puede funcionar correctamente sin estas cookies."
+    },
+    "analytics": {
+      "title": "Cookies de Análisis",
+      "enabled": "Activadas",
+      "disabled": "Desactivadas",
+      "description": "Estas cookies nos ayudan a entender cómo interactúas con nuestro sitio, recopilando información de forma anónima. Esto nos permite mejorar la experiencia del usuario y detectar errores. Utilizamos Sentry para monitoreo de errores."
+    },
+    "marketing": {
+      "title": "Cookies de Marketing",
+      "enabled": "Activadas",
+      "disabled": "Desactivadas",
+      "description": "Estas cookies se utilizan para mostrarte anuncios relevantes para ti y tus intereses. También se utilizan para limitar el número de veces que ves un anuncio y ayudar a medir la efectividad de las campañas publicitarias."
+    },
+    "privacy": {
+      "note": "Nunca compartiremos tu información personal con terceros sin tu consentimiento explícito. Lee nuestra <link>Política de Privacidad</link> para más detalles.",
+      "linkText": "Política de Privacidad"
+    },
+    "cancel": "Cancelar",
+    "save": "Guardar preferencias"
+  },
+  "errorBoundary": {
+    "title": "¡Ups! Algo salió mal",
+    "message": "Ha ocurrido un error inesperado. Puedes intentar recargar la página o volver al inicio.",
+    "retry": "Reintentar",
+    "home": "Ir al inicio",
+    "showDetails": "Mostrar detalles técnicos",
+    "hideDetails": "Ocultar detalles técnicos",
+    "componentStack": "Pila de componentes:"
+  },
+  "sessionWarningModal": {
+    "title": "Tu sesión está por expirar",
+    "alert": "Has estado inactivo durante {minutes} minutos. Por seguridad, tu sesión expirará pronto.",
+    "remaining": "Tiempo restante:",
+    "question": "¿Deseas continuar con tu sesión?",
+    "logout": "Cerrar sesión",
+    "continue": "Continuar sesión"
+  },
+  "followStats": {
+    "followers": "seguidores",
+    "following": "siguiendo",
+    "posts": "publicaciones",
+    "bands": "bandas"
+  },
+  "instrumentShowcase": {
+    "title": "Instrumentos",
+    "level": "Nivel",
+    "beginner": "Principiante",
+    "intermediate": "Intermedio",
+    "advanced": "Avanzado",
+    "expert": "Experto",
+    "yearsPlaying": "{count, plural, =1 {año} other {años}}",
+    "viewAll": "Ver todos"
+  },
+  "musicStyleSection": {
+    "edit": "Editar",
+    "yearsExperience": "{count, plural, =1 {año de experiencia} other {años de experiencia}}",
+    "highlights": "Logros destacados"
+  },
+  "spotifyEmbed": {
+    "loadingTrack": "Cargando pista...",
+    "errorLoading": "Error al cargar la pista",
+    "listenOnSpotify": "Escuchar en Spotify",
+    "noTracks": "No hay canciones añadidas",
+    "addTracks": "Añadir canciones",
+    "edit": "Editar"
+  },
+  "mediaTrackCard": {
+    "openOn": "Abrir {track} en {platform}",
+    "noArtwork": "Sin carátula",
+    "platforms": {
+      "spotify": "Spotify",
+      "youtube-music": "YouTube Music",
+      "apple-music": "Apple Music",
+      "tidal": "Tidal",
+      "soundcloud": "SoundCloud"
+    }
+  },
+  "mediaEmbed": {
+    "title": "Mis canciones",
+    "noTracks": "No hay canciones añadidas",
+    "addTracks": "Añadir canciones",
+    "edit": "Editar",
+    "viewAll": "Ver todas"
+  },
+  "bandRecruitmentCard": {
+    "bandsLookingFor": "{count, plural, =1 {Hay {count} banda que busca} other {Hay {count} bandas que buscan}}",
+    "inLocation": "en {location}",
+    "explore": "Explorar"
+  },
+  "profileCard": {
+    "follow": "Seguir",
+    "following": "Siguiendo",
+    "unfollow": "Dejar de seguir",
+    "message": "Mensaje",
+    "editProfile": "Editar perfil",
+    "moreOptions": "Más opciones"
+  },
+  "profileHeader": {
+    "follow": "Seguir",
+    "following": "Siguiendo",
+    "unfollow": "Dejar de seguir",
+    "message": "Mensaje",
+    "editProfile": "Editar perfil",
+    "share": "Compartir",
+    "moreOptions": "Más opciones",
+    "verified": "Cuenta verificada",
+    "memberSince": "Miembro desde {date}"
+  },
+  "exploreHero": {
+    "headline": "¿Dónde nos vamos a rockear?",
+    "subheadline": "Selecciona tu provincia para encontrar músicos cerca de ti",
+    "selectedProvince": "Buscando en {province}",
+    "searchButton": "Buscar músicos"
+  },
+  "searchResultsHeader": {
+    "entities": {
+      "musicians": "Músicos",
+      "bands": "Bandas",
+      "venues": "Locales",
+      "concerts": "Conciertos"
+    },
+    "resultsFor": "Resultados para",
+    "in": "en",
+    "resultCount": "{count, plural, =0 {Sin resultados} =1 {1 resultado} other {{count} resultados}}",
+    "clearFilters": "Limpiar filtros"
+  },
+  "filterBar": {
+    "filters": "Filtros",
+    "clearAll": "Limpiar todo"
+  },
+  "entityGrid": {
+    "noResults": "No se encontraron resultados",
+    "loadMore": "Cargar más",
+    "loading": "Cargando..."
+  },
+  "chatDateDivider": {
+    "today": "Hoy",
+    "yesterday": "Ayer"
+  },
+  "messageQuote": {
+    "you": "Tú",
+    "closeQuote": "Cerrar cita"
+  },
+  "chatThread": {
+    "online": "En línea",
+    "offline": "Desconectado",
+    "typing": "{name} está escribiendo...",
+    "placeholder": "Escribe un mensaje..."
+  },
+  "conversationList": {
+    "noConversations": "No hay conversaciones",
+    "startConversation": "Inicia una conversación con alguien",
+    "you": "Tú"
+  },
+  "settingsLayout": {
+    "toggleSidebar": "Mostrar/ocultar navegación",
+    "navigation": "Navegación"
+  },
+  "editableField": {
+    "edit": "Editar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "required": "Este campo es obligatorio",
+    "saveError": "Error al guardar. Inténtalo de nuevo.",
+    "noValue": "Sin valor"
+  },
+  "faqAccordion": {
+    "searchPlaceholder": "Buscar en preguntas frecuentes...",
+    "searchResults": "{count, plural, =0 {No se encontraron resultados} =1 {1 resultado encontrado} other {{count} resultados encontrados}}",
+    "noResults": "No se encontraron preguntas que coincidan con tu búsqueda"
+  },
+  "carousel": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "goToSlide": "Ir a diapositiva {number}"
+  },
+  "alertDialog": {
+    "close": "Cerrar",
+    "ok": "Aceptar",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar"
+  }
+}
