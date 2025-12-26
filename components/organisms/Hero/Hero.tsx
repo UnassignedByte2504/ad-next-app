@@ -46,6 +46,12 @@ export interface HeroProps {
   onCtaClick?: () => void;
   /** Click handler for secondary CTA */
   onSecondaryCtaClick?: () => void;
+  /** Content to render before headline (e.g., badge) */
+  beforeHeadline?: React.ReactNode;
+  /** Custom headline slot - replaces default headline if provided */
+  headlineSlot?: React.ReactNode;
+  /** Background decoration (e.g., FloatingStars) - positioned absolutely */
+  backgroundDecoration?: React.ReactNode;
 }
 
 // =============================================================================
@@ -127,6 +133,9 @@ export const Hero = forwardRef<HTMLDivElement, HeroProps>(
       className,
       onCtaClick,
       onSecondaryCtaClick,
+      beforeHeadline,
+      headlineSlot,
+      backgroundDecoration,
     },
     ref
   ) => {
@@ -195,6 +204,20 @@ export const Hero = forwardRef<HTMLDivElement, HeroProps>(
           />
         )}
 
+        {/* Background Decoration (e.g., FloatingStars) */}
+        {backgroundDecoration && (
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 1,
+              pointerEvents: "none",
+            }}
+          >
+            {backgroundDecoration}
+          </Box>
+        )}
+
         {/* Content */}
         <Container
           maxWidth="lg"
@@ -208,23 +231,45 @@ export const Hero = forwardRef<HTMLDivElement, HeroProps>(
             textAlign: align,
           }}
         >
-          {/* Headline */}
-          <MotionTypography
-            variant="h1"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={springs.smooth}
-            sx={{
-              color: hasBackground ? "common.white" : "text.primary",
-              fontWeight: 700,
-              fontSize: { xs: "2rem", sm: "2.5rem", md: "3.5rem", lg: "4rem" },
-              lineHeight: 1.2,
-              maxWidth: "900px",
-              textShadow: hasBackground ? `0 2px 40px ${neutral[1000]}80` : "none",
-            }}
-          >
-            {headline}
-          </MotionTypography>
+          {/* Before Headline (e.g., badge) */}
+          {beforeHeadline && (
+            <MotionBox
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...springs.smooth, delay: 0 }}
+              sx={{ mb: { xs: 2, md: 3 } }}
+            >
+              {beforeHeadline}
+            </MotionBox>
+          )}
+
+          {/* Headline - Custom slot or default */}
+          {headlineSlot ? (
+            <MotionBox
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={springs.smooth}
+            >
+              {headlineSlot}
+            </MotionBox>
+          ) : (
+            <MotionTypography
+              variant="h1"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={springs.smooth}
+              sx={{
+                color: hasBackground ? "common.white" : "text.primary",
+                fontWeight: 700,
+                fontSize: { xs: "2rem", sm: "2.5rem", md: "3.5rem", lg: "4rem" },
+                lineHeight: 1.2,
+                maxWidth: "900px",
+                textShadow: hasBackground ? `0 2px 40px ${neutral[1000]}80` : "none",
+              }}
+            >
+              {headline}
+            </MotionTypography>
+          )}
 
           {/* Subheadline */}
           {subheadline && (

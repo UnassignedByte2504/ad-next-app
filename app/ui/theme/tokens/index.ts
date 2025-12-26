@@ -44,3 +44,8 @@ export type {
   LineHeight,
   LetterSpacing,
 } from "./typography";
+
+// Z-Index
+export { zIndex } from "./z-index";
+
+export type { ZIndex } from "./z-index";

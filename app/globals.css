@@ -1,8 +1,9 @@
 @layer theme, base, mui, components, utilities;
-@import "tailwindcss";
 
-/* Google Fonts - Ayla Designs Typography */
+/* Google Fonts - Ayla Designs Typography (must precede other imports) */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+
+@import "tailwindcss";
 
 @theme inline {
   /* Ayla Designs custom colors */

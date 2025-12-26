@@ -1,9 +1,15 @@
 {
   "title": "Ayla Designs",
   "subtitle": "Bohemian digital designs crafted with soul. Invitations, art prints, and creative templates for life's meaningful moments.",
+  "badge": "Professional bohemian design",
   "cta": {
     "start": "Shop Now",
     "explore": "Browse Collections"
+  },
+  "nav": {
+    "products": "Products",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
   },
   "features": {
     "personalized": {
@@ -32,7 +38,34 @@
       "cards": "Greeting Cards"
     }
   },
+  "products": {
+    "title": "Our Designs",
+    "subtitle": "Each template is lovingly crafted with attention to detail to make your brand shine."
+  },
+  "testimonials": {
+    "title": "What our customers say"
+  },
+  "glowCta": {
+    "title": "Ready to transform your brand?",
+    "subtitle": "Join hundreds of entrepreneurs who trust Ayla Designs to bring their vision to life.",
+    "button": "Get Started"
+  },
   "footer": {
-    "tech": "Handcrafted with love in Ayla Designs"
+    "tech": "Handcrafted with love in Ayla Designs",
+    "copyright": "© 2025 Ayla Designs. Made with love.",
+    "columns": {
+      "products": "Products",
+      "support": "Support"
+    },
+    "links": {
+      "planners": "Planners",
+      "cards": "Cards",
+      "socialMedia": "Social Media",
+      "branding": "Branding",
+      "faq": "FAQ",
+      "contact": "Contact",
+      "licenses": "Licenses",
+      "terms": "Terms"
+    }
   }
 }

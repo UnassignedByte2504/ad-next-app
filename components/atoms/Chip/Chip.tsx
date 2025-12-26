@@ -2,7 +2,7 @@
 
 import MuiChip, { ChipProps as MuiChipProps } from "@mui/material/Chip";
 import { forwardRef } from "react";
-import { fontFamilies, neutral, primary, springs } from "@/app/ui/theme";
+import { durations, easings, fontFamilies, neutral, primary } from "@/app/ui/theme";
 
 export interface ChipProps extends Omit<MuiChipProps, "color"> {
   /** Texto del chip */
@@ -80,7 +80,7 @@ export const Chip = forwardRef<HTMLDivElement, ChipProps>(
           fontFamily: fontFamilies.body,
           fontWeight: 500,
           // Transitions
-          transition: `all ${springs.snappy.duration}s ${springs.snappy.ease || "ease-out"}`,
+          transition: `all ${durations.fast}ms ${easings.default}`,
           // Default styling for unfilled
           ...(color === "default" && variant === "filled" && {
             bgcolor: neutral[200],

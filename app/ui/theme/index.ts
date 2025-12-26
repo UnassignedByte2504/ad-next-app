@@ -196,6 +196,9 @@ export {
   reducedMotion,
 } from "./tokens/motion";
 
+// Z-Index Tokens (for direct use in components)
+export { zIndex } from "./tokens/z-index";
+
 // Palettes
 export { darkPalette, darkExtendedPalette } from "./dark";
 export { lightPalette, lightExtendedPalette } from "./light";

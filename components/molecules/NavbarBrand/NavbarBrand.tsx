@@ -57,11 +57,7 @@ export const NavbarBrand = forwardRef<HTMLDivElement, NavbarBrandProps>(
           gap: 1,
         }}
       >
-        <Logo
-          {...logoProps}
-          linkTo={href}
-          priority // Brand logo should load fast
-        />
+        <Logo {...logoProps} linkTo={href} />
         {showTagline && (
           <Typography
             variant="caption"

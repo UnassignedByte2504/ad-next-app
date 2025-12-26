@@ -1,70 +1,83 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { forwardRef } from "react";
+import { useTheme } from "@mui/material/styles";
 import { cn } from "@utils";
 
 export interface LogoProps {
-  /** Tamaño del logo */
+  /** Tamano del logo */
   size?: "sm" | "md" | "lg";
-  /** Variante del logo */
-  variant?: "full" | "icon";
+  /** Variante del logo: 'short' = "Ayla.", 'full' = "Ayla.Designs" */
+  variant?: "short" | "full";
   /** URL a la que enlaza el logo (opcional) */
   linkTo?: string;
   /** Clases CSS adicionales */
   className?: string;
-  /** Prioridad de carga de la imagen */
-  priority?: boolean;
+  /** Color del texto principal (hereda del tema por defecto) */
+  textColor?: string;
+  /** data-testid para testing */
+  "data-testid"?: string;
 }
 
 /**
- * Logo de Bemyre.
- * Componente que muestra el logo de la aplicación con diferentes tamaños y variantes.
- * Opcionalmente puede envolver el logo en un enlace.
+ * Logo de Ayla Designs.
+ *
+ * Componente tipografico que muestra el logo de la marca.
+ * - Variante "short": "Ayla." (para navbar)
+ * - Variante "full": "Ayla.Designs" (para footer)
+ *
+ * El punto siempre se muestra en el color primario (amber).
+ * Usa Cormorant Garamond como tipografia.
  */
 export const Logo = forwardRef<HTMLDivElement, LogoProps>(
   (
     {
-      size = "sm",
-      variant = "full", // Reserved for future icon-only variant
+      size = "md",
+      variant = "short",
       linkTo,
       className,
-      priority = false,
+      textColor,
+      "data-testid": testId = "logo",
     },
     ref
   ) => {
-    // Dimensiones según el tamaño
-    const dimensions = {
-      sm: { width: 50, height: 32 },
-      md: { width: 120, height: 48 },
-      lg: { width: 160, height: 64 },
+    const theme = useTheme();
+
+    // Tamanos de fuente segun el size
+    const fontSizes = {
+      sm: "1.25rem", // 20px
+      md: "1.5rem", // 24px
+      lg: "2rem", // 32px
     };
 
-    const { width, height } = dimensions[size];
+    const fontSize = fontSizes[size];
 
-    // Note: variant prop is reserved for future icon-only implementation
-    // Currently only 'full' variant is supported
-    void variant;
+    // Color del punto (siempre primary/amber)
+    const dotColor = theme.palette.primary.main;
 
-    // Componente de imagen
-    const logoImage = (
+    // Color del texto (usa el color del tema o el proporcionado)
+    const mainTextColor = textColor || theme.palette.text.primary;
+
+    // Componente del logo
+    const logoContent = (
       <div
         ref={ref}
-        className={cn(
-          "relative inline-flex items-center justify-center",
-          className
-        )}
-        style={{ width, height }}
+        className={cn("inline-flex items-center", className)}
+        data-testid={testId}
+        style={{
+          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontSize,
+          fontWeight: 500,
+          letterSpacing: "-0.02em",
+          lineHeight: 1,
+        }}
       >
-        <Image
-          src="/images/Bemyre_logo.png"
-          alt="Bemyre"
-          width={width}
-          height={height}
-          priority={priority}
-          className="object-contain"
-        />
+        <span style={{ color: mainTextColor }}>Ayla</span>
+        <span style={{ color: dotColor }}>.</span>
+        {variant === "full" && (
+          <span style={{ color: mainTextColor }}>Designs</span>
+        )}
       </div>
     );
 
@@ -75,12 +88,12 @@ export const Logo = forwardRef<HTMLDivElement, LogoProps>(
           href={linkTo}
           className="inline-flex no-underline hover:opacity-80 transition-opacity"
         >
-          {logoImage}
+          {logoContent}
         </Link>
       );
     }
 
-    return logoImage;
+    return logoContent;
   }
 );
 

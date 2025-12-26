@@ -1,9 +1,15 @@
 {
   "title": "Ayla Designs",
   "subtitle": "Diseños digitales bohemios creados con alma. Invitaciones, arte y plantillas creativas para los momentos significativos de la vida.",
+  "badge": "Diseño bohemio profesional",
   "cta": {
     "start": "Comprar Ahora",
     "explore": "Ver Colecciones"
+  },
+  "nav": {
+    "products": "Productos",
+    "testimonials": "Testimonios",
+    "contact": "Contacto"
   },
   "features": {
     "personalized": {
@@ -32,7 +38,34 @@
       "cards": "Tarjetas de Felicitación"
     }
   },
+  "products": {
+    "title": "Nuestros Diseños",
+    "subtitle": "Cada plantilla está diseñada con amor y atención al detalle para que tu marca brille."
+  },
+  "testimonials": {
+    "title": "Lo que dicen nuestros clientes"
+  },
+  "glowCta": {
+    "title": "¿Lista para transformar tu marca?",
+    "subtitle": "Únete a cientos de emprendedoras que ya confían en Ayla Designs para dar vida a su visión.",
+    "button": "Comenzar Ahora"
+  },
   "footer": {
-    "tech": "Creado con amor en Ayla Designs"
+    "tech": "Creado con amor en Ayla Designs",
+    "copyright": "© 2025 Ayla Designs. Hecho con amor.",
+    "columns": {
+      "products": "Productos",
+      "support": "Soporte"
+    },
+    "links": {
+      "planners": "Planners",
+      "cards": "Tarjetas",
+      "socialMedia": "Social Media",
+      "branding": "Branding",
+      "faq": "FAQ",
+      "contact": "Contacto",
+      "licenses": "Licencias",
+      "terms": "Términos"
+    }
   }
 }

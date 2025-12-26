@@ -193,7 +193,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
             >
               {showLogo && (
                 <Link href="/" style={{ display: "inline-block", width: "fit-content" }}>
-                  <Logo size="md" />
+                  <Logo size="lg" variant="full" textColor="#FAFAF9" />
                 </Link>
               )}
 

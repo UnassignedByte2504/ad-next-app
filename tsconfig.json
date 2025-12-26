@@ -66,6 +66,7 @@
     "node_modules",
     ".next/dev/types/**/*.ts", // Exclude dev types that have issues with i18n dynamic segments
     "examples/**", // Templates, not real code - intentionally has unresolved imports
-    "docs/**/*.tsx" // Documentation examples with multiple exports
+    "docs/**/*.tsx", // Documentation examples with multiple exports
+    "vitest.config.ts" // Vitest uses its own tsconfig
   ]
 }

@@ -51,6 +51,8 @@ export interface NavbarActionsProps {
   onNotificationsClick?: () => void;
   /** Clases CSS adicionales */
   className?: string;
+  /** Contenido adicional (ej: carrito, acciones custom) */
+  children?: React.ReactNode;
 }
 
 /**
@@ -88,6 +90,7 @@ export const NavbarActions = forwardRef<HTMLDivElement, NavbarActionsProps>(
       onProfileClick,
       onNotificationsClick,
       className,
+      children,
     },
     ref
   ) => {
@@ -174,6 +177,9 @@ export const NavbarActions = forwardRef<HTMLDivElement, NavbarActionsProps>(
             {loginLabel}
           </Button>
         )}
+
+        {/* Custom children (e.g., cart button) */}
+        {children}
       </Box>
     );
   }

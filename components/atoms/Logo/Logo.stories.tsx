@@ -14,16 +14,20 @@ const meta = {
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
+      description: "Tamano del logo",
     },
     variant: {
       control: "select",
-      options: ["full", "icon"],
+      options: ["short", "full"],
+      description: 'Variante: "short" = Ayla., "full" = Ayla.Designs',
     },
     linkTo: {
       control: "text",
+      description: "URL de destino al hacer click",
     },
-    priority: {
-      control: "boolean",
+    textColor: {
+      control: "color",
+      description: "Color del texto (hereda del tema por defecto)",
     },
   },
 } satisfies Meta<typeof Logo>;
@@ -31,15 +35,32 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Logo por defecto (tamaño mediano) */
+/** Logo por defecto (variante corta, tamano mediano) */
 export const Default: Story = {
   args: {},
 };
 
-/** Logo pequeño */
+/** Variante corta: "Ayla." - Para navbar */
+export const Short: Story = {
+  args: {
+    variant: "short",
+    size: "md",
+  },
+};
+
+/** Variante completa: "Ayla.Designs" - Para footer */
+export const Full: Story = {
+  args: {
+    variant: "full",
+    size: "md",
+  },
+};
+
+/** Logo pequeno */
 export const Small: Story = {
   args: {
     size: "sm",
+    variant: "short",
   },
 };
 
@@ -47,6 +68,7 @@ export const Small: Story = {
 export const Medium: Story = {
   args: {
     size: "md",
+    variant: "short",
   },
 };
 
@@ -54,62 +76,85 @@ export const Medium: Story = {
 export const Large: Story = {
   args: {
     size: "lg",
+    variant: "short",
   },
 };
 
-/** Variante de solo icono */
-export const IconOnly: Story = {
-  args: {
-    variant: "icon",
-  },
-};
-
-/** Logo con enlace a la página principal */
+/** Logo con enlace a la pagina principal */
 export const WithLink: Story = {
   args: {
     linkTo: "/",
     size: "md",
+    variant: "short",
   },
 };
 
-/** Todos los tamaños juntos */
-export const AllSizes: Story = {
+/** Todas las variantes y tamanos */
+export const AllVariants: Story = {
   render: () => (
-    <Stack spacing={3} alignItems="center">
+    <Stack spacing={4} alignItems="flex-start">
       <Box>
-        <Logo size="sm" />
+        <p className="text-sm text-gray-500 mb-2">Short (sm)</p>
+        <Logo size="sm" variant="short" />
       </Box>
       <Box>
-        <Logo size="md" />
+        <p className="text-sm text-gray-500 mb-2">Short (md)</p>
+        <Logo size="md" variant="short" />
       </Box>
       <Box>
-        <Logo size="lg" />
+        <p className="text-sm text-gray-500 mb-2">Short (lg)</p>
+        <Logo size="lg" variant="short" />
+      </Box>
+      <Box>
+        <p className="text-sm text-gray-500 mb-2">Full (sm)</p>
+        <Logo size="sm" variant="full" />
+      </Box>
+      <Box>
+        <p className="text-sm text-gray-500 mb-2">Full (md)</p>
+        <Logo size="md" variant="full" />
+      </Box>
+      <Box>
+        <p className="text-sm text-gray-500 mb-2">Full (lg)</p>
+        <Logo size="lg" variant="full" />
       </Box>
     </Stack>
   ),
 };
 
-/** Logo con diferentes backgrounds */
+/** Logo en diferentes fondos */
 export const OnDifferentBackgrounds: Story = {
   render: () => (
     <Stack spacing={3}>
       <Box className="bg-white p-4 rounded">
-        <Logo size="md" />
+        <p className="text-xs text-gray-400 mb-2">Light background</p>
+        <Logo size="md" variant="short" />
       </Box>
-      <Box className="bg-gray-100 p-4 rounded">
-        <Logo size="md" />
+      <Box className="bg-stone-100 p-4 rounded">
+        <p className="text-xs text-gray-400 mb-2">Neutral background</p>
+        <Logo size="md" variant="full" />
       </Box>
-      <Box className="bg-gray-900 p-4 rounded">
-        <Logo size="md" />
+      <Box className="bg-stone-900 p-4 rounded">
+        <p className="text-xs text-stone-500 mb-2">Dark background</p>
+        <Logo size="md" variant="full" textColor="#FFFFFF" />
       </Box>
     </Stack>
   ),
 };
 
-/** Logo con prioridad de carga (para hero/above the fold) */
-export const WithPriority: Story = {
-  args: {
-    size: "lg",
-    priority: true,
-  },
+/** Logo para navbar (uso tipico) */
+export const NavbarUsage: Story = {
+  render: () => (
+    <Box className="bg-white/80 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-stone-200">
+      <Logo size="md" variant="short" linkTo="/" />
+    </Box>
+  ),
+};
+
+/** Logo para footer (uso tipico) */
+export const FooterUsage: Story = {
+  render: () => (
+    <Box className="bg-stone-800 p-6 rounded-lg">
+      <Logo size="lg" variant="full" textColor="#FAFAF9" />
+    </Box>
+  ),
 };
