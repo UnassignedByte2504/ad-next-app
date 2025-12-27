@@ -218,7 +218,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const getBackgroundColor = () => {
       if (variant === "outlined") return "transparent";
       if (disabled) return neutral[100];
-      if (isFocused) return "#FFFFFF";
+      if (isFocused) return neutral[0];
       return neutral[100];
     };
 
@@ -294,7 +294,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                   backgroundColor:
                     variant === "outlined"
                       ? alpha(neutral[100], 0.5)
-                      : "#FFFFFF",
+                      : neutral[0],
                   borderColor: hasError
                     ? semantic.error.main
                     : hasSuccess
@@ -396,7 +396,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 },
                 // Remove autofill background - light mode for Ayla
                 "&:-webkit-autofill": {
-                  WebkitBoxShadow: `0 0 0 100px #FFFFFF inset`,
+                  WebkitBoxShadow: `0 0 0 100px ${neutral[0]} inset`,
                   WebkitTextFillColor: neutral[800],
                 },
               }}

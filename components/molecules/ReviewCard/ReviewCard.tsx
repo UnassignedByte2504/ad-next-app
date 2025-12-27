@@ -7,6 +7,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Star } from "lucide-react";
 
 import { Avatar } from "@/components/atoms/Avatar";
+import { alpha } from "@mui/material/styles";
 import { springs, primary, neutral, shadows } from "@/app/ui/theme";
 import type { AylaReview, AylaAvatarColor } from "@/types/ayla";
 
@@ -92,7 +93,7 @@ export const ReviewCard = forwardRef<HTMLDivElement, ReviewCardProps>(
           sx={{
             p: 3,
             height: "100%",
-            bgcolor: "rgba(255, 255, 255, 0.8)",
+            bgcolor: alpha(neutral[0], 0.8),
             backdropFilter: "blur(8px)",
             borderRadius: 3,
             border: `1px solid ${primary[100]}`,

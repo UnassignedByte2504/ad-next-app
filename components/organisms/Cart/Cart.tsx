@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import { ProductImage } from "@atoms";
-import { primary, springs, shadows, zIndex } from "@/app/ui/theme";
+import { primary, springs, shadows, zIndex, fontFamilies } from "@/app/ui/theme";
 import type { AylaCartItem } from "@types";
 
 // =============================================================================
@@ -334,7 +334,7 @@ export const Cart = memo(
                     <Typography
                       component="h2"
                       sx={{
-                        fontFamily: "'Cormorant Garamond', Georgia, serif",
+                        fontFamily: fontFamilies.heading,
                         fontSize: "1.5rem",
                         fontWeight: 600,
                         color: "text.primary",
@@ -420,7 +420,7 @@ export const Cart = memo(
                       </Typography>
                       <Typography
                         sx={{
-                          fontFamily: "'Cormorant Garamond', Georgia, serif",
+                          fontFamily: fontFamilies.heading,
                           fontSize: "1.5rem",
                           fontWeight: 600,
                           color: "text.primary",

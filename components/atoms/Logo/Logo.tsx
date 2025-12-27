@@ -1,6 +1,6 @@
 "use client";
 
-import { neutral, primary } from "@/app/ui/theme";
+import { neutral, primary, fontFamilies } from "@/app/ui/theme";
 import { useUI } from "@store";
 import { cn } from "@utils";
 import Link from "next/link";
@@ -80,7 +80,7 @@ export const Logo = forwardRef<HTMLDivElement, LogoProps>(
         className={cn("inline-flex items-center", className)}
         data-testid={testId}
         style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontFamily: fontFamilies.heading,
           fontSize,
           fontWeight: 500,
           letterSpacing: "-0.02em",

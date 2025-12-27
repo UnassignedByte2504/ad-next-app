@@ -14,6 +14,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { alpha } from "@mui/material/styles";
 import { primary, neutral, springs } from "@/app/ui/theme";
 
 // =============================================================================
@@ -299,11 +300,11 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
                   height: 8,
                   borderRadius: 4,
                   border: "none",
-                  bgcolor: index === currentIndex ? primary.main : "rgba(255, 255, 255, 0.5)",
+                  bgcolor: index === currentIndex ? primary.main : alpha(neutral[0], 0.5),
                   cursor: "pointer",
                   transition: "all 0.3s ease",
                   "&:hover": {
-                    bgcolor: index === currentIndex ? primary.main : "rgba(255, 255, 255, 0.8)",
+                    bgcolor: index === currentIndex ? primary.main : alpha(neutral[0], 0.8),
                   },
                 }}
               />

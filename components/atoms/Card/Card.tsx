@@ -3,7 +3,7 @@
 import { forwardRef, type ReactNode } from "react";
 import MuiCard, { type CardProps as MuiCardProps } from "@mui/material/Card";
 import { motion } from "framer-motion";
-import { springs, shapes, durations, easings, shadows } from "@/app/ui/theme";
+import { springs, shapes, durations, easings, shadows, neutral } from "@/app/ui/theme";
 
 // =============================================================================
 // TYPES
@@ -120,7 +120,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
           style={{
             borderRadius: `${resolvedRadius}px`,
             border: variantStyle.border,
-            background: variant === "elevated" ? "#FFFFFF" : variantStyle.background,
+            background: variant === "elevated" ? neutral[0] : variantStyle.background,
             overflow: "hidden",
             cursor: "pointer",
             // Amber-tinted shadow for Ayla branding

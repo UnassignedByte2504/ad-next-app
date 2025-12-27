@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useTheme } from "@mui/material/styles";
 
-import { neutral, springs } from "@/app/ui/theme";
+import { neutral, springs, zIndex } from "@/app/ui/theme";
 
 // =============================================================================
 // TYPES
@@ -152,7 +152,7 @@ export const SettingsLayout = forwardRef<HTMLDivElement, SettingsLayoutProps>(
                       right: 0,
                       bottom: 0,
                       bgcolor: "rgba(0, 0, 0, 0.5)",
-                      zIndex: 1000,
+                      zIndex: zIndex.drawer - 1,
                     }}
                   />
 
@@ -169,7 +169,7 @@ export const SettingsLayout = forwardRef<HTMLDivElement, SettingsLayoutProps>(
                       bottom: 0,
                       width: SIDEBAR_WIDTH,
                       bgcolor: "background.paper",
-                      zIndex: 1001,
+                      zIndex: zIndex.drawer,
                       overflowY: "auto",
                     }}
                   >
