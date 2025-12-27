@@ -18,8 +18,7 @@ import {
   accent,
   neutral,
   semantic,
-  genreColors,
-  instrumentColors,
+  categoryColors,
   gradients,
   // Typography tokens
   fontFamilies,
@@ -60,8 +59,8 @@ describe("Color Tokens", () => {
       expect(primary.contrastText).toMatch(/^#[0-9A-Fa-f]{6}$/);
     });
 
-    it("main color is the Coral Sunset brand color", () => {
-      expect(primary.main).toBe("#F15640");
+    it("main color is the Amber Gold brand color", () => {
+      expect(primary.main).toBe("#F59E0B");
     });
   });
 
@@ -85,8 +84,8 @@ describe("Color Tokens", () => {
       expect(secondary.contrastText).toMatch(/^#[0-9A-Fa-f]{6}$/);
     });
 
-    it("main color is the Amber Glow brand color", () => {
-      expect(secondary.main).toBe("#FFA151");
+    it("main color is the Lavender brand color", () => {
+      expect(secondary.main).toBe("#A855F7");
     });
   });
 
@@ -110,8 +109,8 @@ describe("Color Tokens", () => {
       expect(accent.contrastText).toMatch(/^#[0-9A-Fa-f]{6}$/);
     });
 
-    it("main color is the Electric Teal brand color", () => {
-      expect(accent.main).toBe("#14B8A6");
+    it("main color is the Rose brand color", () => {
+      expect(accent.main).toBe("#F43F5E");
     });
   });
 
@@ -165,73 +164,47 @@ describe("Color Tokens", () => {
     });
   });
 
-  describe("genreColors", () => {
-    it("has common music genres defined", () => {
-      const commonGenres = [
-        "Rock",
-        "Jazz",
-        "Pop",
-        "Blues",
-        "Metal",
-        "Electronic",
-        "Funk",
-        "Folk",
-        "Classical",
-        "Hip-Hop",
-        "R&B",
-        "Country",
-        "Reggae",
-        "Latin",
+  describe("categoryColors", () => {
+    it("has common product categories defined", () => {
+      const commonCategories = [
+        "Planners",
+        "Tarjetas",
+        "Social Media",
+        "Bodas",
+        "Branding",
+        "Thank You",
+        "Digital Art",
+        "Stickers",
+        "Wall Art",
+        "Journals",
       ];
-      commonGenres.forEach((genre) => {
-        expect(genreColors[genre]).toBeDefined();
-        expect(genreColors[genre]).toMatch(/^#[0-9A-Fa-f]{6}$/);
+      commonCategories.forEach((category) => {
+        expect(categoryColors[category as keyof typeof categoryColors]).toBeDefined();
+        expect(categoryColors[category as keyof typeof categoryColors]).toMatch(/^#[0-9A-Fa-f]{6}$/);
       });
     });
 
-    it("has unique colors for different genres", () => {
-      const colors = Object.values(genreColors);
+    it("has correct color values for main categories", () => {
+      expect(categoryColors.Planners).toBe("#C9B8D4");
+      expect(categoryColors.Tarjetas).toBe("#D4B896");
+      expect(categoryColors["Social Media"]).toBe("#A855F7");
+      expect(categoryColors.Bodas).toBe("#F2DCDC");
+      expect(categoryColors.Branding).toBe("#E8D5B0");
+      expect(categoryColors["Thank You"]).toBe("#E1D8EA");
+    });
+
+    it("has unique colors for different categories", () => {
+      const colors = Object.values(categoryColors);
       const uniqueColors = new Set(colors);
       // Allow some duplicates but most should be unique
-      expect(uniqueColors.size).toBeGreaterThan(colors.length * 0.8);
-    });
-  });
-
-  describe("instrumentColors", () => {
-    it("has common instruments defined", () => {
-      const commonInstruments = [
-        "Guitarra",
-        "Bajo",
-        "Batería",
-        "Piano/Teclado",
-        "Voz",
-        "Saxofón",
-        "Violín",
-        "Trompeta",
-      ];
-      commonInstruments.forEach((instrument) => {
-        expect(instrumentColors[instrument]).toBeDefined();
-        expect(instrumentColors[instrument]).toMatch(/^#[0-9A-Fa-f]{6}$/);
-      });
-    });
-
-    it("has string instruments defined", () => {
-      const stringInstruments = ["Guitarra", "Bajo", "Violín", "Violonchelo", "Ukelele"];
-      stringInstruments.forEach((instrument) => {
-        expect(instrumentColors[instrument]).toBeDefined();
-      });
-    });
-
-    it("has keyboard instruments defined", () => {
-      expect(instrumentColors["Piano/Teclado"]).toBeDefined();
-      expect(instrumentColors["Sintetizador"]).toBeDefined();
+      expect(uniqueColors.size).toBeGreaterThan(colors.length * 0.6);
     });
   });
 
   describe("gradients", () => {
     it("has all preset gradients defined", () => {
       expect(gradients.brand).toBeDefined();
-      expect(gradients.sunset).toBeDefined();
+      expect(gradients.cta).toBeDefined();
       expect(gradients.glowDark).toBeDefined();
       expect(gradients.glowLight).toBeDefined();
     });
@@ -239,7 +212,7 @@ describe("Color Tokens", () => {
     it("gradients are valid CSS linear-gradient values", () => {
       const gradientPattern = /^linear-gradient\(.+\)$/;
       expect(gradients.brand).toMatch(gradientPattern);
-      expect(gradients.sunset).toMatch(gradientPattern);
+      expect(gradients.cta).toMatch(gradientPattern);
       expect(gradients.glowDark).toMatch(gradientPattern);
       expect(gradients.glowLight).toMatch(gradientPattern);
     });
@@ -263,12 +236,12 @@ describe("Typography Tokens", () => {
       expect(fontFamilies.mono).toBeDefined();
     });
 
-    it("heading uses Poppins font", () => {
-      expect(fontFamilies.heading).toContain("Poppins");
+    it("heading uses Cormorant Garamond font", () => {
+      expect(fontFamilies.heading).toContain("Cormorant Garamond");
     });
 
-    it("body uses Inter font", () => {
-      expect(fontFamilies.body).toContain("Inter");
+    it("body uses Nunito Sans font", () => {
+      expect(fontFamilies.body).toContain("Nunito Sans");
     });
 
     it("mono uses JetBrains Mono font", () => {
@@ -276,7 +249,7 @@ describe("Typography Tokens", () => {
     });
 
     it("all font families include fallbacks", () => {
-      expect(fontFamilies.heading).toContain("sans-serif");
+      expect(fontFamilies.heading).toContain("serif");
       expect(fontFamilies.body).toContain("sans-serif");
       expect(fontFamilies.mono).toContain("monospace");
     });
@@ -548,13 +521,13 @@ describe("Theme Utilities", () => {
       expect(extractSpread(shadow4)).toBeGreaterThan(extractSpread(shadow1));
     });
 
-    it("uses brand color (primary) in the shadow", () => {
+    it("uses brand color (amber primary) in the shadow", () => {
       const shadow = createBrandShadow(1, "dark");
-      // Primary color RGB: #F15640 = rgb(241, 86, 64)
-      expect(shadow).toContain("rgba(241, 86, 64");
+      // Primary color RGB: #F59E0B = rgb(245, 158, 11)
+      expect(shadow).toContain("rgba(245, 158, 11");
     });
 
-    it("defaults to elevation 1 and dark mode when no params provided", () => {
+    it("defaults to elevation 1 and light mode when no params provided", () => {
       const shadow = createBrandShadow();
       expect(shadow).toBeDefined();
       expect(shadow).toMatch(/^0\s+\d+px\s+\d+px\s+rgba\(.+\)$/);

@@ -1,5 +1,5 @@
 /**
- * Bemyre Store - Estado global de la aplicación
+ * Ayla Designs Store - Estado global de la aplicación
  *
  * Usa Zustand con:
  * - Immer para mutaciones inmutables
@@ -65,7 +65,7 @@ export const useStore = create<StoreState>()(
           ),
         })),
         {
-          name: "bemyre-store",
+          name: "ayla-store",
           version: 2, // Incrementar versión por cambio de schema
           // Solo persistir datos NO sensibles - tokens van en httpOnly cookies
           partialize: (state): PersistedState => ({
@@ -119,7 +119,7 @@ export const useStore = create<StoreState>()(
         }
       ),
       {
-        name: "Bemyre Store",
+        name: "Ayla Store",
         enabled: process.env.NODE_ENV === "development",
       }
     )

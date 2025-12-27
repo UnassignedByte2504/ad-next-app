@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * SessionWarningModal Component
  *
@@ -9,6 +11,7 @@
  * - Botones de acción (Continuar/Cerrar sesión)
  * - No se puede cerrar con ESC o click fuera (intencional)
  * - Diseño responsive con MUI
+ * - Internacionalización con next-intl
  *
  * @example
  * ```tsx
@@ -21,6 +24,7 @@
  * ```
  */
 
+import { useTranslations } from "next-intl";
 import {
   Dialog,
   DialogTitle,
@@ -32,6 +36,7 @@ import {
   Alert,
 } from "@mui/material";
 import { Warning as WarningIcon, ExitToApp as LogoutIcon } from "@mui/icons-material";
+import { fontFamilies } from "@/app/ui/theme";
 
 // ============================================
 // Types
@@ -74,6 +79,8 @@ export function SessionWarningModal({
   onLogout,
   warningMinutes = 25,
 }: SessionWarningModalProps) {
+  const t = useTranslations("Components.sessionWarningModal");
+
   return (
     <Dialog
       open={open}
@@ -103,15 +110,14 @@ export function SessionWarningModal({
       >
         <WarningIcon color="warning" fontSize="large" />
         <Typography variant="h6" component="span" fontWeight={600}>
-          Tu sesión está por expirar
+          {t("title")}
         </Typography>
       </DialogTitle>
 
       <DialogContent>
         <Alert severity="warning" sx={{ mb: 3 }}>
           <Typography variant="body2">
-            Has estado inactivo durante {warningMinutes} minutos. Por seguridad, tu sesión
-            expirará pronto.
+            {t("alert", { minutes: warningMinutes })}
           </Typography>
         </Alert>
 
@@ -125,15 +131,15 @@ export function SessionWarningModal({
           }}
         >
           <Typography variant="body2" color="text.secondary" gutterBottom>
-            Tiempo restante:
+            {t("remaining")}
           </Typography>
           <Typography
             variant="h2"
             component="div"
             color={remainingTime <= 30 ? "error.main" : "warning.main"}
             fontWeight={700}
-            fontFamily="monospace"
             sx={{
+              fontFamily: fontFamilies.mono,
               letterSpacing: 2,
             }}
           >
@@ -146,7 +152,7 @@ export function SessionWarningModal({
           color="text.secondary"
           sx={{ mt: 3, textAlign: "center" }}
         >
-          ¿Deseas continuar con tu sesión?
+          {t("question")}
         </Typography>
       </DialogContent>
 
@@ -159,7 +165,7 @@ export function SessionWarningModal({
           fullWidth
           sx={{ flex: 1 }}
         >
-          Cerrar sesión
+          {t("logout")}
         </Button>
         <Button
           onClick={onContinue}
@@ -169,7 +175,7 @@ export function SessionWarningModal({
           fullWidth
           sx={{ flex: 1 }}
         >
-          Continuar sesión
+          {t("continue")}
         </Button>
       </DialogActions>
     </Dialog>
