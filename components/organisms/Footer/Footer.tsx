@@ -158,7 +158,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
         component="footer"
         className={className}
         sx={{
-          bgcolor: "grey.900",
+          bgcolor: neutral[900],
           pt: { xs: 6, md: 8 },
           pb: { xs: 4, md: 6 },
         }}
@@ -201,7 +201,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
               {showTagline && (
                 <Typography
                   sx={{
-                    color: "grey.400",
+                    color: neutral[400],
                     fontSize: "0.875rem",
                     lineHeight: 1.6,
                     maxWidth: 360,
@@ -232,8 +232,8 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
                           social.ariaLabel || t(`social.${social.platform}`)
                         }
                         sx={{
-                          color: "grey.400",
-                          bgcolor: "grey.800",
+                          color: neutral[400],
+                          bgcolor: neutral[800],
                           "&:hover": {
                             color: primary.main,
                             bgcolor: `${primary.main}1A`,
@@ -291,12 +291,12 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
                         target={link.external ? "_blank" : undefined}
                         rel={link.external ? "noopener noreferrer" : undefined}
                         sx={{
-                          color: "grey.400",
+                          color: neutral[400],
                           textDecoration: "none",
                           fontSize: "0.875rem",
                           transition: `color ${durations.fast}ms ${easings.default}`,
                           "&:hover": {
-                            color: "grey.100",
+                            color: neutral[100],
                           },
                         }}
                       >
@@ -310,12 +310,12 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
           </Box>
 
           {/* Bottom Bar - Centered Copyright */}
-          <Divider sx={{ my: { xs: 4, md: 6 }, borderColor: "grey.800" }} />
+          <Divider sx={{ my: { xs: 4, md: 6 }, borderColor: neutral[800] }} />
 
           <Typography
             variant="body2"
             sx={{
-              color: "grey.500",
+              color: neutral[500],
               textAlign: "center",
               fontSize: "0.875rem",
             }}

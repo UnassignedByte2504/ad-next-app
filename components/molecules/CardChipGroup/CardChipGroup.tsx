@@ -6,13 +6,13 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { motion } from "framer-motion";
 import { Chip } from "@atoms";
-import { springs, genreColors, instrumentColors } from "@/app/ui/theme";
+import { springs, categoryColors } from "@/app/ui/theme";
 
 // =============================================================================
 // TYPES
 // =============================================================================
 
-export type ChipColorType = "genre" | "instrument" | "primary" | "secondary";
+export type ChipColorType = "category" | "primary" | "secondary";
 
 export interface ChipItem {
   /** Display label */
@@ -48,6 +48,7 @@ export interface CardChipGroupProps {
 
 /**
  * Get color for a chip based on its type and label
+ * Uses categoryColors for product categories (Planners, Bodas, etc.)
  */
 const getChipColor = (
   label: string,
@@ -57,10 +58,8 @@ const getChipColor = (
   if (customColor) return customColor;
 
   switch (colorType) {
-    case "genre":
-      return genreColors[label as keyof typeof genreColors];
-    case "instrument":
-      return instrumentColors[label as keyof typeof instrumentColors];
+    case "category":
+      return categoryColors[label as keyof typeof categoryColors];
     case "primary":
       return undefined; // Use MUI primary
     case "secondary":
@@ -120,26 +119,26 @@ const MotionBox = motion.create(Box);
  * CardChipGroup - Group of chips for cards
  *
  * Features:
- * - Automatic coloring for genres and instruments
+ * - Automatic coloring for product categories
  * - M3 Expressive spring animations
  * - Collapsible with "+N more"
  * - Soft variant recommended for dark mode
  *
  * @example
  * ```tsx
- * // Genre chips with automatic colors
+ * // Category chips with automatic colors
  * <CardChipGroup
- *   label="Géneros"
- *   chips={["Rock", "Jazz", "Blues"]}
- *   colorType="genre"
+ *   label="Categorías"
+ *   chips={["Planners", "Bodas", "Branding"]}
+ *   colorType="category"
  *   variant="soft"
  * />
  *
- * // Instrument chips
+ * // Primary color chips
  * <CardChipGroup
- *   label="Instrumentos"
- *   chips={["Guitarra", "Bajo", "Batería"]}
- *   colorType="instrument"
+ *   label="Tags"
+ *   chips={["New", "Featured", "Sale"]}
+ *   colorType="primary"
  *   animated
  * />
  * ```
@@ -149,7 +148,7 @@ export const CardChipGroup = forwardRef<HTMLDivElement, CardChipGroupProps>(
     {
       label,
       chips,
-      colorType = "genre",
+      colorType = "category",
       variant = "soft",
       size = "small",
       maxVisible = 3,

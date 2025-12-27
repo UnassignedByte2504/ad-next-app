@@ -3,6 +3,7 @@
 import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import { forwardRef } from "react";
+import { shadows } from "@/app/ui/theme";
 
 export interface ButtonProps extends Omit<MuiButtonProps, "color"> {
   /** Variante del botón */
@@ -22,8 +23,11 @@ export interface ButtonProps extends Omit<MuiButtonProps, "color"> {
 }
 
 /**
- * Botón base de Bemyre.
- * Extiende el botón de MUI con estado de carga y estilos personalizados.
+ * Botón base de Ayla Designs.
+ * Extiende el botón de MUI con:
+ * - Pill shape (border-radius full)
+ * - Amber-tinted shadows para variante contained
+ * - Estado de carga con spinner
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -37,10 +41,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       startIcon,
       endIcon,
       className,
+      sx,
       ...props
     },
     ref
   ) => {
+    const isContained = variant === "contained";
+    const isPrimary = color === "primary";
+
     return (
       <MuiButton
         ref={ref}
@@ -51,6 +59,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         startIcon={loading ? <CircularProgress size={16} color="inherit" /> : startIcon}
         endIcon={endIcon}
         className={className}
+        sx={{
+          // Pill shape - Ayla Design System
+          borderRadius: "9999px",
+          // Amber-tinted shadow for primary contained buttons
+          ...(isContained &&
+            isPrimary && {
+              boxShadow: shadows.ctaGlow,
+              "&:hover": {
+                boxShadow: shadows.ctaGlowHover,
+              },
+            }),
+          ...sx,
+        }}
         {...props}
       >
         {children}

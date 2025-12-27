@@ -18,7 +18,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@atoms/Button";
-import { primary, neutral, springs } from "@/app/ui/theme";
+import { primary, semantic, springs } from "@/app/ui/theme";
 
 // =============================================================================
 // TYPES
@@ -67,23 +67,23 @@ const variantConfig: Record<
 > = {
   info: {
     icon: InfoOutlinedIcon,
-    color: "#2196F3",
-    bgColor: "#2196F315",
+    color: semantic.info.main,
+    bgColor: semantic.info.bg,
   },
   success: {
     icon: CheckCircleOutlineIcon,
-    color: "#4CAF50",
-    bgColor: "#4CAF5015",
+    color: semantic.success.main,
+    bgColor: semantic.success.bg,
   },
   warning: {
     icon: WarningAmberIcon,
-    color: "#FF9800",
-    bgColor: "#FF980015",
+    color: semantic.warning.main,
+    bgColor: semantic.warning.bg,
   },
   error: {
     icon: ErrorOutlineIcon,
-    color: "#F44336",
-    bgColor: "#F4433615",
+    color: semantic.error.main,
+    bgColor: semantic.error.bg,
   },
   confirm: {
     icon: HelpOutlineIcon,

@@ -745,17 +745,90 @@ Componentes para usar como template al refactorizar otros:
 
 Antes de considerar el theming "completo":
 
-- [ ] Tests de theme pasando (P0.1)
-- [ ] Store key es "ayla-store" (P0.3)
-- [ ] SessionWarningModal tiene i18n (P0.2)
-- [ ] SearchInput usa tokens Ayla (P1.4)
-- [ ] Button tiene pill shape (P1.5)
-- [ ] AlertDialog usa semantic tokens (P1.6)
-- [ ] Footer usa neutral en lugar de grey (P1.8)
+- [x] Tests de theme pasando (P0.1) - **COMPLETADO** 27/12/2025
+- [x] Store key es "ayla-store" (P0.3) - **COMPLETADO** 27/12/2025
+- [x] SessionWarningModal tiene i18n (P0.2) - **COMPLETADO** 27/12/2025
+- [x] SearchInput usa tokens Ayla (P1.4) - **YA OK** - Usaba MUI semántico correctamente
+- [x] Button tiene pill shape (P1.5) - **COMPLETADO** 27/12/2025
+- [x] AlertDialog usa semantic tokens (P1.6) - **COMPLETADO** 27/12/2025
+- [x] CardChipGroup usa categoryColors (P1.7) - **COMPLETADO** 27/12/2025
+- [x] Footer usa neutral en lugar de grey (P1.8) - **COMPLETADO** 27/12/2025
 - [ ] Barrel exports completos (P2.13)
 - [ ] Zero hardcoding de `#FFFFFF` (P2.9)
 - [ ] Zero fuentes inline (P2.10)
 - [ ] Zero comentarios "Bemyre" (P3.14-15)
+
+---
+
+## Part 16: Fixes Implementados
+
+> **Fecha:** 27 de Diciembre, 2025
+
+### P0 - Fixes Bloqueantes (COMPLETADOS)
+
+| # | Tarea | Estado | Cambios |
+|---|-------|--------|---------|
+| P0.1 | Tests de theme | ✅ | `tests/unit/lib/theme.test.ts` - Actualizado colores y fonts |
+| P0.2 | SessionWarningModal | ✅ | Añadido `"use client"`, i18n, `fontFamilies.mono` |
+| P0.3 | Store key | ✅ | Renombrado a `"ayla-store"` |
+
+### P1 - Inconsistencias Visuales Críticas (COMPLETADOS)
+
+| # | Tarea | Estado | Cambios |
+|---|-------|--------|---------|
+| P1.4 | SearchInput | ✅ YA OK | Ya usaba tokens MUI semánticos correctamente |
+| P1.5 | Button | ✅ | Pill shape, amber shadows, doc "Ayla Designs" |
+| P1.6 | AlertDialog | ✅ | Reemplazados 8 colores MD → `semantic.*` tokens |
+| P1.7 | CardChipGroup | ✅ | Refactorizado `genre/instrument` → `category` |
+| P1.8 | Footer | ✅ | Reemplazados 7 usos de `grey.*` → `neutral[*]` |
+
+### Archivos Modificados
+
+```
+components/atoms/Button/Button.tsx
+  - Añadido import: shadows
+  - Actualizado JSDoc a "Ayla Designs"
+  - Implementado pill shape (borderRadius: 9999px)
+  - Añadido amber shadows para contained primary
+
+components/molecules/AlertDialog/AlertDialog.tsx
+  - Cambiado import: neutral → semantic
+  - variantConfig ahora usa semantic.{info,success,warning,error}
+
+components/molecules/CardChipGroup/CardChipGroup.tsx
+  - Cambiado import: genreColors, instrumentColors → categoryColors
+  - ChipColorType: "genre"|"instrument" → "category"
+  - getChipColor: cases actualizados
+  - JSDoc: ejemplos con categorías de producto
+
+components/organisms/Footer/Footer.tsx
+  - 7 cambios: grey.* → neutral[*]
+  - grey.900 → neutral[900]
+  - grey.800 → neutral[800]
+  - grey.500 → neutral[500]
+  - grey.400 → neutral[400] (x3)
+  - grey.100 → neutral[100]
+
+components/organisms/SessionWarningModal/SessionWarningModal.tsx
+  - Añadido "use client" directive
+  - Añadido i18n con useTranslations
+  - Importado fontFamilies, usado fontFamilies.mono
+
+store/index.ts
+  - Renombrado key: "bemyre-store" → "ayla-store"
+  - Actualizado JSDoc a "Ayla Designs Store"
+
+tests/unit/lib/theme.test.ts
+  - Colores actualizados: #F15640 → #F59E0B, etc.
+  - Fuentes actualizadas: Poppins → Cormorant Garamond
+  - genreColors → categoryColors
+```
+
+### Verificación
+
+- ✅ 68 tests del tema pasando
+- ✅ Build de producción exitoso
+- ✅ TypeScript sin errores nuevos
 
 ---
 
@@ -765,3 +838,5 @@ Antes de considerar el theming "completo":
 *Líneas de código revisadas: ~10,000*
 *Componentes auditados: 47*
 *Issues identificados: 40+*
+*P0 fixes: 3/3 completados*
+*P1 fixes: 5/5 completados*
