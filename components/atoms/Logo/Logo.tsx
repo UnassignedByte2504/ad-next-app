@@ -1,9 +1,10 @@
 "use client";
 
-import { useTheme } from "@mui/material/styles";
+import { neutral, primary } from "@/app/ui/theme";
+import { useUI } from "@store";
 import { cn } from "@utils";
 import Link from "next/link";
-import { forwardRef } from "react";
+import { forwardRef, useMemo } from "react";
 
 export interface LogoProps {
   /** Tamano del logo */
@@ -45,7 +46,16 @@ export const Logo = forwardRef<HTMLDivElement, LogoProps>(
     },
     ref
   ) => {
-    const theme = useTheme();
+    // Obtener el tema actual del store de Zustand (más confiable que MUI useTheme)
+    const storeTheme = useUI((state) => state.theme);
+
+    // Determinar si está en dark mode efectivo
+    const isDark = useMemo(() => {
+      if (storeTheme === "system" && typeof window !== "undefined") {
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+      }
+      return storeTheme === "dark";
+    }, [storeTheme]);
 
     // Tamanos de fuente segun el size
     const fontSizes = {
@@ -57,10 +67,11 @@ export const Logo = forwardRef<HTMLDivElement, LogoProps>(
     const fontSize = fontSizes[size];
 
     // Color del punto (siempre primary/amber)
-    const dotColor = theme.palette.primary.main;
+    const dotColor = primary.main;
 
-    // Determine text color based on theme or explicit textColor
-    const mainTextColor = textColor || theme.palette.text.primary;
+    // Determine text color based on explicit textColor or theme mode
+    // En dark mode: texto claro (neutral[50]), en light mode: texto oscuro (neutral[900])
+    const mainTextColor = textColor || (isDark ? neutral[50] : neutral[900]);
 
     // Componente del logo
     const logoContent = (

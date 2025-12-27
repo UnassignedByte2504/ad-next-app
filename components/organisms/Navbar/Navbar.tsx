@@ -1,6 +1,7 @@
 "use client";
 
 import { durations, easings, neutral, springs } from "@/app/ui/theme";
+import { useUI } from "@store";
 import { SearchInput, SearchInputProps } from "@atoms/SearchInput";
 import { NavbarActions, NavbarActionsProps } from "@molecules/NavbarActions";
 import { NavbarBrand, NavbarBrandProps } from "@molecules/NavbarBrand";
@@ -13,7 +14,6 @@ import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import { useTheme } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import { cn } from "@utils";
 import {
@@ -23,7 +23,7 @@ import {
   useScroll,
 } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { forwardRef, useState } from "react";
+import { forwardRef, useMemo, useState } from "react";
 
 export interface NavbarProps {
   /** Props del NavbarBrand */
@@ -101,7 +101,16 @@ export const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
     ref
   ) => {
     const t = useTranslations("Components.navbar");
-    const theme = useTheme();
+
+    // Obtener tema del store (más confiable que MUI useTheme para sincronización)
+    const storeTheme = useUI((state) => state.theme);
+    const isDark = useMemo(() => {
+      if (storeTheme === "system" && typeof window !== "undefined") {
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+      }
+      return storeTheme === "dark";
+    }, [storeTheme]);
+
     const providedPlaceholder = searchProps?.placeholder;
     const desktopPlaceholder =
       providedPlaceholder ?? t("search.desktopPlaceholder");
@@ -137,10 +146,10 @@ export const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
       if (variant === "transparent") {
         return {
           bgcolor: isScrolled
-            ? theme.palette.mode === "dark"
-              ? `${neutral[900]}CC`
-              : `${neutral[0]}CC`
-            : "transparent", // 80% opacity
+            ? isDark
+              ? `${neutral[900]}CC` // 80% opacity dark
+              : `${neutral[0]}CC` // 80% opacity light
+            : "transparent",
           backdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "none",
         };
       }
@@ -152,9 +161,14 @@ export const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
         };
       }
 
-      // Default: M3 color fill on scroll
+      // Default: M3 color fill on scroll with glassmorphism
+      // Use explicit colors for reliable dark/light mode support
       return {
-        bgcolor: isScrolled ? "background.paper" : "transparent",
+        bgcolor: isScrolled
+          ? isDark
+            ? `${neutral[900]}E6` // 90% opacity dark
+            : `${neutral[0]}E6` // 90% opacity light
+          : "transparent",
         backdropFilter: isScrolled ? "blur(12px) saturate(150%)" : "none",
         borderBottom: isScrolled ? "1px solid" : "none",
         borderColor: isScrolled ? "divider" : "transparent",
