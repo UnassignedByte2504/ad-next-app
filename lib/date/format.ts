@@ -2,7 +2,7 @@
  * Date Formatting Utilities
  *
  * Wrappers around Intl.DateTimeFormat with predefined presets
- * for consistent date/time display across Bemyre.
+ * for consistent date/time display across Ayla Designs.
  */
 
 import type {

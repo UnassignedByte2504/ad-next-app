@@ -88,7 +88,7 @@ function filterItems(items: FAQItem[], query: string): FAQItem[] {
  * ```tsx
  * <FAQAccordion
  *   items={[
- *     { id: "1", question: "What is Bemyre?", answer: "A social network for musicians..." },
+ *     { id: "1", question: "What is Ayla Designs?", answer: "A digital products e-commerce..." },
  *     { id: "2", question: "How do I join?", answer: "Simply create an account..." },
  *   ]}
  *   searchable

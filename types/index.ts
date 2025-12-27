@@ -1,4 +1,4 @@
-// Tipos globales de Bemyre
+// Tipos globales de Ayla Designs
 
 /** Usuario base */
 export interface User {

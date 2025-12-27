@@ -76,7 +76,7 @@ describe("Musicians API Integration", () => {
     it("creates a new musician profile", async () => {
       const newMusician = {
         name: "New Musician",
-        email: "new@bemyre.com",
+        email: "new@ayladesigns.me",
         instruments: ["drums"],
         genres: ["rock"],
       };
@@ -124,7 +124,7 @@ describe("Auth API Integration", () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: "test@bemyre.com",
+          email: "test@ayladesigns.me",
           password: "password123",
         }),
       });
@@ -134,7 +134,7 @@ describe("Auth API Integration", () => {
       expect(response.ok).toBe(true);
       expect(data).toHaveProperty("user");
       expect(data).toHaveProperty("token");
-      expect(data.user.email).toBe("test@bemyre.com");
+      expect(data.user.email).toBe("test@ayladesigns.me");
     });
 
     it("returns 401 for invalid credentials", async () => {

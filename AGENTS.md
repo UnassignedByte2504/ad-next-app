@@ -1,6 +1,6 @@
 # Repository Guidelines for AI Agents
 
-> **Purpose**: Quick reference for AI coding agents (Copilot, Claude, Cursor, etc.) working on BEMYRE v2 Client.
+> **Purpose**: Quick reference for AI coding agents (Copilot, Claude, Cursor, etc.) working on Ayla Designs Client.
 > **Runtime**: Bun 1.3.x | **Framework**: Next.js 16 | **Language**: TypeScript 5.x
 
 ## Quick Links to Documentation

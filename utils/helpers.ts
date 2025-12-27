@@ -1,5 +1,5 @@
 /**
- * Utility Functions para Bemyre
+ * Utility Functions para Ayla Designs
  *
  * Funciones helper reutilizables en toda la aplicación.
  */

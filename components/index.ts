@@ -1,4 +1,4 @@
-// Bemyre Component Library
+// Ayla Designs Component Library
 // Atomic Design Pattern
 
 export * from "./atoms";

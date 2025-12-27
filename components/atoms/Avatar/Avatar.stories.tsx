@@ -108,7 +108,7 @@ export const Offline: Story = {
   },
 };
 
-/** Avatar de músicos de Bemyre */
+/** Avatar de usuarios de Ayla Designs */
 export const Musicians: Story = {
   render: () => (
     <Stack direction="row" spacing={2}>

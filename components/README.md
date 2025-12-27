@@ -1,4 +1,4 @@
-# Atomic Design - Componentes Bemyre
+# Atomic Design - Ayla Designs Components
 
 Estructura de componentes siguiendo el patrón Atomic Design.
 
@@ -6,25 +6,25 @@ Estructura de componentes siguiendo el patrón Atomic Design.
 
 Componentes más pequeños e indivisibles. Elementos básicos de UI.
 
-- Button, Input, Icon, Avatar, Badge, Chip, Typography
+- Button, Input, Icon, Avatar, Badge, Chip, Typography, Logo, Card
 
 ## 🧬 Molecules (Moléculas)
 
 Combinación de átomos que forman componentes funcionales simples.
 
-- SearchBar, FormField, UserChip, GenreTag, InstrumentBadge
+- SearchBar, FormField, CategoryChips, CardHeader, SectionHeader
 
 ## 🦠 Organisms (Organismos)
 
 Combinaciones de moléculas que forman secciones de UI complejas.
 
-- Header, Footer, MusicianCard, BandCard, VenueCard, SearchResults
+- Header, Footer, Hero, ProductCard, CartDrawer, FAQAccordion, Carousel
 
 ## 📄 Templates
 
 Layouts y estructuras de página sin datos reales.
 
-- MainLayout, AuthLayout, ProfileLayout, DashboardLayout
+- StorefrontLayout, AdminLayout, AuthLayout, AccountLayout
 
 ## 📱 Pages
 

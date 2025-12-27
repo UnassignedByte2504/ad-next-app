@@ -1,7 +1,7 @@
 /**
  * API Error Response Types
  *
- * Tipos y utilidades para manejar errores de la API de Bemyre.
+ * Tipos y utilidades para manejar errores de la API de Ayla Designs.
  * Alineado con el backend (app/errors/responses.py)
  */
 

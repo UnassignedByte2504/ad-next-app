@@ -1,4 +1,4 @@
-/* Custom Errors for Bemyre App */
+/* Custom Errors for Ayla Designs */
 
 // Import base types for use in this file
 import {

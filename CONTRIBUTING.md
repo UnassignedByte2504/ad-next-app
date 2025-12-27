@@ -1,6 +1,6 @@
-# Contributing to BEMYRE v2 Client
+# Contributing to Ayla Designs Client
 
-Thank you for contributing to BEMYRE! This guide will help you understand our development process and how to contribute effectively to the frontend application.
+Thank you for contributing to Ayla Designs! This guide will help you understand our development process and how to contribute effectively to the frontend application.
 
 > **📚 Architecture Guide**: For detailed information about patterns, state management, and reactive architecture, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
@@ -29,8 +29,8 @@ Thank you for contributing to BEMYRE! This guide will help you understand our de
 
 ```bash
 # Clone the repository
-git clone https://github.com/bemyre/bemyre.git
-cd bemyre/bemyre-v2/client
+git clone https://github.com/UnassignedByte2504/ad-next-app.git
+cd ad-next-app
 
 # Install dependencies
 pnpm install

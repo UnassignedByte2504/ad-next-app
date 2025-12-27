@@ -5,7 +5,7 @@
 
 ## Purpose
 
-Esta guía establece las convenciones para documentar el proyecto BEMYRE. El objetivo es mantener documentación:
+Esta guía establece las convenciones para documentar el proyecto Ayla Designs. El objetivo es mantener documentación:
 
 - **Modular**: Archivos pequeños y enfocados
 - **Navegable**: Fácil de encontrar información específica
@@ -236,7 +236,7 @@ docs/
 ```markdown
 # Authentication
 
-Sistema de autenticación de BEMYRE.
+Sistema de autenticación de Ayla Designs.
 
 ## Quick Links
 
@@ -246,7 +246,7 @@ Sistema de autenticación de BEMYRE.
 
 ## Overview
 
-BEMYRE usa JWT con refresh tokens...
+Ayla Designs usa JWT con refresh tokens...
 
 ## Contents
 

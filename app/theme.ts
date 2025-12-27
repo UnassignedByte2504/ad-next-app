@@ -1,5 +1,5 @@
 /**
- * Bemyre Theme
+ * Ayla Designs Theme
  *
  * Re-exports from the modular theme architecture at app/ui/theme/
  *

@@ -45,33 +45,33 @@ type Story = StoryObj<typeof FAQAccordion>;
 const sampleItems: FAQItem[] = [
   {
     id: "1",
-    question: "¿Qué es Bemyre?",
+    question: "¿Qué es Ayla Designs?",
     answer:
-      "Bemyre es una red social para músicos que permite conectar con otros artistas, formar bandas, encontrar locales de ensayo y organizar conciertos. Nuestra misión es facilitar la colaboración musical y ayudar a los músicos a crecer juntos.",
+      "Ayla Designs es una tienda online de productos digitales de diseño con estética bohemia. Ofrecemos planners digitales, tarjetas de visita, kits de branding, invitaciones de boda y mucho más para emprendedores y creativos.",
   },
   {
     id: "2",
-    question: "¿Cómo puedo crear una cuenta?",
+    question: "¿Cómo puedo comprar un producto?",
     answer:
-      "Puedes crear una cuenta en Bemyre de forma gratuita usando tu correo electrónico o a través de Google. Solo necesitas completar tu perfil con tus instrumentos, géneros musicales favoritos y ubicación para empezar a conectar con otros músicos.",
+      "Navega por nuestro catálogo, añade los productos al carrito y completa el checkout con Stripe o PayPal. Recibirás un email con los enlaces de descarga inmediatamente después de la compra.",
   },
   {
     id: "3",
-    question: "¿Cómo creo una banda?",
+    question: "¿Cómo descargo mis productos?",
     answer:
-      "Para crear una banda, ve a tu perfil y selecciona 'Crear banda'. Podrás invitar a otros usuarios, definir el estilo musical, subir fotos y describir lo que buscáis. Las bandas tienen su propio perfil donde pueden compartir contenido y buscar nuevos miembros.",
+      "Después de tu compra, recibirás un email con enlaces de descarga. También puedes acceder a todos tus productos desde tu cuenta en la sección 'Mis Descargas'. Los enlaces son válidos durante 30 días.",
   },
   {
     id: "4",
-    question: "¿Puedo unirme a bandas existentes?",
+    question: "¿Puedo personalizar los productos?",
     answer:
-      "¡Sí! Puedes explorar las bandas que buscan nuevos miembros y enviar solicitudes de unión. También puedes configurar tu perfil para que las bandas te encuentren fácilmente según tus instrumentos y géneros.",
+      "¡Sí! Todos nuestros productos digitales son editables. Incluimos instrucciones detalladas para personalizar colores, textos y elementos en Canva, Adobe o la app correspondiente.",
   },
   {
     id: "5",
-    question: "¿Es Bemyre gratuito?",
+    question: "¿Cuál es la política de devoluciones?",
     answer:
-      "Sí, Bemyre es completamente gratuito para todos los usuarios. Puedes crear tu perfil, unirte a bandas, contactar con otros músicos y usar todas las funciones principales sin coste alguno.",
+      "Debido a la naturaleza digital de nuestros productos, no ofrecemos devoluciones. Sin embargo, si tienes problemas con tu descarga, contacta a soporte y te ayudaremos a resolverlo.",
   },
 ];
 
@@ -83,51 +83,51 @@ const sampleCategories: FAQCategory[] = [
     items: [
       {
         id: "gs-1",
-        question: "¿Qué es Bemyre?",
+        question: "¿Qué es Ayla Designs?",
         answer:
-          "Bemyre es una red social para músicos que permite conectar con otros artistas, formar bandas y encontrar locales de ensayo.",
+          "Ayla Designs es una tienda de productos digitales con estética bohemia para emprendedores y creativos.",
       },
       {
         id: "gs-2",
         question: "¿Cómo creo mi cuenta?",
         answer:
-          "Puedes registrarte gratis con tu email o a través de Google. Completa tu perfil con tus instrumentos y géneros favoritos.",
+          "Puedes registrarte gratis con tu email o a través de Google. Tu cuenta te permite gestionar tus compras y descargas.",
       },
     ],
   },
   {
-    id: "bands",
-    title: "Bandas",
+    id: "products",
+    title: "Productos",
     items: [
       {
-        id: "b-1",
-        question: "¿Cómo creo una banda?",
+        id: "p-1",
+        question: "¿Qué formatos incluyen los productos?",
         answer:
-          "Ve a tu perfil, selecciona 'Crear banda', invita miembros y define el estilo musical de tu grupo.",
+          "Cada producto incluye formatos para las principales plataformas: Canva, Adobe, GoodNotes, Notability, etc.",
       },
       {
-        id: "b-2",
-        question: "¿Puedo estar en varias bandas?",
+        id: "p-2",
+        question: "¿Puedo usar los productos comercialmente?",
         answer:
-          "Sí, puedes ser miembro de múltiples bandas simultáneamente sin ninguna restricción.",
+          "Sí, todos los productos incluyen licencia comercial para uso en tu negocio o proyectos de clientes.",
       },
     ],
   },
   {
-    id: "venues",
-    title: "Locales y Ensayos",
+    id: "support",
+    title: "Soporte y Ayuda",
     items: [
       {
-        id: "v-1",
-        question: "¿Cómo encuentro una sala de ensayo?",
+        id: "s-1",
+        question: "¿Cómo contacto con soporte?",
         answer:
-          "Usa el buscador para filtrar por ubicación y tipo de local. Puedes ver disponibilidad y precios directamente.",
+          "Puedes enviarnos un email a soporte@ayladesigns.me o usar el chat de la web. Respondemos en 24h.",
       },
       {
-        id: "v-2",
-        question: "¿Puedo registrar mi local?",
+        id: "s-2",
+        question: "¿Qué hago si no puedo descargar?",
         answer:
-          "Sí, los propietarios de locales pueden registrarse como 'Venue' y gestionar reservas a través de la plataforma.",
+          "Verifica tu conexión e intenta de nuevo. Si persiste, contacta soporte con tu número de pedido.",
       },
     ],
   },
@@ -210,24 +210,24 @@ export const LongContent: Story = {
     items: [
       {
         id: "long",
-        question: "¿Cuáles son todas las funcionalidades de Bemyre?",
-        answer: `Bemyre ofrece una amplia variedad de funcionalidades para músicos:
+        question: "¿Qué incluye cada producto de Ayla Designs?",
+        answer: `Cada producto de Ayla Designs incluye múltiples formatos y recursos:
 
-1. **Perfil Personal**: Crea un perfil detallado con tus instrumentos, géneros, experiencia y muestras de audio.
+1. **Archivos Editables**: Templates en Canva, Adobe Illustrator y/o Photoshop para máxima flexibilidad.
 
-2. **Búsqueda de Músicos**: Encuentra otros artistas por ubicación, instrumento, género musical o nivel de experiencia.
+2. **Versiones para Apps**: Formatos optimizados para GoodNotes, Notability, y otras apps de notas.
 
-3. **Gestión de Bandas**: Crea y administra tus propias bandas, invita miembros y coordina ensayos.
+3. **Guía de Uso**: Instrucciones paso a paso para personalizar colores, textos y elementos.
 
-4. **Salas de Ensayo**: Busca y reserva salas de ensayo en tu zona con disponibilidad en tiempo real.
+4. **Tipografías**: Lista de fuentes utilizadas con enlaces de descarga gratuita.
 
-5. **Conciertos y Eventos**: Descubre conciertos cerca de ti y promociona tus propios eventos.
+5. **Paleta de Colores**: Códigos HEX de todos los colores del diseño para mantener coherencia.
 
-6. **Mensajería**: Comunícate directamente con otros músicos a través de nuestro sistema de mensajería integrado.
+6. **Soporte**: Acceso a nuestro equipo para resolver cualquier duda con tu producto.
 
-7. **Feed de Actividad**: Mantente al día con las novedades de los músicos y bandas que sigues.
+7. **Actualizaciones**: Mejoras y nuevas versiones sin coste adicional.
 
-8. **Integración con Spotify**: Conecta tu perfil de Spotify para compartir tu música favorita.`,
+8. **Licencia Comercial**: Uso ilimitado en proyectos personales y comerciales.`,
       },
     ],
     defaultExpanded: "long",

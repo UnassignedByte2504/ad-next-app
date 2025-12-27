@@ -1,5 +1,5 @@
 /**
- * API Client para Bemyre
+ * API Client para Ayla Designs
  *
  * Cliente HTTP con:
  * - Manejo de errores consistente (alineado con backend)

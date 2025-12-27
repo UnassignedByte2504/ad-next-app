@@ -104,9 +104,9 @@ Use this component to display individual tracks with consistent styling
 across different streaming platforms. The card links to the external
 streaming platform when the play button is clicked.
 
-## Bemyre Integration
+## Ayla Designs Integration
 This component replaces the iframe-based SpotifyEmbed for a more
-controlled, branded experience aligned with Bemyre's design system.
+controlled, branded experience aligned with Ayla's design system.
         `,
       },
     },

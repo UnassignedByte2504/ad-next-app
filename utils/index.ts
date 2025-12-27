@@ -1,4 +1,4 @@
-// Utilidades y helpers de Bemyre
+// Utilidades y helpers de Ayla Designs
 
 // Re-exportar helpers generales
 export * from "./helpers";

@@ -29,7 +29,7 @@ describe("AuthService", () => {
   // Mock data
   const mockUser: AuthUser = {
     id: 1,
-    email: "test@bemyre.com",
+    email: "test@ayladesigns.me",
     username: "testuser",
     first_name: "Test",
     last_name: "User",
@@ -63,7 +63,7 @@ describe("AuthService", () => {
   describe("login", () => {
     it("should successfully login with valid credentials", async () => {
       // Arrange
-      const email = "test@bemyre.com";
+      const email = "test@ayladesigns.me";
       const password = "password123";
       const mockResponse = {
         data: mockLoginResponse,
@@ -87,7 +87,7 @@ describe("AuthService", () => {
 
     it("should throw error on invalid credentials", async () => {
       // Arrange
-      const email = "test@bemyre.com";
+      const email = "test@ayladesigns.me";
       const password = "wrongpassword";
       const mockError = new Error("Invalid credentials");
 
@@ -105,7 +105,7 @@ describe("AuthService", () => {
 
     it("should throw error on network failure", async () => {
       // Arrange
-      const email = "test@bemyre.com";
+      const email = "test@ayladesigns.me";
       const password = "password123";
       const mockError = new Error("Network error");
 
@@ -120,7 +120,7 @@ describe("AuthService", () => {
     it("should successfully register a new user", async () => {
       // Arrange
       const registerData: RegisterRequest = {
-        email: "newuser@bemyre.com",
+        email: "newuser@ayladesigns.me",
         password: "password123",
         username: "newuser",
         first_name: "New",
@@ -151,7 +151,7 @@ describe("AuthService", () => {
     it("should throw error when email already exists", async () => {
       // Arrange
       const registerData: RegisterRequest = {
-        email: "existing@bemyre.com",
+        email: "existing@ayladesigns.me",
         password: "password123",
         username: "existinguser",
       };
@@ -169,7 +169,7 @@ describe("AuthService", () => {
     it("should throw error when username already exists", async () => {
       // Arrange
       const registerData: RegisterRequest = {
-        email: "new@bemyre.com",
+        email: "new@ayladesigns.me",
         password: "password123",
         username: "existinguser",
       };

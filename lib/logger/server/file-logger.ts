@@ -1,5 +1,5 @@
 /**
- * File Logger para Bemyre (Server-side)
+ * File Logger para Ayla Designs (Server-side)
  *
  * Sistema de logging a archivos con:
  * - Rotación automática por tamaño (10MB por defecto)

@@ -1,6 +1,6 @@
-# Bemyre Client
+# Ayla Designs Client
 
-Red social para músicos - Cliente web con Next.js 16 y Bun.
+Tienda e-commerce de productos digitales con estética bohemia - Cliente web con Next.js 16 y Bun.
 
 ## Stack
 

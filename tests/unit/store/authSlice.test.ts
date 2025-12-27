@@ -94,7 +94,7 @@ describe("AuthSlice", () => {
   // Mock data
   const mockAuthUser: AuthUser = {
     id: 1,
-    email: "test@bemyre.com",
+    email: "test@ayladesigns.me",
     username: "testuser",
     first_name: "Test",
     last_name: "User",
@@ -106,7 +106,7 @@ describe("AuthSlice", () => {
 
   const mockUser: User = {
     id: "1",
-    email: "test@bemyre.com",
+    email: "test@ayladesigns.me",
     name: "Test User",
     avatar: "/avatars/test.png",
     role: "musician",
@@ -138,7 +138,7 @@ describe("AuthSlice", () => {
   describe("login", () => {
     it("should successfully login user", async () => {
       // Arrange
-      const email = "test@bemyre.com";
+      const email = "test@ayladesigns.me";
       const password = "password123";
 
       vi.mocked(authService.login).mockResolvedValueOnce({
@@ -162,7 +162,7 @@ describe("AuthSlice", () => {
       const state = store.getState().auth;
       expect(state.user).toMatchObject({
         id: "1",
-        email: "test@bemyre.com",
+        email: "test@ayladesigns.me",
         name: "Test User",
       });
       expect(state.isAuthenticated).toBe(true);
@@ -173,7 +173,7 @@ describe("AuthSlice", () => {
 
     it("should set loading state while logging in", async () => {
       // Arrange
-      const email = "test@bemyre.com";
+      const email = "test@ayladesigns.me";
       const password = "password123";
 
       // Mock que nunca se resuelve para verificar loading state
@@ -194,7 +194,7 @@ describe("AuthSlice", () => {
 
     it("should handle login error with ApiError", async () => {
       // Arrange
-      const email = "test@bemyre.com";
+      const email = "test@ayladesigns.me";
       const password = "wrongpassword";
 
       const apiError = new ApiError({
@@ -220,7 +220,7 @@ describe("AuthSlice", () => {
 
     it("should handle login error with generic Error", async () => {
       // Arrange
-      const email = "test@bemyre.com";
+      const email = "test@ayladesigns.me";
       const password = "password123";
 
       vi.mocked(authService.login).mockRejectedValueOnce(
@@ -237,7 +237,7 @@ describe("AuthSlice", () => {
 
     it("should handle unknown error type", async () => {
       // Arrange
-      const email = "test@bemyre.com";
+      const email = "test@ayladesigns.me";
       const password = "password123";
 
       vi.mocked(authService.login).mockRejectedValueOnce("Unknown error");
@@ -365,7 +365,7 @@ describe("AuthSlice", () => {
       const state = store.getState().auth;
       expect(state.user).toMatchObject({
         id: "1",
-        email: "test@bemyre.com",
+        email: "test@ayladesigns.me",
       });
       expect(state.isAuthenticated).toBe(true);
       expect(state.authMethod).toBe("google");
@@ -455,7 +455,7 @@ describe("AuthSlice", () => {
     it("should successfully register new user", async () => {
       // Arrange
       const registerData = {
-        email: "newuser@bemyre.com",
+        email: "newuser@ayladesigns.me",
         password: "password123",
         name: "New User",
       };
@@ -493,7 +493,7 @@ describe("AuthSlice", () => {
     it("should handle registration error", async () => {
       // Arrange
       const registerData = {
-        email: "existing@bemyre.com",
+        email: "existing@ayladesigns.me",
         password: "password123",
         name: "Test User",
       };

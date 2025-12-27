@@ -1,11 +1,11 @@
 /**
- * Bemyre Component Style Overrides
+ * Ayla Designs Component Style Overrides
  *
- * Customizes MUI components to match Bemyre's design language:
- * - Rounded corners (8-16px)
- * - Poppins font for buttons and labels
+ * Customizes MUI components to match Ayla's design language:
+ * - Pill buttons (9999px radius) and rounded cards (16px)
+ * - Cormorant Garamond for headings, Nunito Sans for body
  * - No uppercase transforms
- * - Subtle shadows and hover effects
+ * - Amber-tinted shadows and subtle hover effects
  *
  * @see docs/branding/CORPORATE_IDENTITY.md
  */

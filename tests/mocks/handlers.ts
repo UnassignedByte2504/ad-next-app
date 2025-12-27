@@ -21,11 +21,11 @@ const authHandlers = [
     // Simular delay de red
     await delay(100);
 
-    if (body.email === "test@bemyre.com" && body.password === "password123") {
+    if (body.email === "test@ayladesigns.me" && body.password === "password123") {
       return HttpResponse.json({
         user: {
           id: "user-1",
-          email: "test@bemyre.com",
+          email: "test@ayladesigns.me",
           name: "Test User",
           role: "musician",
         },
@@ -52,7 +52,7 @@ const authHandlers = [
 
     return HttpResponse.json({
       id: "user-1",
-      email: "test@bemyre.com",
+      email: "test@ayladesigns.me",
       name: "Test User",
       role: "musician",
     });
@@ -100,7 +100,7 @@ const musiciansHandlers = [
     return HttpResponse.json({
       id,
       name: "Mock Musician",
-      email: "musician@bemyre.com",
+      email: "user@ayladesigns.me",
       bio: "Este es un músico de prueba para los tests",
       instruments: ["guitar", "bass"],
       genres: ["rock", "jazz"],
@@ -283,7 +283,7 @@ function generateMockMusicians(count: number, options: MockMusicianOptions = {})
     musicians.push({
       id: `musician-${i + 1}`,
       name: `Musician ${i + 1}`,
-      email: `musician${i + 1}@bemyre.com`,
+      email: `user${i + 1}@ayladesigns.me`,
       instruments: options.instrument ? [options.instrument] : ["guitar"],
       genres: options.genre ? [options.genre] : ["rock"],
       location: { city: "Madrid", country: "Spain" },

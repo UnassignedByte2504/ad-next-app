@@ -1,6 +1,6 @@
 # Examples
 
-Esta carpeta contiene ejemplos de referencia para implementar features en Bemyre.
+Esta carpeta contiene ejemplos de referencia para implementar features en Ayla Designs.
 
 ## Contenido
 

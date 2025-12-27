@@ -113,10 +113,10 @@ export const GradientOverlay: Story = {
  */
 export const NoBackground: Story = {
   args: {
-    headline: "Bienvenido a Bemyre",
-    subheadline: "Tu comunidad musical te espera",
-    ctaText: "Explorar músicos",
-    ctaHref: "/musicians",
+    headline: "Bienvenida a Ayla Designs",
+    subheadline: "Diseños bohemios para mentes creativas",
+    ctaText: "Explorar catálogo",
+    ctaHref: "/products",
     overlay: "none",
     height: "medium",
   },
@@ -127,10 +127,10 @@ export const NoBackground: Story = {
  */
 export const LeftAligned: Story = {
   args: {
-    headline: "Músicos en tu zona",
-    subheadline: "Descubre talento local y forma parte de la escena",
-    ctaText: "Ver músicos",
-    ctaHref: "/musicians",
+    headline: "Planners Digitales",
+    subheadline: "Organiza tu vida con estilo bohemio",
+    ctaText: "Ver planners",
+    ctaHref: "/products/planners",
     backgroundImage: musicianBg,
     overlay: "dark",
     align: "left",
@@ -143,7 +143,7 @@ export const LeftAligned: Story = {
  */
 export const HeadlineOnly: Story = {
   args: {
-    headline: "¿Dónde nos vamos a rockear?",
+    headline: "Diseña tu marca con magia",
     backgroundImage: concertBg,
     overlay: "gradient",
     height: "medium",
@@ -155,8 +155,8 @@ export const HeadlineOnly: Story = {
  */
 export const SmallHero: Story = {
   args: {
-    headline: "Conciertos en Madrid",
-    subheadline: "Estos son los eventos de esta semana",
+    headline: "Nuevos Diseños",
+    subheadline: "Descubre las últimas novedades de esta semana",
     backgroundImage: concertBg,
     overlay: "dark",
     height: "small",

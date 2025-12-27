@@ -181,7 +181,7 @@ export const InToolbar: Story = {
         borderRadius: 2,
       }}
     >
-      <Typography variant="h6" fontWeight={600}>Bemyre</Typography>
+      <Typography variant="h6" fontWeight={600}>Ayla Designs</Typography>
       <Stack direction="row" spacing={1} alignItems="center">
         <Typography variant="body2" color="text.secondary">
           Tema:

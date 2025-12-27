@@ -1,4 +1,4 @@
-// Custom hooks de Bemyre
+// Custom hooks de Ayla Designs
 export { useLogger } from "./useLogger";
 export { useApiError, type UseApiErrorReturn, type UseApiErrorOptions } from "./useApiError";
 export {

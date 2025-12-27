@@ -110,7 +110,7 @@ Replaces the iframe-based SpotifyEmbed with a consistent, branded experience.
 | Platforms | Spotify only | 5 platforms |
 | Styling | Iframe (external) | Full control |
 | Performance | Heavy iframes | Lightweight |
-| Branding | Spotify's design | Bemyre design |
+| Branding | Spotify's design | Ayla design |
         `,
       },
     },

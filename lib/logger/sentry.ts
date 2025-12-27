@@ -1,5 +1,5 @@
 /**
- * Sentry Integration para Bemyre
+ * Sentry Integration para Ayla Designs
  *
  * Wrapper para Sentry que se integra con el sistema de logging.
  * Proporciona funciones helper y el handler para el logger.

@@ -63,7 +63,7 @@ export function createMockMusician(overrides = {}) {
   return {
     id: "musician-1",
     name: "Test Musician",
-    email: "test@bemyre.com",
+    email: "test@ayladesigns.me",
     bio: "Un músico de prueba",
     instruments: ["guitar", "bass"],
     genres: ["rock", "jazz"],
@@ -128,7 +128,7 @@ export function createMockVenue(overrides = {}) {
 export function createMockUser(overrides = {}) {
   return {
     id: "user-1",
-    email: "test@bemyre.com",
+    email: "test@ayladesigns.me",
     name: "Test User",
     role: "musician",
     avatar: "/avatars/default.png",

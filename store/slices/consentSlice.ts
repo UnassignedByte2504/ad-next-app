@@ -17,7 +17,7 @@ import type { StateCreator } from "zustand";
 import type { StoreState, ConsentSlice, ConsentState, ConsentPreferences } from "../types";
 import { logger } from "@lib/logger";
 
-const CONSENT_STORAGE_KEY = "bemyre-consent";
+const CONSENT_STORAGE_KEY = "ayla-consent";
 const CONSENT_VERSION = "1.0";
 
 const initialState: ConsentState = {

@@ -441,7 +441,7 @@ describe("Navbar", () => {
         <Navbar {...defaultProps} brandProps={{ href: "/custom-home" }} />
       );
       // Brand link should have custom href
-      const brandLink = screen.getByRole("link", { name: /bemyre/i });
+      const brandLink = screen.getByRole("link", { name: /ayla/i });
       expect(brandLink).toHaveAttribute("href", "/custom-home");
     });
   });

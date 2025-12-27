@@ -269,10 +269,10 @@ export const CustomContent: Story = {
             }}
           >
             <Typography variant="h4" fontWeight={700} gutterBottom>
-              Únete a Bemyre
+              Descubre Ayla Designs
             </Typography>
             <Typography variant="body1" color="text.secondary" textAlign="center">
-              Conecta con miles de músicos y encuentra tu próxima banda
+              Productos digitales con estética bohemia para creativos
             </Typography>
           </Box>
         ),

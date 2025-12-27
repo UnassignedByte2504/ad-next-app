@@ -1,6 +1,6 @@
 # Page Implementation Example
 
-Este ejemplo muestra el patrón estándar para implementar una nueva página en Bemyre.
+Este ejemplo muestra el patrón estándar para implementar una nueva página en Ayla Designs.
 
 ## Estructura de Archivos
 

@@ -30,7 +30,7 @@ const messages = {
 /**
  * Storybook Preview Configuration
  *
- * Uses Bemyre's modular theme architecture with dark mode as default.
+ * Uses Ayla Designs' modular theme architecture with light mode as default.
  * Brand colors and design tokens are imported from @/app/ui/theme
  */
 const preview: Preview = {
@@ -45,7 +45,7 @@ const preview: Preview = {
     },
     actions: { argTypesRegex: "^on[A-Z].*" },
     backgrounds: {
-      default: "dark", // Dark mode is Bemyre's default
+      default: "light", // Light mode is Ayla's default
       values: [
         { name: "dark", value: neutral[950] }, // #0A0A0A
         { name: "light", value: neutral[50] }, // #FAFAFA

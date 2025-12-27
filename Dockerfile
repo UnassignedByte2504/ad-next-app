@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 # =============================================================================
-# BEMYRE Client - Multi-stage Dockerfile
+# Ayla Designs Client - Multi-stage Dockerfile
 # =============================================================================
-# Build: docker build -t bemyre-client .
-# Run:   docker run -p 3000:3000 bemyre-client
+# Build: docker build -t ayla-client .
+# Run:   docker run -p 3000:3000 ayla-client
 # =============================================================================
 
 # -----------------------------------------------------------------------------

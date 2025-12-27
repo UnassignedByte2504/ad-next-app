@@ -24,7 +24,7 @@ test.describe("Theme Synchronization", () => {
     // 5. Get current HTML class and localStorage
     const afterClickClass = await page.locator("html").getAttribute("class");
     const localStorageValue = await page.evaluate(() => {
-      const stored = localStorage.getItem("bemyre-store");
+      const stored = localStorage.getItem("ayla-store");
       return stored ? JSON.parse(stored) : null;
     });
     console.log("After click HTML class:", afterClickClass);
@@ -42,7 +42,7 @@ test.describe("Theme Synchronization", () => {
     // 8. Verify HTML class matches localStorage theme
     const afterReloadClass = await page.locator("html").getAttribute("class");
     const afterReloadStorage = await page.evaluate(() => {
-      const stored = localStorage.getItem("bemyre-store");
+      const stored = localStorage.getItem("ayla-store");
       return stored ? JSON.parse(stored) : null;
     });
 
@@ -82,7 +82,7 @@ test.describe("Theme Synchronization", () => {
     // Set localStorage before navigating
     await context.addInitScript(() => {
       localStorage.setItem(
-        "bemyre-store",
+        "ayla-store",
         JSON.stringify({
           state: {
             auth: {},

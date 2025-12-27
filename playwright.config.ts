@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 /**
- * Playwright Configuration para Tests E2E de Bemyre
+ * Playwright Configuration para Tests E2E de Ayla Designs
  *
  * @see https://playwright.dev/docs/test-configuration
  */

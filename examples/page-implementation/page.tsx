@@ -13,10 +13,10 @@ import type { FeatureFilters as Filters } from "./types";
 // =============================================================================
 
 export const metadata: Metadata = {
-  title: "Feature Name | Bemyre",
+  title: "Feature Name | Ayla Designs",
   description: "Descripción de la página para SEO",
   openGraph: {
-    title: "Feature Name | Bemyre",
+    title: "Feature Name | Ayla Designs",
     description: "Descripción para redes sociales",
     // images: ["/og-image.jpg"],
   },

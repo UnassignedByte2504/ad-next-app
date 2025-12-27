@@ -1,7 +1,7 @@
 /**
  * E2E Tests - Homepage
  *
- * Tests end-to-end para la página principal de Bemyre.
+ * Tests end-to-end para la página principal de Ayla Designs.
  * Verifica la funcionalidad desde la perspectiva del usuario.
  */
 
@@ -13,7 +13,7 @@ test.describe("Homepage", () => {
   });
 
   test("has correct title", async ({ page }) => {
-    await expect(page).toHaveTitle(/Bemyre/i);
+    await expect(page).toHaveTitle(/Ayla/i);
   });
 
   test("displays main heading", async ({ page }) => {

@@ -16,7 +16,7 @@ setup("authenticate", async ({ page }) => {
 
   // Ejemplo de cómo sería el flujo:
   // await page.goto("/login");
-  // await page.getByLabel("Email").fill("test@bemyre.com");
+  // await page.getByLabel("Email").fill("test@ayladesigns.me");
   // await page.getByLabel("Password").fill("password123");
   // await page.getByRole("button", { name: /login/i }).click();
   // await expect(page).toHaveURL("/dashboard");

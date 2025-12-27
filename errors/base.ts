@@ -1,5 +1,5 @@
 /**
- * Base Error Classes for Bemyre App
+ * Base Error Classes for Ayla Designs
  *
  * Este archivo contiene las clases base de errores.
  * Separado para evitar dependencias circulares con api.ts

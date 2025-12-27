@@ -12,7 +12,7 @@ function hasAnalyticsConsent(): boolean {
   if (typeof window === "undefined") return false;
 
   try {
-    const consentData = localStorage.getItem("bemyre-consent");
+    const consentData = localStorage.getItem("ayla-consent");
     if (!consentData) return false;
 
     const consent = JSON.parse(consentData);

@@ -1,5 +1,5 @@
 /**
- * Logger Service para Bemyre
+ * Logger Service para Ayla Designs
  *
  * Sistema de logging centralizado con:
  * - Niveles: debug, info, warn, error

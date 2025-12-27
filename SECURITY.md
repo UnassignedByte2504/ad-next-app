@@ -1,4 +1,4 @@
-# Security Policy - BEMYRE Client
+# Security Policy - Ayla Designs Client
 
 ## Security Implementation Status
 
@@ -108,7 +108,7 @@ const response = await fetch(`/api/users/${userId}`);
 
 ```typescript
 // Public env vars (exposed to browser) - prefix with NEXT_PUBLIC_
-NEXT_PUBLIC_API_URL=https://api.bemyre.com
+NEXT_PUBLIC_API_URL=https://api.ayladesigns.me
 
 // Private env vars (server-only) - no prefix
 DATABASE_URL=...
@@ -175,7 +175,7 @@ script-src 'self';
 style-src 'self' 'unsafe-inline';  # Required for MUI
 img-src 'self' data: https:;
 font-src 'self';
-connect-src 'self' https://api.bemyre.com;
+connect-src 'self' https://api.ayladesigns.me;
 ```
 
 ---
@@ -185,7 +185,7 @@ connect-src 'self' https://api.bemyre.com;
 If you discover a security vulnerability:
 
 1. **DO NOT** create a public GitHub issue
-2. Email: `security@bemyre.com`
+2. Email: `security@ayladesigns.me`
 3. Include:
    - Description of vulnerability
    - Steps to reproduce

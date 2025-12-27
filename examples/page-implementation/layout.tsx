@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   // El título se hereda/combina con el de page.tsx
-  // Usa template en el root layout: { template: "%s | Bemyre" }
+  // Usa template en el root layout: { template: "%s | Ayla Designs" }
 };
 
 // =============================================================================
