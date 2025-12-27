@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { forwardRef } from "react";
 import { useTheme } from "@mui/material/styles";
 import { cn } from "@utils";
+import Link from "next/link";
+import { forwardRef } from "react";
 
 export interface LogoProps {
   /** Tamano del logo */
@@ -14,7 +14,7 @@ export interface LogoProps {
   linkTo?: string;
   /** Clases CSS adicionales */
   className?: string;
-  /** Color del texto principal (hereda del tema por defecto) */
+  /** Color del texto principal (sobrescribe el del tema si se proporciona) */
   textColor?: string;
   /** data-testid para testing */
   "data-testid"?: string;
@@ -26,6 +26,9 @@ export interface LogoProps {
  * Componente tipografico que muestra el logo de la marca.
  * - Variante "short": "Ayla." (para navbar)
  * - Variante "full": "Ayla.Designs" (para footer)
+ *
+ * El color del texto se adapta automaticamente al tema (light/dark),
+ * o puede ser sobrescrito con la prop textColor.
  *
  * El punto siempre se muestra en el color primario (amber).
  * Usa Cormorant Garamond como tipografia.
@@ -56,7 +59,7 @@ export const Logo = forwardRef<HTMLDivElement, LogoProps>(
     // Color del punto (siempre primary/amber)
     const dotColor = theme.palette.primary.main;
 
-    // Color del texto (usa el color del tema o el proporcionado)
+    // Determine text color based on theme or explicit textColor
     const mainTextColor = textColor || theme.palette.text.primary;
 
     // Componente del logo

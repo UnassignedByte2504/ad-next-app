@@ -5,39 +5,28 @@
     "searchButton": "Run search"
   },
   "footer": {
-    "navigation": {
-      "title": "Navigation",
-      "home": "Home",
-      "profile": "Profile",
-      "register": "Register",
-      "login": "Sign in"
+    "tagline": "Bohemian designs with professional soul. Templates and graphic resources for brands that want to stand out with style.",
+    "products": {
+      "title": "Products",
+      "planners": "Planners",
+      "cards": "Cards",
+      "socialMedia": "Social Media",
+      "branding": "Branding"
     },
-    "about": {
-      "title": "About",
+    "support": {
+      "title": "Support",
       "faq": "FAQ",
-      "whatIsBemyre": "What is Bemyre?",
-      "createBand": "How do I create a band?",
-      "joinBand": "Can I join a band?",
-      "values": "Values & Mission"
-    },
-    "discover": {
-      "title": "Discover",
-      "popularBands": "Popular Bands",
-      "popularMusicians": "Popular Musicians",
-      "popularVenues": "Popular Venues"
+      "contact": "Contact",
+      "licenses": "Licenses",
+      "terms": "Terms"
     },
     "social": {
       "instagram": "Follow us on Instagram",
-      "facebook": "Follow us on Facebook",
-      "twitter": "Follow us on X",
-      "x": "Follow us on X"
+      "pinterest": "Follow us on Pinterest",
+      "etsy": "Our Etsy shop",
+      "email": "Send us an email"
     },
-    "legal": {
-      "privacy": "Privacy",
-      "terms": "Terms",
-      "cookies": "Cookies"
-    },
-    "copyright": "© {year} Bemyre. All rights reserved."
+    "copyright": "© {year} Ayla Designs. Made with love."
   },
   "navbarBrand": {
     "tagline": "The dawn of music"
@@ -256,5 +245,20 @@
     "ok": "OK",
     "confirm": "Confirm",
     "cancel": "Cancel"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "emptyTitle": "Your cart is empty",
+    "emptySubtitle": "Explore our bohemian designs",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "checkoutNote": "Secure payment · Instant download",
+    "aria": {
+      "shoppingCart": "Shopping cart",
+      "closeCart": "Close cart",
+      "decreaseQuantity": "Decrease quantity",
+      "increaseQuantity": "Increase quantity",
+      "removeItem": "Remove {name} from cart"
+    }
   }
 }

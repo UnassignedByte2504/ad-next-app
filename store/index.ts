@@ -20,6 +20,7 @@
 import { create } from "zustand";
 import { devtools, persist, subscribeWithSelector } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
+import { useShallow } from "zustand/react/shallow";
 
 import { createAuthSlice } from "./slices/authSlice";
 import { createUISlice } from "./slices/uiSlice";
@@ -77,6 +78,23 @@ export const useStore = create<StoreState>()(
               sidebarCollapsed: state.ui.sidebarCollapsed,
             },
           }),
+          // Deep merge para preservar las acciones de los slices durante rehidratación
+          // El shallow merge por defecto sobrescribe los slices completos, perdiendo las funciones
+          merge: (persistedState, currentState) => {
+            const persisted = persistedState as PersistedState | undefined;
+            return {
+              ...currentState,
+              auth: {
+                ...currentState.auth,
+                ...(persisted?.auth || {}),
+              },
+              ui: {
+                ...currentState.ui,
+                ...(persisted?.ui || {}),
+              },
+              // search y consent no se persisten, mantener currentState
+            };
+          },
           // Rehidratar: verificar sesión con el backend
           onRehydrateStorage: () => (state) => {
             if (state?.auth.user) {
@@ -146,77 +164,79 @@ export const useConsent = <T>(selector: (state: StoreState["consent"]) => T): T 
 
 /**
  * Acciones del slice de autenticación
- * Usa getState() para evitar re-renders - las acciones son estables
+ * Usa useShallow para suscripción estable sin re-renders innecesarios
  */
 export const useAuthActions = () => {
-  // Usamos getState() en lugar de useStore() para acciones
-  // Esto evita suscripciones innecesarias y re-renders infinitos
-  const state = useStore.getState();
-  return {
-    login: state.auth.login,
-    loginWithGoogle: state.auth.loginWithGoogle,
-    handleGoogleCallback: state.auth.handleGoogleCallback,
-    logout: state.auth.logout,
-    register: state.auth.register,
-    refreshSession: state.auth.refreshSession,
-    fetchCurrentUser: state.auth.fetchCurrentUser,
-    updateUser: state.auth.updateUser,
-    clearError: state.auth.clearError,
-    setLoading: state.auth.setLoading,
-  };
+  return useStore(
+    useShallow((state) => ({
+      login: state.auth.login,
+      loginWithGoogle: state.auth.loginWithGoogle,
+      handleGoogleCallback: state.auth.handleGoogleCallback,
+      logout: state.auth.logout,
+      register: state.auth.register,
+      refreshSession: state.auth.refreshSession,
+      fetchCurrentUser: state.auth.fetchCurrentUser,
+      updateUser: state.auth.updateUser,
+      clearError: state.auth.clearError,
+      setLoading: state.auth.setLoading,
+    }))
+  );
 };
 
 /**
  * Acciones del slice de UI
- * Usa getState() para evitar re-renders - las acciones son estables
+ * Usa useShallow para suscripción estable sin re-renders innecesarios
  */
 export const useUIActions = () => {
-  const state = useStore.getState();
-  return {
-    setTheme: state.ui.setTheme,
-    toggleSidebar: state.ui.toggleSidebar,
-    setSidebarOpen: state.ui.setSidebarOpen,
-    setSidebarCollapsed: state.ui.setSidebarCollapsed,
-    addNotification: state.ui.addNotification,
-    removeNotification: state.ui.removeNotification,
-    clearNotifications: state.ui.clearNotifications,
-    openModal: state.ui.openModal,
-    closeModal: state.ui.closeModal,
-    closeAllModals: state.ui.closeAllModals,
-    setOnline: state.ui.setOnline,
-    setMobile: state.ui.setMobile,
-  };
+  return useStore(
+    useShallow((state) => ({
+      setTheme: state.ui.setTheme,
+      toggleSidebar: state.ui.toggleSidebar,
+      setSidebarOpen: state.ui.setSidebarOpen,
+      setSidebarCollapsed: state.ui.setSidebarCollapsed,
+      addNotification: state.ui.addNotification,
+      removeNotification: state.ui.removeNotification,
+      clearNotifications: state.ui.clearNotifications,
+      openModal: state.ui.openModal,
+      closeModal: state.ui.closeModal,
+      closeAllModals: state.ui.closeAllModals,
+      setOnline: state.ui.setOnline,
+      setMobile: state.ui.setMobile,
+    }))
+  );
 };
 
 /**
  * Acciones del slice de búsqueda
- * Usa getState() para evitar re-renders - las acciones son estables
+ * Usa useShallow para suscripción estable sin re-renders innecesarios
  */
 export const useSearchActions = () => {
-  const state = useStore.getState();
-  return {
-    setQuery: state.search.setQuery,
-    setFilters: state.search.setFilters,
-    clearFilters: state.search.clearFilters,
-    search: state.search.search,
-    clearResults: state.search.clearResults,
-  };
+  return useStore(
+    useShallow((state) => ({
+      setQuery: state.search.setQuery,
+      setFilters: state.search.setFilters,
+      clearFilters: state.search.clearFilters,
+      search: state.search.search,
+      clearResults: state.search.clearResults,
+    }))
+  );
 };
 
 /**
  * Acciones del slice de consentimiento (GDPR)
- * Usa getState() para evitar re-renders - las acciones son estables
+ * Usa useShallow para suscripción estable sin re-renders innecesarios
  */
 export const useConsentActions = () => {
-  const state = useStore.getState();
-  return {
-    acceptAll: state.consent.acceptAll,
-    rejectAll: state.consent.rejectAll,
-    updateConsent: state.consent.updateConsent,
-    setShowBanner: state.consent.setShowBanner,
-    setHideBanner: state.consent.setHideBanner,
-    resetConsent: state.consent.resetConsent,
-  };
+  return useStore(
+    useShallow((state) => ({
+      acceptAll: state.consent.acceptAll,
+      rejectAll: state.consent.rejectAll,
+      updateConsent: state.consent.updateConsent,
+      setShowBanner: state.consent.setShowBanner,
+      setHideBanner: state.consent.setHideBanner,
+      resetConsent: state.consent.resetConsent,
+    }))
+  );
 };
 
 // ============================================

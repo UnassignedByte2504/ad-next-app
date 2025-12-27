@@ -1,46 +1,47 @@
 "use client";
 
-import { useState } from "react";
-import { useTranslations } from "next-intl";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
 import Typography from "@mui/material/Typography";
-import BrushIcon from "@mui/icons-material/Brush";
-import DownloadIcon from "@mui/icons-material/Download";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { motion } from "framer-motion";
+import { ChevronDown, Heart, Moon, Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
 
 // Atoms
-import { Toast } from "@atoms/Toast";
 import { Chip } from "@atoms/Chip";
+import { Toast } from "@atoms/Toast";
 
 // Molecules
-import { MagicText } from "@molecules/MagicText";
 import { CategoryChips, type CategoryItem } from "@molecules/CategoryChips";
-import { SectionHeader } from "@molecules/SectionHeader";
+import { MagicText } from "@molecules/MagicText";
 import { ReviewCard } from "@molecules/ReviewCard";
+import { SectionHeader } from "@molecules/SectionHeader";
 
 // Organisms
-import { Navbar } from "@organisms/Navbar";
-import { Hero } from "@organisms/Hero";
+import { Cart } from "@organisms/Cart";
 import { FeaturesSection, type FeatureItem } from "@organisms/FeaturesSection";
 import { FloatingStars } from "@organisms/FloatingStars";
+import { Footer } from "@organisms/Footer";
+import { GlowCTA } from "@organisms/GlowCTA";
+import { Hero } from "@organisms/Hero";
+import { HeroDecorations } from "@organisms/HeroDecorations";
+import { Navbar } from "@organisms/Navbar";
 import { ProductCard } from "@organisms/ProductCard";
 import { ProductModal } from "@organisms/ProductModal";
-import { Cart } from "@organisms/Cart";
-import { GlowCTA } from "@organisms/GlowCTA";
-import { Footer } from "@organisms/Footer";
 
 // Data
 import { products, reviews } from "@/data/ayla";
 
 // Theme
-import { primary, fontFamilies } from "@/app/ui/theme";
+import { fontFamilies, primary } from "@/app/ui/theme";
 
 // Types
-import type { AylaProduct, AylaCartItem, AylaToast } from "@/types/ayla";
+import type { AylaCartItem, AylaProduct, AylaToast } from "@/types/ayla";
 
 // =============================================================================
 // COMPONENT
@@ -65,7 +66,9 @@ export function HomeContent() {
 
   const [cartItems, setCartItems] = useState<AylaCartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<AylaProduct | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<AylaProduct | null>(
+    null
+  );
   const [toast, setToast] = useState<AylaToast>({
     visible: false,
     message: "",
@@ -76,7 +79,10 @@ export function HomeContent() {
   // HANDLERS
   // ---------------------------------------------------------------------------
 
-  const showToast = (message: string, variant: AylaToast["variant"] = "success") => {
+  const showToast = (
+    message: string,
+    variant: AylaToast["variant"] = "success"
+  ) => {
     setToast({ visible: true, message, variant });
     setTimeout(() => setToast((prev) => ({ ...prev, visible: false })), 2500);
   };
@@ -87,7 +93,9 @@ export function HomeContent() {
       if (existing) {
         showToast(`${product.name} actualizado`);
         return prev.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
         );
       }
       showToast(`${product.name} añadido`);
@@ -117,24 +125,24 @@ export function HomeContent() {
 
   const features: FeatureItem[] = [
     {
-      key: "personalized",
-      icon: <BrushIcon />,
-      title: t("features.personalized.title"),
-      description: t("features.personalized.description"),
+      key: "bohemian",
+      icon: <Moon size={24} />,
+      title: t("features.bohemian.title"),
+      description: t("features.bohemian.description"),
       iconColor: "primary",
     },
     {
-      key: "instant",
-      icon: <DownloadIcon />,
-      title: t("features.instant.title"),
-      description: t("features.instant.description"),
+      key: "professional",
+      icon: <Sparkles size={24} />,
+      title: t("features.professional.title"),
+      description: t("features.professional.description"),
       iconColor: "secondary",
     },
     {
-      key: "handcrafted",
-      icon: <AutoAwesomeIcon />,
-      title: t("features.handcrafted.title"),
-      description: t("features.handcrafted.description"),
+      key: "editable",
+      icon: <Heart size={24} />,
+      title: t("features.editable.title"),
+      description: t("features.editable.description"),
       iconColor: "info",
     },
   ];
@@ -187,9 +195,8 @@ export function HomeContent() {
           =================================================================== */}
       <Navbar
         brandProps={{
-          logoProps: { variant: "full", size: "md" },
-          showTagline: true,
-          tagline: "Designs",
+          logoProps: { variant: "short", size: "md" },
+          showTagline: false,
           href: "/",
         }}
         links={navLinks}
@@ -232,7 +239,12 @@ export function HomeContent() {
         height="full"
         align="center"
         overlay="gradient"
-        backgroundDecoration={<FloatingStars starColor={primary.light} count={15} />}
+        backgroundDecoration={
+          <>
+            <HeroDecorations />
+            <FloatingStars starColor={primary.light} count={15} />
+          </>
+        }
         beforeHeadline={
           <Chip
             label={t("badge")}
@@ -247,20 +259,99 @@ export function HomeContent() {
           />
         }
         headlineSlot={
-          <Typography
-            variant="h1"
-            sx={{
-              fontFamily: fontFamilies.heading,
-              fontWeight: 600,
-              fontSize: { xs: "2rem", sm: "2.5rem", md: "3.5rem", lg: "4rem" },
-              lineHeight: 1.2,
-              color: "text.primary",
-            }}
-          >
-            {t("title")} <MagicText color="amber">✨</MagicText>
-          </Typography>
+          <Box sx={{ textAlign: "center" }}>
+            <Typography
+              variant="h1"
+              sx={{
+                fontFamily: fontFamilies.heading,
+                fontWeight: 500,
+                fontSize: {
+                  xs: "2.5rem",
+                  sm: "3rem",
+                  md: "4rem",
+                  lg: "4.5rem",
+                },
+                lineHeight: 1.1,
+                color: "text.primary",
+              }}
+            >
+              {t("title")}
+            </Typography>
+            <Typography
+              variant="h1"
+              component="div"
+              sx={{
+                fontFamily: fontFamilies.heading,
+                fontWeight: 500,
+                fontSize: {
+                  xs: "2.5rem",
+                  sm: "3rem",
+                  md: "4rem",
+                  lg: "4.5rem",
+                },
+                lineHeight: 1.1,
+                fontStyle: "italic",
+              }}
+            >
+              <MagicText color="amber">{t("titleMagic1")}</MagicText>
+              <Box
+                component="span"
+                sx={{ color: "text.primary", mx: 1, fontStyle: "normal" }}
+              >
+                {t("titleConnector")}
+              </Box>
+            </Typography>
+            <Typography
+              variant="h1"
+              component="div"
+              sx={{
+                fontFamily: fontFamilies.heading,
+                fontWeight: 500,
+                fontSize: {
+                  xs: "2.5rem",
+                  sm: "3rem",
+                  md: "4rem",
+                  lg: "4.5rem",
+                },
+                lineHeight: 1.1,
+                fontStyle: "italic",
+              }}
+            >
+              <MagicText color="purple">{t("titleMagic2")}</MagicText>
+            </Typography>
+          </Box>
         }
       />
+
+      {/* Scroll Indicator */}
+      <Box
+        component={motion.div}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+        sx={{
+          position: "absolute",
+          bottom: 32,
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 10,
+          cursor: "pointer",
+          color: "text.secondary",
+          "&:hover": { color: "primary.main" },
+          "@keyframes bounce": {
+            "0%, 100%": { transform: "translateX(-50%) translateY(0)" },
+            "50%": { transform: "translateX(-50%) translateY(8px)" },
+          },
+          animation: "bounce 2s ease-in-out infinite",
+        }}
+        onClick={() => {
+          document
+            .getElementById("productos")
+            ?.scrollIntoView({ behavior: "smooth" });
+        }}
+      >
+        <ChevronDown size={28} />
+      </Box>
 
       {/* ===================================================================
           FEATURES SECTION
@@ -406,7 +497,11 @@ export function HomeContent() {
         onAddToCart={addToCart}
       />
 
-      <Toast message={toast.message} isVisible={toast.visible} variant={toast.variant} />
+      <Toast
+        message={toast.message}
+        isVisible={toast.visible}
+        variant={toast.variant}
+      />
     </Box>
   );
 }

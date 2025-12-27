@@ -3,10 +3,14 @@
 import { forwardRef, memo, useCallback, useEffect, useMemo } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ShoppingCart, X, Plus, Minus, Moon } from "lucide-react";
-import { ProductImage } from "@atoms";
-import { primary, neutral, springs, shadows } from "@/app/ui/theme";
-import type { AylaCartItem } from "@types";
+import { useTranslations } from "next-intl";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+
+import { ProductImage } from "@atoms";
+import { primary, springs, shadows, zIndex } from "@/app/ui/theme";
+import type { AylaCartItem } from "@types";
+
 // =============================================================================
 // TYPES
 // =============================================================================
@@ -38,19 +42,26 @@ interface CartItemProps {
   item: AylaCartItem;
   onUpdateQuantity: (id: number, quantity: number) => void;
   onRemove: (id: number) => void;
+  translations: {
+    decreaseQuantity: string;
+    increaseQuantity: string;
+    removeItem: (name: string) => string;
+  };
 }
 
 const CartItem = memo(function CartItem({
   item,
   onUpdateQuantity,
   onRemove,
+  translations,
 }: CartItemProps) {
   return (
     <Box
       className="flex gap-4 p-4 rounded-xl"
-      style={{
-        background: "white",
-        border: `1px solid ${primary.light}33`,
+      sx={{
+        bgcolor: "background.paper",
+        border: `1px solid`,
+        borderColor: "divider",
         boxShadow: shadows.sm,
       }}
     >
@@ -61,69 +72,89 @@ const CartItem = memo(function CartItem({
 
       {/* Item details */}
       <Box className="flex-1 min-w-0">
-        <h4
-          className="font-medium truncate text-sm"
-          style={{ color: neutral[800] }}
+        <Typography
+          component="h4"
+          sx={{
+            fontWeight: 500,
+            fontSize: "0.875rem",
+            color: "text.primary",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
         >
           {item.name}
-        </h4>
-        <p className="text-sm font-semibold" style={{ color: primary.main }}>
+        </Typography>
+        <Typography
+          sx={{
+            fontSize: "0.875rem",
+            fontWeight: 600,
+            color: "primary.main",
+          }}
+        >
           €{item.price.toFixed(2)}
-        </p>
+        </Typography>
 
         {/* Quantity controls */}
         <Box className="flex items-center gap-2 mt-2">
-          <button
+          <Box
+            component="button"
             onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
             className="p-1 rounded transition-colors"
-            style={{ background: `${primary.light}33` }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = `${primary.light}66`;
+            sx={{
+              bgcolor: `${primary.light}33`,
+              "&:hover": {
+                bgcolor: `${primary.light}66`,
+              },
             }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = `${primary.light}33`;
-            }}
-            aria-label="Decrease quantity"
+            aria-label={translations.decreaseQuantity}
           >
-            <Minus size={14} style={{ color: neutral[600] }} />
-          </button>
+            <Minus size={14} style={{ color: "inherit" }} />
+          </Box>
 
-          <span
-            className="w-6 text-center font-medium text-sm"
-            style={{ color: neutral[700] }}
+          <Typography
+            component="span"
+            sx={{
+              width: 24,
+              textAlign: "center",
+              fontWeight: 500,
+              fontSize: "0.875rem",
+              color: "text.secondary",
+            }}
           >
             {item.quantity}
-          </span>
+          </Typography>
 
-          <button
+          <Box
+            component="button"
             onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
             className="p-1 rounded transition-colors"
-            style={{ background: `${primary.light}33` }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = `${primary.light}66`;
+            sx={{
+              bgcolor: `${primary.light}33`,
+              "&:hover": {
+                bgcolor: `${primary.light}66`,
+              },
             }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = `${primary.light}33`;
-            }}
-            aria-label="Increase quantity"
+            aria-label={translations.increaseQuantity}
           >
-            <Plus size={14} style={{ color: neutral[600] }} />
-          </button>
+            <Plus size={14} style={{ color: "inherit" }} />
+          </Box>
 
           {/* Remove button */}
-          <button
+          <Box
+            component="button"
             onClick={() => onRemove(item.id)}
             className="ml-auto p-1 rounded transition-colors"
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#FEE2E2";
+            sx={{
+              bgcolor: "transparent",
+              "&:hover": {
+                bgcolor: "error.light",
+              },
             }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-            }}
-            aria-label={`Remove ${item.name} from cart`}
+            aria-label={translations.removeItem(item.name)}
           >
             <X size={14} className="text-red-500" />
-          </button>
+          </Box>
         </Box>
       </Box>
     </Box>
@@ -150,6 +181,8 @@ const CartItem = memo(function CartItem({
  * - Body scroll lock when open
  * - Click outside to close
  * - Respects reduced motion preferences
+ * - Full i18n support
+ * - Semantic theme colors
  *
  * @example
  * ```tsx
@@ -176,7 +209,18 @@ export const Cart = memo(
     },
     ref
   ) {
+    const t = useTranslations("Components.cart");
     const prefersReducedMotion = useReducedMotion();
+
+    // Translation helpers for CartItem
+    const cartItemTranslations = useMemo(
+      () => ({
+        decreaseQuantity: t("aria.decreaseQuantity"),
+        increaseQuantity: t("aria.increaseQuantity"),
+        removeItem: (name: string) => t("aria.removeItem", { name }),
+      }),
+      [t]
+    );
 
     // Calculate total
     const total = useMemo(() => {
@@ -246,64 +290,74 @@ export const Cart = memo(
               initial="hidden"
               animate="visible"
               exit="hidden"
-              className="fixed inset-0 z-40"
+              className="fixed inset-0"
               style={{
-                background: `${neutral[900]}80`, // 50% opacity
+                background: "rgba(0, 0, 0, 0.5)",
                 backdropFilter: "blur(4px)",
+                zIndex: zIndex.drawer - 1,
               }}
               onClick={onClose}
               aria-hidden="true"
             />
 
             {/* Cart drawer */}
-            <motion.div
+            <Box
+              component={motion.div}
               ref={ref}
               variants={drawerVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className={`fixed top-0 right-0 h-full w-full max-w-md z-50 ${className}`}
-              style={{
-                background: neutral[50],
+              className={`fixed top-0 right-0 h-full w-full max-w-md ${className}`}
+              sx={{
+                bgcolor: "background.default",
                 boxShadow: shadows.xl,
+                zIndex: zIndex.drawer,
               }}
               data-testid={testId}
               role="dialog"
               aria-modal="true"
-              aria-label="Shopping cart"
+              aria-label={t("aria.shoppingCart")}
             >
               <Box className="h-full flex flex-col">
                 {/* Header */}
                 <Box
                   className="p-6 flex items-center justify-between"
-                  style={{
-                    background: "white",
-                    borderBottom: `1px solid ${primary.light}40`,
+                  sx={{
+                    bgcolor: "background.paper",
+                    borderBottom: "1px solid",
+                    borderColor: "divider",
                   }}
                 >
                   <Box className="flex items-center gap-3">
                     <ShoppingCart size={24} style={{ color: primary.dark }} />
-                    <h2
-                      className="font-serif text-2xl"
-                      style={{ color: neutral[800] }}
+                    <Typography
+                      component="h2"
+                      sx={{
+                        fontFamily: "'Cormorant Garamond', Georgia, serif",
+                        fontSize: "1.5rem",
+                        fontWeight: 600,
+                        color: "text.primary",
+                      }}
                     >
-                      Tu Carrito
-                    </h2>
+                      {t("title")}
+                    </Typography>
                   </Box>
-                  <button
+                  <Box
+                    component="button"
                     onClick={onClose}
                     className="p-2 rounded-full transition-colors"
-                    style={{ background: "transparent" }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = `${primary.light}33`;
+                    sx={{
+                      bgcolor: "transparent",
+                      color: "text.secondary",
+                      "&:hover": {
+                        bgcolor: `${primary.light}33`,
+                      },
                     }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "transparent";
-                    }}
-                    aria-label="Close cart"
+                    aria-label={t("aria.closeCart")}
                   >
-                    <X size={24} style={{ color: neutral[600] }} />
-                  </button>
+                    <X size={24} />
+                  </Box>
                 </Box>
 
                 {/* Items */}
@@ -316,15 +370,23 @@ export const Cart = memo(
                         style={{ color: `${primary.light}66` }}
                         className="mb-4"
                       />
-                      <p
-                        className="font-medium"
-                        style={{ color: neutral[500] }}
+                      <Typography
+                        sx={{
+                          fontWeight: 500,
+                          color: "text.secondary",
+                        }}
                       >
-                        Tu carrito está vacío
-                      </p>
-                      <p className="text-sm mt-1" style={{ color: neutral[400] }}>
-                        Explora nuestros diseños bohemios
-                      </p>
+                        {t("emptyTitle")}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontSize: "0.875rem",
+                          mt: 0.5,
+                          color: "text.disabled",
+                        }}
+                      >
+                        {t("emptySubtitle")}
+                      </Typography>
                     </Box>
                   ) : (
                     /* Cart items */
@@ -335,6 +397,7 @@ export const Cart = memo(
                           item={item}
                           onUpdateQuantity={onUpdateQuantity}
                           onRemove={onRemove}
+                          translations={cartItemTranslations}
                         />
                       ))}
                     </Box>
@@ -345,49 +408,58 @@ export const Cart = memo(
                 {items.length > 0 && (
                   <Box
                     className="p-6"
-                    style={{
-                      background: "white",
-                      borderTop: `1px solid ${primary.light}40`,
+                    sx={{
+                      bgcolor: "background.paper",
+                      borderTop: "1px solid",
+                      borderColor: "divider",
                     }}
                   >
                     <Box className="flex justify-between items-center mb-4">
-                      <span style={{ color: neutral[600] }}>Subtotal</span>
-                      <span
-                        className="font-serif text-2xl"
-                        style={{ color: neutral[800] }}
+                      <Typography sx={{ color: "text.secondary" }}>
+                        {t("subtotal")}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontFamily: "'Cormorant Garamond', Georgia, serif",
+                          fontSize: "1.5rem",
+                          fontWeight: 600,
+                          color: "text.primary",
+                        }}
                       >
                         €{total.toFixed(2)}
-                      </span>
+                      </Typography>
                     </Box>
 
-                    <button
+                    <Box
+                      component="button"
                       onClick={handleCheckout}
                       className="w-full py-4 font-semibold rounded-xl transform transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-                      style={{
+                      sx={{
                         background: `linear-gradient(to right, ${primary.main}, ${primary.light})`,
-                        color: neutral[900],
+                        color: "text.primary",
                         boxShadow: shadows.lg,
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.boxShadow = shadows.xl;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.boxShadow = shadows.lg;
+                        "&:hover": {
+                          boxShadow: shadows.xl,
+                        },
                       }}
                     >
-                      Finalizar Compra
-                    </button>
+                      {t("checkout")}
+                    </Box>
 
-                    <p
-                      className="text-center text-xs mt-3"
-                      style={{ color: neutral[400] }}
+                    <Typography
+                      sx={{
+                        textAlign: "center",
+                        fontSize: "0.75rem",
+                        mt: 1.5,
+                        color: "text.disabled",
+                      }}
                     >
-                      Pago seguro · Descarga instantánea
-                    </p>
+                      {t("checkoutNote")}
+                    </Typography>
                   </Box>
                 )}
               </Box>
-            </motion.div>
+            </Box>
           </>
         )}
       </AnimatePresence>

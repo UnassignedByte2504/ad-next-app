@@ -1,10 +1,13 @@
 {
-  "title": "Ayla Designs",
-  "subtitle": "Bohemian digital designs crafted with soul. Invitations, art prints, and creative templates for life's meaningful moments.",
+  "title": "Designs that inspire",
+  "titleMagic1": "magic",
+  "titleConnector": "and",
+  "titleMagic2": "professionalism",
+  "subtitle": "Templates and graphic resources with bohemian soul for brands looking to stand out without losing their corporate essence.",
   "badge": "Professional bohemian design",
   "cta": {
-    "start": "Shop Now",
-    "explore": "Browse Collections"
+    "start": "Explore Designs",
+    "explore": "View Testimonials"
   },
   "nav": {
     "products": "Products",
@@ -12,17 +15,17 @@
     "contact": "Contact"
   },
   "features": {
-    "personalized": {
-      "title": "Personalized Designs",
-      "description": "Each design can be customized to match your unique vision and style."
+    "bohemian": {
+      "title": "Bohemian Aesthetic",
+      "description": "Celestial and organic elements that bring warmth and personality to your brand."
     },
-    "instant": {
-      "title": "Instant Download",
-      "description": "Get your digital files immediately after purchase. Print when you're ready."
+    "professional": {
+      "title": "Professionalism",
+      "description": "Elegant and versatile designs that maintain a refined corporate look."
     },
-    "handcrafted": {
-      "title": "Handcrafted Quality",
-      "description": "Every piece is thoughtfully designed with bohemian elegance and attention to detail."
+    "editable": {
+      "title": "100% Editable",
+      "description": "Easy-to-customize templates in Canva, Figma, or Adobe to adapt to your brand."
     }
   },
   "categories": {

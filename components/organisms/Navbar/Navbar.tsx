@@ -1,28 +1,29 @@
 "use client";
 
-import { forwardRef, useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import Drawer from "@mui/material/Drawer";
-import Divider from "@mui/material/Divider";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import { useTranslations } from "next-intl";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useMotionValueEvent,
-} from "framer-motion";
+import { durations, easings, neutral, springs } from "@/app/ui/theme";
+import { SearchInput, SearchInputProps } from "@atoms/SearchInput";
+import { NavbarActions, NavbarActionsProps } from "@molecules/NavbarActions";
 import { NavbarBrand, NavbarBrandProps } from "@molecules/NavbarBrand";
 import { NavbarLinks, NavLinkItem } from "@molecules/NavbarLinks";
-import { NavbarActions, NavbarActionsProps } from "@molecules/NavbarActions";
-import { SearchInput, SearchInputProps } from "@atoms/SearchInput";
+import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon from "@mui/icons-material/Menu";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import { useTheme } from "@mui/material/styles";
+import Toolbar from "@mui/material/Toolbar";
 import { cn } from "@utils";
-import { springs, durations, easings, neutral } from "@/app/ui/theme";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
+import { useTranslations } from "next-intl";
+import { forwardRef, useState } from "react";
 
 export interface NavbarProps {
   /** Props del NavbarBrand */
@@ -100,6 +101,7 @@ export const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
     ref
   ) => {
     const t = useTranslations("Components.navbar");
+    const theme = useTheme();
     const providedPlaceholder = searchProps?.placeholder;
     const desktopPlaceholder =
       providedPlaceholder ?? t("search.desktopPlaceholder");
@@ -126,11 +128,19 @@ export const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
       setMobileMenuOpen(false);
     };
 
+    // Determine logo color for transparent state
+    const isTransparent = variant === "transparent" && !isScrolled;
+    const logoTextColor = isTransparent ? neutral[50] : undefined;
+
     // M3 2025: No drop shadows, use subtle background changes
     const getBackgroundStyles = () => {
       if (variant === "transparent") {
         return {
-          bgcolor: isScrolled ? `${neutral[950]}CC` : "transparent", // 80% opacity
+          bgcolor: isScrolled
+            ? theme.palette.mode === "dark"
+              ? `${neutral[900]}CC`
+              : `${neutral[0]}CC`
+            : "transparent", // 80% opacity
           backdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "none",
         };
       }
@@ -175,7 +185,13 @@ export const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
               }}
             >
               {/* Leading: Brand (Logo) */}
-              <NavbarBrand {...brandProps} />
+              <NavbarBrand
+                {...brandProps}
+                logoProps={{
+                  ...brandProps.logoProps,
+                  textColor: logoTextColor || brandProps.logoProps?.textColor,
+                }}
+              />
 
               {/* Center: Navigation Links (Desktop) - M3 style */}
               <Box
@@ -232,9 +248,7 @@ export const Navbar = forwardRef<HTMLDivElement, NavbarProps>(
                   <IconButton
                     edge="end"
                     color="inherit"
-                    aria-label={
-                      mobileMenuOpen ? closeMenuLabel : openMenuLabel
-                    }
+                    aria-label={mobileMenuOpen ? closeMenuLabel : openMenuLabel}
                     aria-expanded={mobileMenuOpen}
                     onClick={handleMobileMenuToggle}
                     sx={{

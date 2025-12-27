@@ -19,6 +19,7 @@ export * from "./Carousel";
 
 // Ayla-specific organisms
 export * from "./FloatingStars";
+export * from "./HeroDecorations";
 export * from "./GlowCTA";
 export * from "./ProductModal";
 export * from "./Cart";

@@ -4,10 +4,11 @@ import Tooltip from "@mui/material/Tooltip";
 import Box from "@mui/material/Box";
 import { motion, AnimatePresence } from "framer-motion";
 import { forwardRef, useMemo } from "react";
-import { useUI, useUIActions } from "@store";
+import { useUI, useStore } from "@store";
 import { cn } from "@utils";
 import type { ThemeMode } from "@/store/types";
 import { springs } from "@/app/ui/theme";
+import * as Sentry from "@sentry/nextjs";
 
 export interface ThemeToggleProps {
   /** Tamaño del botón */
@@ -232,7 +233,6 @@ export const ThemeToggle = forwardRef<HTMLButtonElement, ThemeToggleProps>(
     ref
   ) => {
     const themeFromStore = useUI((state) => state.theme);
-    const { setTheme } = useUIActions();
 
     // Fallbacks para asegurar que siempre hay valores válidos
     const theme = themeFromStore ?? "light";
@@ -257,9 +257,24 @@ export const ThemeToggle = forwardRef<HTMLButtonElement, ThemeToggleProps>(
       }
     };
 
+    // Usar getState() en el handler para evitar problemas de hidratación
+    // Las acciones siempre están disponibles en getState() cuando el usuario interactúa
     const handleToggle = () => {
-      if (!disabled) {
+      if (disabled) return;
+
+      try {
+        const setTheme = useStore.getState().ui.setTheme;
+        if (typeof setTheme !== "function") {
+          throw new Error("setTheme is not available - store may not be fully hydrated");
+        }
         setTheme(getNextTheme());
+      } catch (error) {
+        // Capturar errores en event handlers ya que ErrorBoundary no los captura
+        Sentry.captureException(error, {
+          tags: { component: "ThemeToggle", action: "toggle" },
+          extra: { currentTheme: theme, disabled },
+        });
+        console.error("[ThemeToggle] Failed to toggle theme:", error);
       }
     };
 

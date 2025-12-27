@@ -1,12 +1,12 @@
 "use client";
 
-import { forwardRef } from "react";
+import { fontFamilies } from "@/app/ui/theme";
+import { Logo, LogoProps } from "@atoms/Logo";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { Logo, LogoProps } from "@atoms/Logo";
-import { fontFamilies } from "@/app/ui/theme";
 import { cn } from "@utils";
 import { useTranslations } from "next-intl";
+import { forwardRef } from "react";
 
 export interface NavbarBrandProps {
   /** Props del Logo */
@@ -36,13 +36,7 @@ export interface NavbarBrandProps {
  */
 export const NavbarBrand = forwardRef<HTMLDivElement, NavbarBrandProps>(
   (
-    {
-      logoProps = {},
-      showTagline = false,
-      tagline,
-      href = "/",
-      className,
-    },
+    { logoProps = {}, showTagline = false, tagline, href = "/", className },
     ref
   ) => {
     const t = useTranslations("Components");

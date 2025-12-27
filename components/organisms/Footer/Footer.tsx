@@ -1,20 +1,19 @@
 "use client";
 
-import { forwardRef } from "react";
+import PinterestIcon from "@mui/icons-material/Pinterest";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
 import Divider from "@mui/material/Divider";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 import { motion } from "framer-motion";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import XIcon from "@mui/icons-material/X";
+import { Instagram, Mail, ShoppingBag } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { forwardRef } from "react";
 
+import { durations, easings, neutral, primary, springs } from "@/app/ui/theme";
 import { Logo } from "@atoms/Logo";
-import { springs, durations, easings, neutral, primary } from "@/app/ui/theme";
 
 // =============================================================================
 // TYPES
@@ -36,9 +35,11 @@ export interface FooterColumn {
   links: FooterLink[];
 }
 
+export type SocialPlatform = "instagram" | "pinterest" | "etsy" | "email";
+
 export interface SocialLink {
   /** Platform name */
-  platform: "instagram" | "facebook" | "twitter" | "x";
+  platform: SocialPlatform;
   /** URL */
   href: string;
   /** Aria label */
@@ -52,6 +53,8 @@ export interface FooterProps {
   socialLinks?: SocialLink[];
   /** Show logo */
   showLogo?: boolean;
+  /** Show tagline */
+  showTagline?: boolean;
   /** Copyright text */
   copyright?: string;
   /** Max width of container */
@@ -66,17 +69,19 @@ export interface FooterProps {
 
 const MotionBox = motion.create(Box);
 
-const socialIcons = {
-  instagram: InstagramIcon,
-  facebook: FacebookIcon,
-  twitter: XIcon,
-  x: XIcon,
+const socialIcons: Record<
+  SocialPlatform,
+  React.ComponentType<{ size?: number }>
+> = {
+  instagram: Instagram,
+  pinterest: ({ size }) => <PinterestIcon sx={{ fontSize: size }} />,
+  etsy: ShoppingBag,
+  email: Mail,
 };
 
 const defaultSocialLinks: SocialLink[] = [
-  { platform: "instagram", href: "https://www.instagram.com/bemyre" },
-  { platform: "facebook", href: "https://www.facebook.com/bemyre" },
-  { platform: "x", href: "https://x.com/bemyre" },
+  { platform: "instagram", href: "https://www.instagram.com/ayladesigns" },
+  { platform: "email", href: "mailto:hello@ayladesigns.me" },
 ];
 
 // =============================================================================
@@ -87,10 +92,11 @@ const defaultSocialLinks: SocialLink[] = [
  * Footer - Site footer with navigation columns and social links.
  *
  * Features:
- * - Responsive 4-column layout (logo + 3 nav columns)
+ * - Responsive layout (logo + tagline + 2 nav columns)
  * - Social media links with hover animations
+ * - Accent colored column titles
  * - i18n support for all labels
- * - M3 Expressive styling with theme tokens
+ * - Semantic theme tokens
  *
  * @example
  * ```tsx
@@ -100,6 +106,7 @@ const defaultSocialLinks: SocialLink[] = [
  * <Footer
  *   socialLinks={[
  *     { platform: "instagram", href: "https://instagram.com/mybrand" },
+ *     { platform: "pinterest", href: "https://pinterest.com/mybrand" },
  *   ]}
  * />
  * ```
@@ -110,6 +117,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
       columns,
       socialLinks = defaultSocialLinks,
       showLogo = true,
+      showTagline = true,
       copyright,
       maxWidth = "xl",
       className,
@@ -118,33 +126,24 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
   ) => {
     const t = useTranslations("Components.footer");
 
-    // Default columns with i18n
+    // Default columns with i18n - Products and Support
     const defaultColumns: FooterColumn[] = [
       {
-        title: t("navigation.title"),
+        title: t("products.title"),
         links: [
-          { label: t("navigation.home"), href: "/" },
-          { label: t("navigation.profile"), href: "/profile" },
-          { label: t("navigation.register"), href: "/auth/signup" },
-          { label: t("navigation.login"), href: "/auth/login" },
+          { label: t("products.planners"), href: "/products/planners" },
+          { label: t("products.cards"), href: "/products/cards" },
+          { label: t("products.socialMedia"), href: "/products/social-media" },
+          { label: t("products.branding"), href: "/products/branding" },
         ],
       },
       {
-        title: t("about.title"),
+        title: t("support.title"),
         links: [
-          { label: t("about.faq"), href: "/faq" },
-          { label: t("about.whatIsBemyre"), href: "/faq#what-is-bemyre" },
-          { label: t("about.createBand"), href: "/faq#create-band" },
-          { label: t("about.joinBand"), href: "/faq#join-band" },
-          { label: t("about.values"), href: "/about" },
-        ],
-      },
-      {
-        title: t("discover.title"),
-        links: [
-          { label: t("discover.popularBands"), href: "/bands" },
-          { label: t("discover.popularMusicians"), href: "/musicians" },
-          { label: t("discover.popularVenues"), href: "/venues" },
+          { label: t("support.faq"), href: "/faq" },
+          { label: t("support.contact"), href: "/contact" },
+          { label: t("support.licenses"), href: "/licenses" },
+          { label: t("support.terms"), href: "/terms" },
         ],
       },
     ];
@@ -159,9 +158,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
         component="footer"
         className={className}
         sx={{
-          bgcolor: "background.paper",
-          borderTop: "1px solid",
-          borderColor: "divider",
+          bgcolor: "grey.900",
           pt: { xs: 6, md: 8 },
           pb: { xs: 4, md: 6 },
         }}
@@ -174,12 +171,12 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
               gridTemplateColumns: {
                 xs: "1fr",
                 sm: "repeat(2, 1fr)",
-                md: "1.5fr repeat(3, 1fr)",
+                md: "2fr repeat(2, 1fr)",
               },
-              gap: { xs: 4, md: 6 },
+              gap: { xs: 4, md: 8 },
             }}
           >
-            {/* Logo & Social Section */}
+            {/* Logo, Tagline & Social Section */}
             <MotionBox
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -188,19 +185,37 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                gap: 3,
+                gap: 2,
               }}
             >
               {showLogo && (
-                <Link href="/" style={{ display: "inline-block", width: "fit-content" }}>
-                  <Logo size="lg" variant="full" textColor="#FAFAF9" />
+                <Link
+                  href="/"
+                  style={{ display: "inline-block", width: "fit-content" }}
+                >
+                  <Logo size="lg" variant="full" textColor={neutral[50]} />
                 </Link>
               )}
 
+              {/* Tagline */}
+              {showTagline && (
+                <Typography
+                  sx={{
+                    color: "grey.400",
+                    fontSize: "0.875rem",
+                    lineHeight: 1.6,
+                    maxWidth: 360,
+                  }}
+                >
+                  {t("tagline")}
+                </Typography>
+              )}
+
               {/* Social Links */}
-              <Box sx={{ display: "flex", gap: 1 }}>
+              <Box sx={{ display: "flex", gap: 1, mt: 1 }}>
                 {socialLinks.map((social) => {
                   const Icon = socialIcons[social.platform];
+                  const isEmail = social.platform === "email";
                   return (
                     <motion.div
                       key={social.platform}
@@ -211,12 +226,14 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
                       <IconButton
                         component="a"
                         href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={social.ariaLabel || t(`social.${social.platform}`)}
+                        target={isEmail ? undefined : "_blank"}
+                        rel={isEmail ? undefined : "noopener noreferrer"}
+                        aria-label={
+                          social.ariaLabel || t(`social.${social.platform}`)
+                        }
                         sx={{
-                          color: "text.secondary",
-                          bgcolor: `${neutral[800]}40`,
+                          color: "grey.400",
+                          bgcolor: "grey.800",
                           "&:hover": {
                             color: primary.main,
                             bgcolor: `${primary.main}1A`,
@@ -224,7 +241,7 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
                           transition: `all ${durations.fast}ms ${easings.default}`,
                         }}
                       >
-                        <Icon sx={{ fontSize: 24 }} />
+                        <Icon size={20} />
                       </IconButton>
                     </motion.div>
                   );
@@ -241,15 +258,15 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
                 viewport={{ once: true }}
                 transition={{ ...springs.smooth, delay: 0.1 * (colIndex + 1) }}
               >
+                {/* Column title with accent color */}
                 <Typography
                   variant="subtitle2"
                   sx={{
                     fontWeight: 600,
-                    color: "text.primary",
-                    mb: 2,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    fontSize: "0.75rem",
+                    color: primary.main, // Amber accent
+                    mb: 2.5,
+                    fontSize: "0.875rem",
+                    letterSpacing: "0.02em",
                   }}
                 >
                   {column.title}
@@ -274,12 +291,12 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
                         target={link.external ? "_blank" : undefined}
                         rel={link.external ? "noopener noreferrer" : undefined}
                         sx={{
-                          color: "text.secondary",
+                          color: "grey.400",
                           textDecoration: "none",
                           fontSize: "0.875rem",
                           transition: `color ${durations.fast}ms ${easings.default}`,
                           "&:hover": {
-                            color: primary.main,
+                            color: "grey.100",
                           },
                         }}
                       >
@@ -292,72 +309,19 @@ export const Footer = forwardRef<HTMLElement, FooterProps>(
             ))}
           </Box>
 
-          {/* Bottom Bar */}
-          <Divider sx={{ my: { xs: 4, md: 6 }, opacity: 0.5 }} />
+          {/* Bottom Bar - Centered Copyright */}
+          <Divider sx={{ my: { xs: 4, md: 6 }, borderColor: "grey.800" }} />
 
-          <Box
+          <Typography
+            variant="body2"
             sx={{
-              display: "flex",
-              flexDirection: { xs: "column", sm: "row" },
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: 2,
+              color: "grey.500",
+              textAlign: "center",
+              fontSize: "0.875rem",
             }}
           >
-            <Typography
-              variant="body2"
-              sx={{ color: "text.secondary", textAlign: { xs: "center", sm: "left" } }}
-            >
-              {copyrightText}
-            </Typography>
-
-            <Box
-              sx={{
-                display: "flex",
-                gap: 3,
-              }}
-            >
-              <Typography
-                component={Link}
-                href="/privacy"
-                sx={{
-                  color: "text.secondary",
-                  textDecoration: "none",
-                  fontSize: "0.75rem",
-                  "&:hover": { color: primary.main },
-                  transition: `color ${durations.fast}ms ${easings.default}`,
-                }}
-              >
-                {t("legal.privacy")}
-              </Typography>
-              <Typography
-                component={Link}
-                href="/terms"
-                sx={{
-                  color: "text.secondary",
-                  textDecoration: "none",
-                  fontSize: "0.75rem",
-                  "&:hover": { color: primary.main },
-                  transition: `color ${durations.fast}ms ${easings.default}`,
-                }}
-              >
-                {t("legal.terms")}
-              </Typography>
-              <Typography
-                component={Link}
-                href="/cookies"
-                sx={{
-                  color: "text.secondary",
-                  textDecoration: "none",
-                  fontSize: "0.75rem",
-                  "&:hover": { color: primary.main },
-                  transition: `color ${durations.fast}ms ${easings.default}`,
-                }}
-              >
-                {t("legal.cookies")}
-              </Typography>
-            </Box>
-          </Box>
+            {copyrightText}
+          </Typography>
         </Container>
       </Box>
     );

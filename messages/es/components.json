@@ -5,39 +5,28 @@
     "searchButton": "Ejecutar búsqueda"
   },
   "footer": {
-    "navigation": {
-      "title": "Navegación",
-      "home": "Home",
-      "profile": "Perfil",
-      "register": "Registro",
-      "login": "Inicio sesión"
+    "tagline": "Diseños bohemios con alma profesional. Plantillas y recursos gráficos para marcas que quieren destacar con estilo.",
+    "products": {
+      "title": "Productos",
+      "planners": "Planners",
+      "cards": "Tarjetas",
+      "socialMedia": "Social Media",
+      "branding": "Branding"
     },
-    "about": {
-      "title": "Acerca de",
-      "faq": "Preguntas Frecuentes",
-      "whatIsBemyre": "¿Qué es Bemyre?",
-      "createBand": "¿Cómo creo una banda?",
-      "joinBand": "¿Puedo unirme a banda?",
-      "values": "Valores y objetivos"
-    },
-    "discover": {
-      "title": "Descubre",
-      "popularBands": "Bandas Populares",
-      "popularMusicians": "Músicos populares",
-      "popularVenues": "Locales populares"
+    "support": {
+      "title": "Soporte",
+      "faq": "FAQ",
+      "contact": "Contacto",
+      "licenses": "Licencias",
+      "terms": "Términos"
     },
     "social": {
       "instagram": "Síguenos en Instagram",
-      "facebook": "Síguenos en Facebook",
-      "twitter": "Síguenos en X",
-      "x": "Síguenos en X"
+      "pinterest": "Síguenos en Pinterest",
+      "etsy": "Nuestra tienda en Etsy",
+      "email": "Envíanos un email"
     },
-    "legal": {
-      "privacy": "Privacidad",
-      "terms": "Términos",
-      "cookies": "Cookies"
-    },
-    "copyright": "© {year} Bemyre. Todos los derechos reservados."
+    "copyright": "© {year} Ayla Designs. Hecho con amor."
   },
   "navbarBrand": {
     "tagline": "El amanecer de la música"
@@ -256,5 +245,20 @@
     "ok": "Aceptar",
     "confirm": "Confirmar",
     "cancel": "Cancelar"
+  },
+  "cart": {
+    "title": "Tu Carrito",
+    "emptyTitle": "Tu carrito está vacío",
+    "emptySubtitle": "Explora nuestros diseños bohemios",
+    "subtotal": "Subtotal",
+    "checkout": "Finalizar Compra",
+    "checkoutNote": "Pago seguro · Descarga instantánea",
+    "aria": {
+      "shoppingCart": "Carrito de compras",
+      "closeCart": "Cerrar carrito",
+      "decreaseQuantity": "Reducir cantidad",
+      "increaseQuantity": "Aumentar cantidad",
+      "removeItem": "Eliminar {name} del carrito"
+    }
   }
 }

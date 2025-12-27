@@ -9,7 +9,7 @@ const meta: Meta<typeof Footer> = {
     docs: {
       description: {
         component:
-          "Site footer with navigation columns, social links, and legal information. Follows M3 Expressive design guidelines.",
+          "Site footer with navigation columns, social links, and tagline. Features amber accent colors and dark background for Ayla Designs branding.",
       },
     },
   },
@@ -17,7 +17,11 @@ const meta: Meta<typeof Footer> = {
   argTypes: {
     showLogo: {
       control: "boolean",
-      description: "Show the Bemyre logo",
+      description: "Show the Ayla Designs logo",
+    },
+    showTagline: {
+      control: "boolean",
+      description: "Show the tagline under the logo",
     },
     maxWidth: {
       control: "select",
@@ -35,7 +39,7 @@ export default meta;
 type Story = StoryObj<typeof Footer>;
 
 /**
- * Default footer with all navigation columns and social links.
+ * Default footer with Products and Support columns, tagline, and social links.
  */
 export const Default: Story = {
   args: {},
@@ -47,6 +51,15 @@ export const Default: Story = {
 export const WithoutLogo: Story = {
   args: {
     showLogo: false,
+  },
+};
+
+/**
+ * Footer without tagline.
+ */
+export const WithoutTagline: Story = {
+  args: {
+    showTagline: false,
   },
 };
 
@@ -77,13 +90,15 @@ export const CustomColumns: Story = {
 };
 
 /**
- * Footer with custom social links.
+ * Footer with all social links (Instagram, Pinterest, Etsy, Email).
  */
-export const CustomSocialLinks: Story = {
+export const AllSocialLinks: Story = {
   args: {
     socialLinks: [
-      { platform: "instagram", href: "https://instagram.com/bemyre" },
-      { platform: "x", href: "https://x.com/bemyre" },
+      { platform: "instagram", href: "https://instagram.com/ayladesigns" },
+      { platform: "pinterest", href: "https://pinterest.com/ayladesigns" },
+      { platform: "etsy", href: "https://etsy.com/shop/ayladesigns" },
+      { platform: "email", href: "mailto:hello@ayladesigns.me" },
     ],
   },
 };
@@ -107,16 +122,16 @@ export const NarrowWidth: Story = {
 };
 
 /**
- * Footer in context with dark background.
+ * Footer in context - showing how it looks at page bottom.
  */
-export const InDarkContext: Story = {
+export const InPageContext: Story = {
   args: {},
   decorators: [
     (Story) => (
       <div
         style={{
           minHeight: "50vh",
-          background: "linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%)",
+          background: "linear-gradient(180deg, #FAFAF9 0%, #F5F5F4 100%)",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",

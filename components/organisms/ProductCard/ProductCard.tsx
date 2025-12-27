@@ -249,7 +249,7 @@ export const ProductCard = forwardRef<HTMLDivElement, ProductCardProps>(
               fontSize: "1.125rem",
               fontWeight: 600,
               lineHeight: 1.3,
-              color: isHovered ? primary.dark : neutral[800],
+              color: isHovered ? "primary.dark" : "text.primary",
               transition: "color 0.2s ease",
             }}
           >
@@ -263,7 +263,7 @@ export const ProductCard = forwardRef<HTMLDivElement, ProductCardProps>(
               fontFamily: fontFamilies.body,
               fontSize: "0.875rem",
               lineHeight: 1.5,
-              color: neutral[500],
+              color: "text.secondary",
               display: "-webkit-box",
               WebkitLineClamp: 2,
               WebkitBoxOrient: "vertical",
@@ -280,7 +280,7 @@ export const ProductCard = forwardRef<HTMLDivElement, ProductCardProps>(
               fontFamily: fontFamilies.heading,
               fontSize: "1.25rem",
               fontWeight: 600,
-              color: neutral[800],
+              color: "text.primary",
             }}
           >
             €{product.price.toFixed(2)}

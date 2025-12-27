@@ -1,10 +1,13 @@
 {
-  "title": "Ayla Designs",
-  "subtitle": "Diseños digitales bohemios creados con alma. Invitaciones, arte y plantillas creativas para los momentos significativos de la vida.",
+  "title": "Diseños que inspiran",
+  "titleMagic1": "magia",
+  "titleConnector": "y",
+  "titleMagic2": "profesionalidad",
+  "subtitle": "Plantillas y recursos gráficos con alma bohemia para marcas que buscan destacar sin perder su esencia corporativa.",
   "badge": "Diseño bohemio profesional",
   "cta": {
-    "start": "Comprar Ahora",
-    "explore": "Ver Colecciones"
+    "start": "Explorar Diseños",
+    "explore": "Ver Testimonios"
   },
   "nav": {
     "products": "Productos",
@@ -12,17 +15,17 @@
     "contact": "Contacto"
   },
   "features": {
-    "personalized": {
-      "title": "Diseños Personalizados",
-      "description": "Cada diseño puede personalizarse para reflejar tu visión y estilo único."
+    "bohemian": {
+      "title": "Estética Bohemia",
+      "description": "Elementos celestiales y orgánicos que aportan calidez y personalidad a tu marca."
     },
-    "instant": {
-      "title": "Descarga Instantánea",
-      "description": "Recibe tus archivos digitales inmediatamente después de la compra. Imprime cuando quieras."
+    "professional": {
+      "title": "Profesionalidad",
+      "description": "Diseños elegantes y versátiles que mantienen un aspecto corporativo refinado."
     },
-    "handcrafted": {
-      "title": "Calidad Artesanal",
-      "description": "Cada pieza está cuidadosamente diseñada con elegancia bohemia y atención al detalle."
+    "editable": {
+      "title": "100% Editables",
+      "description": "Plantillas fáciles de personalizar en Canva, Figma o Adobe para adaptarlas a tu marca."
     }
   },
   "categories": {
